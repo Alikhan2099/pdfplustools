@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Manual Image Invoice Entry to Excel - PDFplusTools</title>
+<meta name="description" content="Manually extract invoice information from invoice images into an Excel-compatible CSV file. No OCR required."/>
+<link rel="stylesheet" href="../assets/styles.css"/>
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a href="../index.html" class="logo"><span class="logo-mark">P+</span> PDFplusTools</a>
+    <div class="nav-links">
+      <a href="../index.html#pdf-tools" class="nav-tool-btn">📄 PDF Tools</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-btn" tabindex="0">🧰 Other Tools ▾</span>
+        <div class="nav-dropdown-menu">
+          <a href="../index.html#business-tools" class="dropdown-item"><span class="dropdown-icon">🧾</span><span class="dropdown-text"><span class="dropdown-title">Business Tools</span><span class="dropdown-desc">Invoices, extraction, CSV exports</span></span></a>
+          <a href="../index.html#image-tools" class="dropdown-item"><span class="dropdown-icon">🖼️</span><span class="dropdown-text"><span class="dropdown-title">Image Tools</span><span class="dropdown-desc">Compress, resize, and edit images</span></span></a>
+          <a href="../index.html#text-content-tools" class="dropdown-item"><span class="dropdown-icon">🔤</span><span class="dropdown-text"><span class="dropdown-title">Text & Content Tools</span><span class="dropdown-desc">Word count, case, YouTube, SEO</span></span></a>
+          <a href="../index.html#calculators" class="dropdown-item"><span class="dropdown-icon">🧮</span><span class="dropdown-text"><span class="dropdown-title">Calculators</span><span class="dropdown-desc">Age, loan, unit conversions</span></span></a>
+          <a href="../index.html#utility-tools" class="dropdown-item"><span class="dropdown-icon">⚙️</span><span class="dropdown-text"><span class="dropdown-title">Utility Tools</span><span class="dropdown-desc">QR codes, passwords, quick helpers</span></span></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main class="container">
+  <section class="panel">
+    <div class="section-title">
+      <div>
+        <h2>Manual Image Invoice Entry to Excel</h2>
+        <p>Upload invoice images, view each invoice, manually type the fields, add rows, and export to Excel CSV.</p>
+      </div>
+      <a class="btn btn-secondary" href="../index.html#tools">All tools</a>
+    </div>
+
+    <div class="notice">
+      This version does <strong>not depend on OCR</strong>. It is reliable when automatic extraction fails because you manually confirm the invoice values before export.
+    </div>
+
+    <div class="form-grid" style="margin-top:18px;">
+      <label>Upload Invoice Images
+        <input id="imageInput" type="file" accept="image/png,image/jpeg,image/webp" multiple/>
+      </label>
+      <label>Select Invoice
+        <select id="invoiceSelect"></select>
+      </label>
+    </div>
+
+    <div class="actions">
+      <button id="prevBtn" class="btn-secondary">Previous Invoice</button>
+      <button id="nextBtn" class="btn-secondary">Next Invoice</button>
+      <button id="addRowBtn" class="btn-primary">Add / Update Row</button>
+      <button id="newBlankRowBtn" class="btn-secondary">Add Blank Row</button>
+      <button id="downloadCsvBtn" class="btn-primary">Download Excel CSV</button>
+      <button id="clearBtn" class="btn-secondary">Clear All</button>
+    </div>
+
+    <div id="status" class="status"></div>
+
+    <div class="manual-invoice-layout" style="margin-top:20px;">
+      <div class="manual-preview-box">
+        <h3>Invoice Image Preview</h3>
+        <img id="previewImage" alt="Invoice preview"/>
+        <p class="small-muted">Tip: use browser zoom if the invoice text is small.</p>
+      </div>
+
+      <div class="manual-preview-box">
+        <h3>Enter Invoice Fields</h3>
+        <div class="manual-field-grid">
+          <label>File Name<input id="fieldFile"/></label>
+          <label>Invoice No<input id="fieldInvoiceNo"/></label>
+          <label>Invoice Date<input id="fieldDate"/></label>
+          <label>Vendor / Supplier<input id="fieldVendor"/></label>
+          <label>TRN / Tax ID<input id="fieldTrn"/></label>
+          <label>Currency<input id="fieldCurrency" value="AED"/></label>
+          <label>Subtotal<input id="fieldSubtotal" type="text"/></label>
+          <label>VAT / Tax<input id="fieldVat" type="text"/></label>
+          <label>Total<input id="fieldTotal" type="text"/></label>
+          <label>Payment Method<input id="fieldPayment"/></label>
+        </div>
+        <label style="margin-top:14px;">Notes<textarea id="fieldNotes" placeholder="Optional notes..."></textarea></label>
+      </div>
+    </div>
+
+    <div class="output-box">
+      <h3>Export Table</h3>
+      <p class="small-muted">Rows are editable. CSV opens in Excel, Google Sheets, and Numbers.</p>
+      <div class="manual-table-wrap">
+        <table class="manual-table" id="exportTable">
+          <thead>
+            <tr>
+              <th>File</th>
+              <th>Invoice No</th>
+              <th>Date</th>
+              <th>Vendor</th>
+              <th>TRN / Tax ID</th>
+              <th>Subtotal</th>
+              <th>VAT / Tax</th>
+              <th>Total</th>
+              <th>Currency</th>
+              <th>Payment Method</th>
+              <th>Notes</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="section-title">
+      <div>
+        <h2>Why this version is useful</h2>
+        <p>Automatic OCR can fail on real invoices. This tool gives you a controlled workflow: view image, type fields, export clean Excel data.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-links">
+    <a href="../index.html">Home</a>
+    <a href="../privacy-policy.html">Privacy Policy</a>
+    <a href="../terms.html">Terms of Use</a>
+    <a href="../cookie-policy.html">Cookie Policy</a>
+    <a href="../file-handling.html">File Handling</a>
+    <a href="../disclaimer.html">Disclaimer</a>
+    <a href="../refund-policy.html">Refund Policy</a>
+    <a href="../legal.html">Legal</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+  <div>© PDFplusTools. Free online PDF, image, invoice and utility tools.</div>
+</footer>
+
+<script>
+const imageInput = document.getElementById("imageInput");
+const invoiceSelect = document.getElementById("invoiceSelect");
+const previewImage = document.getElementById("previewImage");
+const statusBox = document.getElementById("status");
+const exportBody = document.querySelector("#exportTable tbody");
+
+let invoices = [];
+let exportRows = [];
+let selectedIndex = 0;
+
+const fieldIds = [
+  "fieldFile", "fieldInvoiceNo", "fieldDate", "fieldVendor", "fieldTrn",
+  "fieldSubtotal", "fieldVat", "fieldTotal", "fieldCurrency", "fieldPayment", "fieldNotes"
+];
+
+imageInput.addEventListener("change", event => {
+  invoices.forEach(item => URL.revokeObjectURL(item.url));
+  invoices = Array.from(event.target.files)
+    .filter(file => ["image/jpeg", "image/png", "image/webp"].includes(file.type))
+    .map(file => ({ file, url: URL.createObjectURL(file) }));
+
+  renderInvoiceSelect();
+
+  if (invoices.length) {
+    selectInvoice(0);
+    setStatus(`${invoices.length} invoice image(s) loaded.`);
+  } else {
+    setStatus("Please upload JPG, PNG, or WebP invoice images.");
+  }
+});
+
+invoiceSelect.addEventListener("change", () => selectInvoice(Number(invoiceSelect.value)));
+
+document.getElementById("prevBtn").addEventListener("click", () => {
+  if (!invoices.length) return;
+  selectInvoice(Math.max(0, selectedIndex - 1));
+});
+
+document.getElementById("nextBtn").addEventListener("click", () => {
+  if (!invoices.length) return;
+  selectInvoice(Math.min(invoices.length - 1, selectedIndex + 1));
+});
+
+document.getElementById("addRowBtn").addEventListener("click", addOrUpdateRow);
+document.getElementById("newBlankRowBtn").addEventListener("click", addBlankRow);
+document.getElementById("downloadCsvBtn").addEventListener("click", downloadCsv);
+document.getElementById("clearBtn").addEventListener("click", clearAll);
+
+function setStatus(message) {
+  statusBox.textContent = message;
+}
+
+function renderInvoiceSelect() {
+  invoiceSelect.innerHTML = invoices
+    .map((item, index) => `<option value="${index}">${index + 1}. ${escapeHtml(item.file.name)}</option>`)
+    .join("");
+}
+
+function selectInvoice(index) {
+  if (!invoices[index]) return;
+
+  selectedIndex = index;
+  invoiceSelect.value = String(index);
+  previewImage.src = invoices[index].url;
+
+  clearFields(false);
+  document.getElementById("fieldFile").value = invoices[index].file.name;
+
+  // If this file already has an export row, load it back for editing.
+  const existing = exportRows.find(row => row.file === invoices[index].file.name);
+  if (existing) {
+    document.getElementById("fieldInvoiceNo").value = existing.invoiceNo || "";
+    document.getElementById("fieldDate").value = existing.date || "";
+    document.getElementById("fieldVendor").value = existing.vendor || "";
+    document.getElementById("fieldTrn").value = existing.trn || "";
+    document.getElementById("fieldSubtotal").value = existing.subtotal || "";
+    document.getElementById("fieldVat").value = existing.vat || "";
+    document.getElementById("fieldTotal").value = existing.total || "";
+    document.getElementById("fieldCurrency").value = existing.currency || "AED";
+    document.getElementById("fieldPayment").value = existing.payment || "";
+    document.getElementById("fieldNotes").value = existing.notes || "";
+  }
+
+  setStatus(`Viewing invoice ${index + 1} of ${invoices.length}.`);
+}
+
+function getCurrentFieldRow() {
+  return {
+    file: document.getElementById("fieldFile").value.trim(),
+    invoiceNo: document.getElementById("fieldInvoiceNo").value.trim(),
+    date: document.getElementById("fieldDate").value.trim(),
+    vendor: document.getElementById("fieldVendor").value.trim(),
+    trn: document.getElementById("fieldTrn").value.trim(),
+    subtotal: document.getElementById("fieldSubtotal").value.trim(),
+    vat: document.getElementById("fieldVat").value.trim(),
+    total: document.getElementById("fieldTotal").value.trim(),
+    currency: document.getElementById("fieldCurrency").value.trim(),
+    payment: document.getElementById("fieldPayment").value.trim(),
+    notes: document.getElementById("fieldNotes").value.trim()
+  };
+}
+
+function addOrUpdateRow() {
+  const row = getCurrentFieldRow();
+
+  if (!row.file) {
+    row.file = invoices[selectedIndex] ? invoices[selectedIndex].file.name : "manual-row";
+  }
+
+  const existingIndex = exportRows.findIndex(item => item.file === row.file);
+
+  if (existingIndex >= 0) {
+    exportRows[existingIndex] = row;
+    setStatus("Existing row updated.");
+  } else {
+    exportRows.push(row);
+    setStatus("Row added.");
+  }
+
+  renderExportRows();
+
+  if (invoices.length && selectedIndex < invoices.length - 1) {
+    selectInvoice(selectedIndex + 1);
+  }
+}
+
+function addBlankRow() {
+  exportRows.push({
+    file: "manual-entry",
+    invoiceNo: "",
+    date: "",
+    vendor: "",
+    trn: "",
+    subtotal: "",
+    vat: "",
+    total: "",
+    currency: "AED",
+    payment: "",
+    notes: ""
+  });
+  renderExportRows();
+  setStatus("Blank row added.");
+}
+
+function renderExportRows() {
+  exportBody.innerHTML = "";
+  const keys = ["file", "invoiceNo", "date", "vendor", "trn", "subtotal", "vat", "total", "currency", "payment", "notes"];
+
+  exportRows.forEach((row, rowIndex) => {
+    const tr = document.createElement("tr");
+
+    keys.forEach(key => {
+      const td = document.createElement("td");
+      td.contentEditable = true;
+      td.textContent = row[key] || "";
+      td.addEventListener("input", () => {
+        exportRows[rowIndex][key] = td.textContent.trim();
+      });
+      tr.appendChild(td);
+    });
+
+    const actionTd = document.createElement("td");
+
+    const loadBtn = document.createElement("button");
+    loadBtn.textContent = "Load";
+    loadBtn.className = "btn-secondary";
+    loadBtn.style.marginRight = "6px";
+    loadBtn.addEventListener("click", () => loadRowToFields(rowIndex));
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Delete";
+    deleteBtn.className = "danger";
+    deleteBtn.addEventListener("click", () => {
+      exportRows.splice(rowIndex, 1);
+      renderExportRows();
+    });
+
+    actionTd.appendChild(loadBtn);
+    actionTd.appendChild(deleteBtn);
+    tr.appendChild(actionTd);
+    exportBody.appendChild(tr);
+  });
+}
+
+function loadRowToFields(index) {
+  const row = exportRows[index];
+  if (!row) return;
+
+  document.getElementById("fieldFile").value = row.file || "";
+  document.getElementById("fieldInvoiceNo").value = row.invoiceNo || "";
+  document.getElementById("fieldDate").value = row.date || "";
+  document.getElementById("fieldVendor").value = row.vendor || "";
+  document.getElementById("fieldTrn").value = row.trn || "";
+  document.getElementById("fieldSubtotal").value = row.subtotal || "";
+  document.getElementById("fieldVat").value = row.vat || "";
+  document.getElementById("fieldTotal").value = row.total || "";
+  document.getElementById("fieldCurrency").value = row.currency || "AED";
+  document.getElementById("fieldPayment").value = row.payment || "";
+  document.getElementById("fieldNotes").value = row.notes || "";
+
+  const matchingInvoiceIndex = invoices.findIndex(item => item.file.name === row.file);
+  if (matchingInvoiceIndex >= 0) {
+    selectInvoice(matchingInvoiceIndex);
+  }
+
+  setStatus("Row loaded into fields.");
+}
+
+function downloadCsv() {
+  if (!exportRows.length) {
+    setStatus("No rows to export.");
+    return;
+  }
+
+  const headers = ["File", "Invoice No", "Date", "Vendor", "TRN / Tax ID", "Subtotal", "VAT / Tax", "Total", "Currency", "Payment Method", "Notes"];
+  const keys = ["file", "invoiceNo", "date", "vendor", "trn", "subtotal", "vat", "total", "currency", "payment", "notes"];
+
+  const csv = [
+    headers.join(","),
+    ...exportRows.map(row => keys.map(key => csvEscape(row[key] || "")).join(","))
+  ].join("\n");
+
+  const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "manual-image-invoice-entry.csv";
+  link.click();
+
+  setStatus("CSV downloaded. Open it in Excel or Google Sheets.");
+}
+
+function clearFields(keepFile = true) {
+  const fileValue = document.getElementById("fieldFile").value;
+  fieldIds.forEach(id => document.getElementById(id).value = "");
+  document.getElementById("fieldCurrency").value = "AED";
+  if (keepFile) document.getElementById("fieldFile").value = fileValue;
+}
+
+function clearAll() {
+  invoices.forEach(item => URL.revokeObjectURL(item.url));
+  invoices = [];
+  exportRows = [];
+  selectedIndex = 0;
+  imageInput.value = "";
+  invoiceSelect.innerHTML = "";
+  previewImage.removeAttribute("src");
+  clearFields(false);
+  renderExportRows();
+  setStatus("");
+}
+
+function csvEscape(value) {
+  const text = String(value);
+  if (/[",\n]/.test(text)) {
+    return '"' + text.replace(/"/g, '""') + '"';
+  }
+  return text;
+}
+
+function escapeHtml(text) {
+  return String(text).replace(/[&<>"']/g, match => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#039;"
+  }[match]));
+}
+</script>
+</body>
+</html>

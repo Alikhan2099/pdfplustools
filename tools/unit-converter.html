@@ -1,0 +1,27 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Unit Converter - PDFplusTools</title><meta name="description" content="Convert common length, weight, temperature, and volume units."/><link rel="stylesheet" href="../assets/styles.css"/></head><body><header class="site-header"><nav class="nav"><a href="../index.html" class="logo"><span class="logo-mark">P+</span> PDFplusTools</a><div class="nav-links">
+      <a href="../index.html#pdf-tools" class="nav-tool-btn">📄 PDF Tools</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-btn" tabindex="0">🧰 Other Tools ▾</span>
+        <div class="nav-dropdown-menu">
+          <a href="../index.html#business-tools" class="dropdown-item"><span class="dropdown-icon">🧾</span><span class="dropdown-text"><span class="dropdown-title">Business Tools</span><span class="dropdown-desc">Invoices, extraction, CSV exports</span></span></a>
+          <a href="../index.html#image-tools" class="dropdown-item"><span class="dropdown-icon">🖼️</span><span class="dropdown-text"><span class="dropdown-title">Image Tools</span><span class="dropdown-desc">Compress, resize, and edit images</span></span></a>
+          <a href="../index.html#text-content-tools" class="dropdown-item"><span class="dropdown-icon">🔤</span><span class="dropdown-text"><span class="dropdown-title">Text & Content Tools</span><span class="dropdown-desc">Word count, case, YouTube, SEO</span></span></a>
+          <a href="../index.html#calculators" class="dropdown-item"><span class="dropdown-icon">🧮</span><span class="dropdown-text"><span class="dropdown-title">Calculators</span><span class="dropdown-desc">Age, loan, unit conversions</span></span></a>
+          <a href="../index.html#utility-tools" class="dropdown-item"><span class="dropdown-icon">⚙️</span><span class="dropdown-text"><span class="dropdown-title">Utility Tools</span><span class="dropdown-desc">QR codes, passwords, quick helpers</span></span></a>
+        </div>
+      </div>
+    </div>
+  </nav></header><main class="container"><section class="panel"><div class="section-title"><div><h2>Unit Converter</h2><p>Convert common length, weight, temperature, and volume units.</p></div><a class="btn btn-secondary" href="../index.html#tools">All tools</a></div><div class="form-grid three"><label>Category<select id="cat"><option value="length">Length</option><option value="weight">Weight</option><option value="temp">Temperature</option><option value="volume">Volume</option></select></label><label>Value<input id="val" type="number" value="1"/></label><label>Conversion<select id="conv"></select></label></div><div class="actions"><button id="go" class="btn-primary">Convert</button></div><div id="res" class="output-box" style="font-size:28px;font-weight:900"></div></section><section class="panel"><div class="faq"><details open><summary>Is this tool private?</summary><p>This  is designed to run in the browser where possible. For production, keep a clear privacy note for each file tool.</p></details><details><summary>Can I monetize this page?</summary><p>Yes. Add AdSense later, or make advanced features part of a Pro plan.</p></details></div></section></main><script>const opts={length:[['m-ft','Meters to Feet',v=>v*3.28084],['ft-m','Feet to Meters',v=>v/3.28084],['km-mi','KM to Miles',v=>v*.621371],['mi-km','Miles to KM',v=>v/.621371]],weight:[['kg-lb','KG to LB',v=>v*2.20462],['lb-kg','LB to KG',v=>v/2.20462]],temp:[['c-f','Celsius to Fahrenheit',v=>v*9/5+32],['f-c','Fahrenheit to Celsius',v=>(v-32)*5/9]],volume:[['l-gal','Liters to Gallons',v=>v*.264172],['gal-l','Gallons to Liters',v=>v/.264172]]};function load(){conv.innerHTML=opts[cat.value].map(o=>`<option value="${o[0]}">${o[1]}</option>`).join('')}cat.onchange=load;go.onclick=()=>{let o=opts[cat.value].find(x=>x[0]===conv.value),v=+val.value;res.textContent=o[1]+": "+o[2](v).toFixed(4)};load();go.click()</script><footer class="footer">
+  <div class="footer-links">
+    <a href="../index.html">Home</a>
+    <a href="../privacy-policy.html">Privacy Policy</a>
+    <a href="../terms.html">Terms of Use</a>
+    <a href="../cookie-policy.html">Cookie Policy</a>
+    <a href="../file-handling.html">File Handling</a>
+    <a href="../disclaimer.html">Disclaimer</a>
+    <a href="../refund-policy.html">Refund Policy</a>
+    <a href="../legal.html">Legal</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+  <div>© PDFplusTools. Free online PDF, image, invoice and utility tools.</div>
+</footer></body></html>

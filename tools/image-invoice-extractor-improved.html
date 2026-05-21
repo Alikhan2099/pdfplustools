@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Improved Image Invoice Extractor to Excel - PDFplusTools</title>
+<meta name="description" content="Improved browser OCR invoice extractor with image preprocessing, better field detection, editable OCR text, and CSV export."/>
+<link rel="stylesheet" href="../assets/styles.css"/>
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a href="../index.html" class="logo"><span class="logo-mark">P+</span> PDFplusTools</a>
+    <div class="nav-links">
+      <a href="../index.html#pdf-tools" class="nav-tool-btn">📄 PDF Tools</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-btn" tabindex="0">🧰 Other Tools ▾</span>
+        <div class="nav-dropdown-menu">
+          <a href="../index.html#business-tools" class="dropdown-item"><span class="dropdown-icon">🧾</span><span class="dropdown-text"><span class="dropdown-title">Business Tools</span><span class="dropdown-desc">Invoices, extraction, CSV exports</span></span></a>
+          <a href="../index.html#image-tools" class="dropdown-item"><span class="dropdown-icon">🖼️</span><span class="dropdown-text"><span class="dropdown-title">Image Tools</span><span class="dropdown-desc">Compress, resize, and edit images</span></span></a>
+          <a href="../index.html#text-content-tools" class="dropdown-item"><span class="dropdown-icon">🔤</span><span class="dropdown-text"><span class="dropdown-title">Text & Content Tools</span><span class="dropdown-desc">Word count, case, YouTube, SEO</span></span></a>
+          <a href="../index.html#calculators" class="dropdown-item"><span class="dropdown-icon">🧮</span><span class="dropdown-text"><span class="dropdown-title">Calculators</span><span class="dropdown-desc">Age, loan, unit conversions</span></span></a>
+          <a href="../index.html#utility-tools" class="dropdown-item"><span class="dropdown-icon">⚙️</span><span class="dropdown-text"><span class="dropdown-title">Utility Tools</span><span class="dropdown-desc">QR codes, passwords, quick helpers</span></span></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<main class="container">
+<section class="panel">
+  <div class="section-title">
+    <div>
+      <h2>Improved Image Invoice Extractor to Excel</h2>
+      <p>Bulk upload invoice images, enhance them before OCR, extract invoice fields, review the output, and export CSV for Excel.</p>
+    </div>
+    <a class="btn btn-secondary" href="../index.html#tools">All tools</a>
+  </div>
+
+  <div class="notice">
+    This version improves the earlier OCR with image upscaling, grayscale/contrast preprocessing, better extraction rules, editable OCR text, and confidence flags.
+    It still works best with clear printed invoices.
+  </div>
+
+  <div id="dropZone" class="drop-zone" style="margin-top:20px;">
+    <input id="imageInput" type="file" accept="image/png,image/jpeg,image/webp" multiple hidden/>
+    <h3>Drop invoice images here</h3>
+    <p>or</p>
+    <button id="selectBtn" class="btn-primary">Choose Images</button>
+  </div>
+
+  <div class="form-grid" style="margin-top:18px;">
+    <label>OCR Mode
+      <select id="ocrMode">
+        <option value="enhanced" selected>Enhanced image OCR</option>
+        <option value="original">Original image OCR</option>
+      </select>
+    </label>
+    <label>Language
+      <select id="ocrLang">
+        <option value="eng" selected>English</option>
+        <option value="eng+ara">English + Arabic</option>
+      </select>
+    </label>
+  </div>
+
+  <div id="fileList" class="file-list"></div>
+
+  <div class="actions">
+    <button id="extractBtn" class="btn-primary">Run Improved Extraction</button>
+    <button id="downloadCsvBtn" class="btn-secondary">Download Excel CSV</button>
+    <button id="clearBtn" class="btn-secondary">Clear</button>
+  </div>
+  <div id="status" class="status"></div>
+
+  <div class="output-box">
+    <h3>Extracted Results</h3>
+    <p class="small-muted">Cells are editable. Correct anything before exporting.</p>
+    <div class="table-wrap">
+      <table class="data-table" id="resultsTable">
+        <thead><tr>
+          <th>File</th><th>Invoice No</th><th>Date</th><th>Vendor</th><th>TRN / Tax ID</th>
+          <th>Subtotal</th><th>VAT / Tax</th><th>Total</th><th>Currency</th><th>Confidence</th><th>Review</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="output-box">
+    <h3>OCR Text Review</h3>
+    <p class="small-muted">Use this to check what the OCR saw. You can copy text and manually verify the invoice.</p>
+    <textarea id="ocrTextBox" placeholder="OCR text will appear here..."></textarea>
+    <div class="actions">
+      <button id="reExtractBtn" class="btn-secondary">Re-extract from Edited OCR Text</button>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="footer">
+  <div class="footer-links">
+    <a href="../index.html">Home</a>
+    <a href="../privacy-policy.html">Privacy Policy</a>
+    <a href="../terms.html">Terms of Use</a>
+    <a href="../cookie-policy.html">Cookie Policy</a>
+    <a href="../file-handling.html">File Handling</a>
+    <a href="../disclaimer.html">Disclaimer</a>
+    <a href="../refund-policy.html">Refund Policy</a>
+    <a href="../legal.html">Legal</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+  <div>© PDFplusTools. Free online PDF, image, invoice and utility tools.</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+<script>
+const imageInput = document.getElementById("imageInput");
+const selectBtn = document.getElementById("selectBtn");
+const dropZone = document.getElementById("dropZone");
+const fileList = document.getElementById("fileList");
+const extractBtn = document.getElementById("extractBtn");
+const downloadCsvBtn = document.getElementById("downloadCsvBtn");
+const clearBtn = document.getElementById("clearBtn");
+const statusBox = document.getElementById("status");
+const resultsBody = document.querySelector("#resultsTable tbody");
+const ocrTextBox = document.getElementById("ocrTextBox");
+const reExtractBtn = document.getElementById("reExtractBtn");
+
+let files = [];
+let rows = [];
+let lastFileName = "manual-ocr-text";
+
+selectBtn.onclick = () => imageInput.click();
+imageInput.onchange = e => { addFiles(Array.from(e.target.files)); imageInput.value = ""; };
+["dragenter","dragover"].forEach(n => dropZone.addEventListener(n, e => { e.preventDefault(); dropZone.classList.add("dragover"); }));
+["dragleave","drop"].forEach(n => dropZone.addEventListener(n, e => { e.preventDefault(); dropZone.classList.remove("dragover"); }));
+dropZone.ondrop = e => addFiles(Array.from(e.dataTransfer.files));
+
+clearBtn.onclick = () => {
+  files = []; rows = []; ocrTextBox.value = ""; renderFiles(); renderRows(); setStatus("");
+};
+
+function setStatus(x){ statusBox.textContent = x; }
+
+function addFiles(selected){
+  const valid = selected.filter(f => ["image/jpeg","image/png","image/webp"].includes(f.type));
+  if(!valid.length){ setStatus("Choose JPG, PNG, or WebP images."); return; }
+  files.push(...valid); renderFiles(); setStatus(files.length + " image(s) ready.");
+}
+
+function renderFiles(){
+  fileList.innerHTML = "";
+  files.forEach((file, i) => {
+    const row = document.createElement("div");
+    row.className = "file-row";
+    row.innerHTML = `<div><strong>${i+1}. ${escapeHtml(file.name)}</strong><br><small>${(file.size/1024/1024).toFixed(2)} MB</small></div>`;
+    const btns = document.createElement("div");
+    btns.className = "mini-buttons";
+    const remove = document.createElement("button");
+    remove.textContent = "Remove"; remove.className = "danger";
+    remove.onclick = () => { files.splice(i,1); renderFiles(); };
+    btns.append(remove); row.append(btns); fileList.append(row);
+  });
+}
+
+function escapeHtml(text){return String(text).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[m]));}
+
+function loadImage(file){
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = reject;
+    img.src = URL.createObjectURL(file);
+  });
+}
+
+async function preprocessImage(file){
+  const img = await loadImage(file);
+  const canvas = document.createElement("canvas");
+  const maxSide = 2600;
+  let w = img.naturalWidth, h = img.naturalHeight;
+  const scale = Math.min(maxSide / Math.max(w,h), 2.2);
+  if(scale > 1){ w = Math.round(w * scale); h = Math.round(h * scale); }
+  canvas.width = w; canvas.height = h;
+  const ctx = canvas.getContext("2d");
+  ctx.drawImage(img, 0, 0, w, h);
+
+  const data = ctx.getImageData(0,0,w,h);
+  const d = data.data;
+  for(let i=0; i<d.length; i+=4){
+    let gray = 0.299*d[i] + 0.587*d[i+1] + 0.114*d[i+2];
+    gray = (gray - 128) * 1.45 + 128; // contrast
+    gray = gray > 245 ? 255 : gray < 20 ? 0 : gray;
+    d[i] = d[i+1] = d[i+2] = gray;
+  }
+  ctx.putImageData(data,0,0);
+  return new Promise(resolve => canvas.toBlob(resolve, "image/png"));
+}
+
+function normalizeText(t){ return String(t).replace(/[|]/g,"I").replace(/\s+/g," ").trim(); }
+function cleanAmount(x){ return (x||"").replace(/[^\d.,]/g,"").replace(/,/g,""); }
+function firstMatch(text, patterns){
+  for(const p of patterns){ const m = text.match(p); if(m && m[1]) return m[1].trim(); }
+  return "";
+}
+function findAmountNear(text, labels){
+  for(const label of labels){
+    const p = new RegExp(label + "\\s*(?:amount)?\\s*[:\\-]?\\s*(?:AED|USD|SAR|EUR|GBP|د\\.إ|\\$)?\\s*([0-9][0-9,]*\\.?[0-9]{0,2})", "i");
+    const m = text.match(p);
+    if(m && m[1]) return cleanAmount(m[1]);
+  }
+  return "";
+}
+function detectCurrency(text){
+  const u = text.toUpperCase();
+  if(u.includes("AED") || u.includes("د.إ")) return "AED";
+  if(u.includes("USD") || u.includes("$")) return "USD";
+  if(u.includes("SAR")) return "SAR";
+  if(u.includes("EUR") || u.includes("€")) return "EUR";
+  if(u.includes("GBP") || u.includes("£")) return "GBP";
+  return "";
+}
+function extractVendor(raw){
+  const lines = raw.split(/\n+/).map(x=>x.trim()).filter(x=>x.length>2);
+  const skip = /invoice|tax invoice|receipt|quotation|date|trn|vat|total|amount|tel|phone|email|www|page/i;
+  for(const line of lines.slice(0,12)){
+    if(!skip.test(line) && !/^[0-9\s\-\/.,:]+$/.test(line)) return line;
+  }
+  return "";
+}
+function extractFields(raw, file, confidence){
+  const text = normalizeText(raw);
+  const invoiceNo = firstMatch(text, [
+    /(?:invoice|inv)\s*(?:number|no|#)\s*[:\-]?\s*([A-Z0-9][A-Z0-9\-\/]{2,})/i,
+    /tax\s*invoice\s*(?:number|no|#)?\s*[:\-]?\s*([A-Z0-9][A-Z0-9\-\/]{2,})/i
+  ]);
+  const date = firstMatch(text, [
+    /(?:invoice\s*)?date\s*[:\-]?\s*([0-9]{1,2}[\/\-.][0-9]{1,2}[\/\-.][0-9]{2,4})/i,
+    /([0-9]{4}[\/\-.][0-9]{1,2}[\/\-.][0-9]{1,2})/
+  ]);
+  const trn = firstMatch(text, [
+    /TRN\s*[:\-]?\s*([0-9]{8,20})/i,
+    /tax\s*(?:registration|id|number)\s*[:\-]?\s*([A-Z0-9\-]{6,})/i,
+    /VAT\s*(?:number|no|id)?\s*[:\-]?\s*([A-Z0-9\-]{6,})/i
+  ]);
+  let total = findAmountNear(text, ["grand total","invoice total","total amount","amount due","balance due","net payable"]);
+  if(!total) {
+    const totals = [...text.matchAll(/(?:AED|USD|SAR|EUR|GBP|د\.إ|\$)?\s*([0-9][0-9,]*\.[0-9]{2})/gi)].map(m=>cleanAmount(m[1])).filter(Boolean).map(Number);
+    if(totals.length) total = String(Math.max(...totals).toFixed(2));
+  }
+  const vat = findAmountNear(text, ["vat amount","tax amount","vat","tax"]);
+  const subtotal = findAmountNear(text, ["subtotal","sub total","amount before tax","net amount","taxable amount"]);
+  let review = [];
+  if(!invoiceNo) review.push("check invoice no");
+  if(!date) review.push("check date");
+  if(!total) review.push("check total");
+  if(confidence < 60) review.push("low OCR confidence");
+  return {file, invoiceNo, date, vendor: extractVendor(raw), trn, subtotal, vat, total, currency: detectCurrency(text), confidence: Math.round(confidence||0), review: review.join("; ")};
+}
+
+extractBtn.onclick = async () => {
+  if(!files.length){ setStatus("Upload at least one invoice image."); return; }
+  rows = []; renderRows(); ocrTextBox.value = "";
+  for(let i=0; i<files.length; i++){
+    const file = files[i]; lastFileName = file.name;
+    setStatus(`Preparing ${file.name}...`);
+    const input = document.getElementById("ocrMode").value === "enhanced" ? await preprocessImage(file) : file;
+    const lang = document.getElementById("ocrLang").value;
+    const result = await Tesseract.recognize(input, lang, { logger: p => {
+      if(p.status) setStatus(`${file.name}: ${p.status} ${p.progress ? Math.round(p.progress*100)+"%" : ""}`);
+    }});
+    const raw = result.data.text || "";
+    ocrTextBox.value += `\n\n----- ${file.name} -----\n` + raw;
+    rows.push(extractFields(raw, file.name, result.data.confidence || 0));
+    renderRows();
+  }
+  setStatus("Extraction complete. Review/edit table and OCR text.");
+};
+
+reExtractBtn.onclick = () => {
+  const raw = ocrTextBox.value;
+  if(!raw.trim()){ setStatus("No OCR text to extract from."); return; }
+  rows = [extractFields(raw, lastFileName, 0)];
+  renderRows();
+  setStatus("Re-extracted from edited OCR text.");
+};
+
+function renderRows(){
+  resultsBody.innerHTML = "";
+  const keys = ["file","invoiceNo","date","vendor","trn","subtotal","vat","total","currency","confidence","review"];
+  rows.forEach((row, ri) => {
+    const tr = document.createElement("tr");
+    keys.forEach(k => {
+      const td = document.createElement("td");
+      td.contentEditable = !["confidence"].includes(k);
+      td.textContent = row[k] || "";
+      if(k==="confidence"){
+        const n = Number(row[k]||0);
+        td.className = n>=75 ? "confidence-good" : n>=55 ? "confidence-mid" : "confidence-low";
+      }
+      td.oninput = () => row[k] = td.textContent.trim();
+      tr.append(td);
+    });
+    resultsBody.append(tr);
+  });
+}
+
+downloadCsvBtn.onclick = () => {
+  if(!rows.length){ setStatus("No data to export."); return; }
+  const headers = ["File","Invoice No","Date","Vendor","TRN / Tax ID","Subtotal","VAT / Tax","Total","Currency","Confidence","Review"];
+  const keys = ["file","invoiceNo","date","vendor","trn","subtotal","vat","total","currency","confidence","review"];
+  const csv = [headers.join(","), ...rows.map(r => keys.map(k => csvEscape(r[k]||"")).join(","))].join("\n");
+  const blob = new Blob([csv], {type:"text/csv;charset=utf-8"});
+  const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "improved-image-invoice-extraction.csv"; a.click();
+  setStatus("CSV downloaded.");
+};
+function csvEscape(v){ v=String(v); return /[",\n]/.test(v) ? '"' + v.replace(/"/g,'""') + '"' : v; }
+</script>
+</body>
+</html>

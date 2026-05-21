@@ -1,0 +1,30 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>PDF to JPG - PDFplusTools</title><meta name="description" content="Convert every PDF page into JPG images and download them as a ZIP file."/><link rel="stylesheet" href="../assets/styles.css"/></head><body><header class="site-header"><nav class="nav"><a href="../index.html" class="logo"><span class="logo-mark">P+</span> PDFplusTools</a><div class="nav-links">
+      <a href="../index.html#pdf-tools" class="nav-tool-btn">📄 PDF Tools</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-btn" tabindex="0">🧰 Other Tools ▾</span>
+        <div class="nav-dropdown-menu">
+          <a href="../index.html#business-tools" class="dropdown-item"><span class="dropdown-icon">🧾</span><span class="dropdown-text"><span class="dropdown-title">Business Tools</span><span class="dropdown-desc">Invoices, extraction, CSV exports</span></span></a>
+          <a href="../index.html#image-tools" class="dropdown-item"><span class="dropdown-icon">🖼️</span><span class="dropdown-text"><span class="dropdown-title">Image Tools</span><span class="dropdown-desc">Compress, resize, and edit images</span></span></a>
+          <a href="../index.html#text-content-tools" class="dropdown-item"><span class="dropdown-icon">🔤</span><span class="dropdown-text"><span class="dropdown-title">Text & Content Tools</span><span class="dropdown-desc">Word count, case, YouTube, SEO</span></span></a>
+          <a href="../index.html#calculators" class="dropdown-item"><span class="dropdown-icon">🧮</span><span class="dropdown-text"><span class="dropdown-title">Calculators</span><span class="dropdown-desc">Age, loan, unit conversions</span></span></a>
+          <a href="../index.html#utility-tools" class="dropdown-item"><span class="dropdown-icon">⚙️</span><span class="dropdown-text"><span class="dropdown-title">Utility Tools</span><span class="dropdown-desc">QR codes, passwords, quick helpers</span></span></a>
+        </div>
+      </div>
+    </div>
+  </nav></header><main class="container"><section class="panel"><div class="section-title"><div><h2>PDF to JPG</h2><p>Convert every PDF page into JPG images and download them as a ZIP file.</p></div><a class="btn btn-secondary" href="../index.html#tools">All tools</a></div><div class="notice">This tool renders PDF pages in your browser and exports JPG images inside a ZIP file.</div><div class="form-grid"><label>Choose PDF<input id="pdfFile" type="file" accept="application/pdf"/></label><label>Image Quality<select id="quality"><option value="0.75">Smaller file</option><option value="0.9" selected>Balanced</option><option value="1">Best quality</option></select></label></div><div class="actions"><button id="convertBtn" class="btn-primary">Convert PDF to JPG</button></div><div id="status" class="status"></div><div id="preview" class="preview-list"></div></section><section class="panel"><div class="faq"><details open><summary>Is this tool private?</summary><p>This  is designed to run in the browser where possible. For production, keep a clear privacy note on each file-processing tool.</p></details><details><summary>Can this be monetized?</summary><p>Yes. Advanced batch processing, larger file limits, no ads, and saved history can become Pro features.</p></details></div></section></main><script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script><script>
+pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+convertBtn.onclick=async()=>{const f=pdfFile.files[0];if(!f)return status.textContent='Choose a PDF first.';status.textContent='Loading PDF...';preview.innerHTML='';try{const pdf=await pdfjsLib.getDocument({data:await f.arrayBuffer()}).promise;const zip=new JSZip();for(let i=1;i<=pdf.numPages;i++){status.textContent=`Rendering page ${i} of ${pdf.numPages}...`;const page=await pdf.getPage(i);const viewport=page.getViewport({scale:2});const canvas=document.createElement('canvas');canvas.width=viewport.width;canvas.height=viewport.height;await page.render({canvasContext:canvas.getContext('2d'),viewport}).promise;const dataUrl=canvas.toDataURL('image/jpeg',Number(quality.value));const base64=dataUrl.split(',')[1];zip.file(`page-${String(i).padStart(3,'0')}.jpg`,base64,{base64:true});if(i<=4){const card=document.createElement('div');card.className='preview-card';card.innerHTML=`<div class="preview-img-wrap"><img src="${dataUrl}"></div><div class="preview-name">Page ${i}</div>`;preview.appendChild(card)}}status.textContent='Creating ZIP...';const blob=await zip.generateAsync({type:'blob'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=f.name.replace(/\.pdf$/i,'')+'-jpg-pages.zip';a.click();status.textContent='Done. JPG ZIP downloaded.'}catch(e){console.error(e);status.textContent='Could not convert this PDF.'}}
+</script><footer class="footer">
+  <div class="footer-links">
+    <a href="../index.html">Home</a>
+    <a href="../privacy-policy.html">Privacy Policy</a>
+    <a href="../terms.html">Terms of Use</a>
+    <a href="../cookie-policy.html">Cookie Policy</a>
+    <a href="../file-handling.html">File Handling</a>
+    <a href="../disclaimer.html">Disclaimer</a>
+    <a href="../refund-policy.html">Refund Policy</a>
+    <a href="../legal.html">Legal</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+  <div>© PDFplusTools. Free online PDF, image, invoice and utility tools.</div>
+</footer></body></html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Meta Tag Generator - PDFplusTools</title><meta name="description" content="Create SEO title, description, and keywords for web pages."/><link rel="stylesheet" href="../assets/styles.css"/></head><body><header class="site-header"><nav class="nav"><a href="../index.html" class="logo"><span class="logo-mark">P+</span> PDFplusTools</a><div class="nav-links">
+      <a href="../index.html#pdf-tools" class="nav-tool-btn">📄 PDF Tools</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-btn" tabindex="0">🧰 Other Tools ▾</span>
+        <div class="nav-dropdown-menu">
+          <a href="../index.html#business-tools" class="dropdown-item"><span class="dropdown-icon">🧾</span><span class="dropdown-text"><span class="dropdown-title">Business Tools</span><span class="dropdown-desc">Invoices, extraction, CSV exports</span></span></a>
+          <a href="../index.html#image-tools" class="dropdown-item"><span class="dropdown-icon">🖼️</span><span class="dropdown-text"><span class="dropdown-title">Image Tools</span><span class="dropdown-desc">Compress, resize, and edit images</span></span></a>
+          <a href="../index.html#text-content-tools" class="dropdown-item"><span class="dropdown-icon">🔤</span><span class="dropdown-text"><span class="dropdown-title">Text & Content Tools</span><span class="dropdown-desc">Word count, case, YouTube, SEO</span></span></a>
+          <a href="../index.html#calculators" class="dropdown-item"><span class="dropdown-icon">🧮</span><span class="dropdown-text"><span class="dropdown-title">Calculators</span><span class="dropdown-desc">Age, loan, unit conversions</span></span></a>
+          <a href="../index.html#utility-tools" class="dropdown-item"><span class="dropdown-icon">⚙️</span><span class="dropdown-text"><span class="dropdown-title">Utility Tools</span><span class="dropdown-desc">QR codes, passwords, quick helpers</span></span></a>
+        </div>
+      </div>
+    </div>
+  </nav></header><main class="container"><section class="panel"><div class="section-title"><div><h2>Meta Tag Generator</h2><p>Create SEO title, description, and keywords for web pages.</p></div><a class="btn btn-secondary" href="../index.html#tools">All tools</a></div><div class="form-grid"><label>Page Topic<input id="pageTopic" placeholder="Image to PDF Converter"/></label><label>Main Keyword<input id="keyword" placeholder="image to pdf converter"/></label></div><div class="actions"><button id="genMeta" class="btn-primary">Generate Meta Tags</button><button id="copyMeta" class="btn-secondary">Copy HTML</button></div><pre id="metaOut" class="output-box"></pre></section><section class="panel"><div class="faq"><details open><summary>Is this tool private?</summary><p>This  is designed to run in the browser where possible. For production, keep a clear privacy note for each file tool.</p></details><details><summary>Can I monetize this page?</summary><p>Yes. Add AdSense later, or make advanced features part of a Pro plan.</p></details></div></section></main><script>genMeta.onclick=()=>{let t=pageTopic.value||'Useful Online Tool',k=keyword.value||t.toLowerCase();metaOut.textContent=`<title>${t} - Free Online Tool</title>
+<meta name="description" content="Use our free ${k} tool online. Fast, simple, and browser-based.">
+<meta name="keywords" content="${k}, free online tool, browser tool">`};copyMeta.onclick=async()=>{await navigator.clipboard.writeText(metaOut.textContent);alert('Copied')};</script><footer class="footer">
+  <div class="footer-links">
+    <a href="../index.html">Home</a>
+    <a href="../privacy-policy.html">Privacy Policy</a>
+    <a href="../terms.html">Terms of Use</a>
+    <a href="../cookie-policy.html">Cookie Policy</a>
+    <a href="../file-handling.html">File Handling</a>
+    <a href="../disclaimer.html">Disclaimer</a>
+    <a href="../refund-policy.html">Refund Policy</a>
+    <a href="../legal.html">Legal</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+  <div>© PDFplusTools. Free online PDF, image, invoice and utility tools.</div>
+</footer></body></html>

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Image Background Remover - PDFplusTools</title>
+<meta name="description" content="Remove image backgrounds with a reliable manual browser fallback and optional AI attempt."/>
+<link rel="stylesheet" href="../assets/styles.css"/>
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a href="../index.html" class="logo"><span class="logo-mark">P+</span> PDFplusTools</a>
+    <div class="nav-links">
+      <a href="../index.html#pdf-tools" class="nav-tool-btn">📄 PDF Tools</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-btn" tabindex="0">🧰 Other Tools ▾</span>
+        <div class="nav-dropdown-menu">
+          <a href="../index.html#business-tools" class="dropdown-item"><span class="dropdown-icon">🧾</span><span class="dropdown-text"><span class="dropdown-title">Business Tools</span><span class="dropdown-desc">Invoices, extraction, CSV exports</span></span></a>
+          <a href="../index.html#image-tools" class="dropdown-item"><span class="dropdown-icon">🖼️</span><span class="dropdown-text"><span class="dropdown-title">Image Tools</span><span class="dropdown-desc">Compress, resize, and edit images</span></span></a>
+          <a href="../index.html#text-content-tools" class="dropdown-item"><span class="dropdown-icon">🔤</span><span class="dropdown-text"><span class="dropdown-title">Text & Content Tools</span><span class="dropdown-desc">Word count, case, YouTube, SEO</span></span></a>
+          <a href="../index.html#calculators" class="dropdown-item"><span class="dropdown-icon">🧮</span><span class="dropdown-text"><span class="dropdown-title">Calculators</span><span class="dropdown-desc">Age, loan, unit conversions</span></span></a>
+          <a href="../index.html#utility-tools" class="dropdown-item"><span class="dropdown-icon">⚙️</span><span class="dropdown-text"><span class="dropdown-title">Utility Tools</span><span class="dropdown-desc">QR codes, passwords, quick helpers</span></span></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<main class="container">
+  <section class="panel">
+    <div class="section-title">
+      <div>
+        <h2>Image Background Remover</h2>
+        <p>Remove backgrounds using a reliable manual color/flood-fill method, with optional AI attempt.</p>
+      </div>
+      <a class="btn btn-secondary" href="../index.html#image-tools">Image Tools</a>
+    </div>
+
+    <div class="notice">
+      <strong>Reliable mode:</strong> Use Manual Background Remover. It runs fully in your browser and does not need an AI model.
+      Click a background area, adjust tolerance, then remove. Best for plain or similar-color backgrounds.
+    </div>
+
+    <div class="form-grid" style="margin-top:20px;">
+      <label>Choose Image
+        <input id="imageInput" type="file" accept="image/png,image/jpeg,image/webp"/>
+      </label>
+      <label>Output File Name
+        <input id="fileName" value="background-removed.png"/>
+      </label>
+    </div>
+
+    <div class="mode-card">
+      <h3>Manual Background Remover</h3>
+      <p class="small-muted">Click the background color in the original image. Increase tolerance for more removal. Use corner mode for product photos with plain backgrounds.</p>
+
+      <div class="form-grid">
+        <label>Removal Mode
+          <select id="manualMode">
+            <option value="picked">Remove connected background from clicked point</option>
+            <option value="corners">Remove background connected to image corners</option>
+            <option value="global">Remove all pixels similar to clicked color</option>
+          </select>
+        </label>
+        <label>Tolerance
+          <div class="range-row">
+            <input id="tolerance" type="range" min="5" max="120" value="45"/>
+            <input id="toleranceNumber" type="number" min="5" max="120" value="45"/>
+          </div>
+        </label>
+      </div>
+
+      <div class="actions">
+        <button id="manualRemoveBtn" class="btn-primary" type="button">Remove Background Manually</button>
+        <button id="undoBtn" class="btn-secondary" type="button">Undo</button>
+        <button id="resetBtn" class="btn-secondary" type="button">Reset Image</button>
+        <a id="downloadBtn" class="btn btn-secondary hidden" download="background-removed.png">Download PNG</a>
+      </div>
+    </div>
+
+    <div class="mode-card">
+      <h3>Optional AI Attempt</h3>
+      <p class="small-muted">This may fail if the browser cannot load the model or if the file is too large. Manual mode above is the reliable fallback.</p>
+      <div class="actions">
+        <button id="aiRemoveBtn" class="btn-secondary" type="button">Try AI Background Removal</button>
+      </div>
+    </div>
+
+    <div id="status" class="status"></div>
+
+    <div class="bg-remover-grid">
+      <div class="bg-preview-card">
+        <h3>Original — click background area</h3>
+        <div class="bg-canvas-wrap">
+          <canvas id="originalCanvas"></canvas>
+        </div>
+      </div>
+      <div class="bg-preview-card">
+        <h3>Result</h3>
+        <div class="bg-canvas-wrap">
+          <canvas id="resultCanvas"></canvas>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="section-title">
+      <div>
+        <h2>Tips</h2>
+        <p>For product photos, use a plain background and choose “corners” mode. For photos with a person/object on a solid background, click the background and adjust tolerance.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-links">
+    <a href="../index.html">Home</a>
+    <a href="../privacy-policy.html">Privacy Policy</a>
+    <a href="../terms.html">Terms of Use</a>
+    <a href="../cookie-policy.html">Cookie Policy</a>
+    <a href="../file-handling.html">File Handling</a>
+    <a href="../disclaimer.html">Disclaimer</a>
+    <a href="../refund-policy.html">Refund Policy</a>
+    <a href="../legal.html">Legal</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+  <div>© PDFplusTools. Free online PDF, image, invoice and utility tools.</div>
+</footer>
+
+<script>
+const imageInput = document.getElementById("imageInput");
+const originalCanvas = document.getElementById("originalCanvas");
+const resultCanvas = document.getElementById("resultCanvas");
+const originalCtx = originalCanvas.getContext("2d", { willReadFrequently: true });
+const resultCtx = resultCanvas.getContext("2d", { willReadFrequently: true });
+const tolerance = document.getElementById("tolerance");
+const toleranceNumber = document.getElementById("toleranceNumber");
+const manualMode = document.getElementById("manualMode");
+const manualRemoveBtn = document.getElementById("manualRemoveBtn");
+const aiRemoveBtn = document.getElementById("aiRemoveBtn");
+const undoBtn = document.getElementById("undoBtn");
+const resetBtn = document.getElementById("resetBtn");
+const downloadBtn = document.getElementById("downloadBtn");
+const statusBox = document.getElementById("status");
+const fileNameInput = document.getElementById("fileName");
+
+let originalImageData = null;
+let currentImageData = null;
+let undoStack = [];
+let pickedColor = null;
+let loaded = false;
+
+function setStatus(msg) { statusBox.textContent = msg || ""; }
+
+tolerance.addEventListener("input", () => toleranceNumber.value = tolerance.value);
+toleranceNumber.addEventListener("input", () => tolerance.value = toleranceNumber.value);
+
+imageInput.addEventListener("change", async (event) => {
+  const file = event.target.files[0];
+  if (!file) return;
+  if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) {
+    setStatus("Please choose a JPG, PNG, or WebP image.");
+    return;
+  }
+
+  const img = await loadImageFromFile(file);
+  const maxSide = 1800;
+  let w = img.naturalWidth;
+  let h = img.naturalHeight;
+  if (Math.max(w, h) > maxSide) {
+    const scale = maxSide / Math.max(w, h);
+    w = Math.round(w * scale);
+    h = Math.round(h * scale);
+  }
+
+  originalCanvas.width = resultCanvas.width = w;
+  originalCanvas.height = resultCanvas.height = h;
+  originalCtx.clearRect(0,0,w,h);
+  resultCtx.clearRect(0,0,w,h);
+  originalCtx.drawImage(img, 0, 0, w, h);
+  resultCtx.drawImage(img, 0, 0, w, h);
+
+  originalImageData = originalCtx.getImageData(0, 0, w, h);
+  currentImageData = resultCtx.getImageData(0, 0, w, h);
+  undoStack = [];
+  pickedColor = null;
+  loaded = true;
+  downloadBtn.classList.add("hidden");
+  setStatus("Image loaded. Click the background area in the original image, then remove.");
+});
+
+function loadImageFromFile(file) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = reject;
+    img.src = URL.createObjectURL(file);
+  });
+}
+
+originalCanvas.addEventListener("click", (event) => {
+  if (!loaded) return;
+  const rect = originalCanvas.getBoundingClientRect();
+  const x = Math.floor((event.clientX - rect.left) * (originalCanvas.width / rect.width));
+  const y = Math.floor((event.clientY - rect.top) * (originalCanvas.height / rect.height));
+  const data = originalCtx.getImageData(x, y, 1, 1).data;
+  pickedColor = [data[0], data[1], data[2], data[3]];
+  setStatus(`Picked background color at x:${x}, y:${y}. Now click Remove Background Manually.`);
+});
+
+manualRemoveBtn.addEventListener("click", () => {
+  if (!loaded || !currentImageData) {
+    setStatus("Choose an image first.");
+    return;
+  }
+  if (manualMode.value !== "corners" && !pickedColor) {
+    setStatus("Click a background area in the original image first.");
+    return;
+  }
+
+  pushUndo();
+  const tol = Number(tolerance.value);
+  const imgData = new ImageData(
+    new Uint8ClampedArray(currentImageData.data),
+    currentImageData.width,
+    currentImageData.height
+  );
+
+  if (manualMode.value === "picked") {
+    const seed = getPickedSeed();
+    floodRemove(imgData, seed.x, seed.y, pickedColor, tol);
+  } else if (manualMode.value === "corners") {
+    const w = imgData.width, h = imgData.height;
+    const corners = [[0,0],[w-1,0],[0,h-1],[w-1,h-1]];
+    corners.forEach(([x,y]) => {
+      const c = getPixelColor(imgData, x, y);
+      floodRemove(imgData, x, y, c, tol);
+    });
+  } else {
+    globalRemove(imgData, pickedColor, tol);
+  }
+
+  currentImageData = imgData;
+  resultCtx.putImageData(currentImageData, 0, 0);
+  updateDownload();
+  setStatus("Background removed. Adjust tolerance or undo if needed.");
+});
+
+function getPickedSeed() {
+  // Find first pixel matching picked color near original image; fallback to 0,0.
+  const data = originalImageData.data;
+  for (let i = 0; i < data.length; i += 4) {
+    if (colorDistance([data[i],data[i+1],data[i+2],data[i+3]], pickedColor) < 1) {
+      const p = i / 4;
+      return { x: p % originalImageData.width, y: Math.floor(p / originalImageData.width) };
+    }
+  }
+  return { x: 0, y: 0 };
+}
+
+function pushUndo() {
+  if (currentImageData) {
+    undoStack.push(new ImageData(new Uint8ClampedArray(currentImageData.data), currentImageData.width, currentImageData.height));
+    if (undoStack.length > 10) undoStack.shift();
+  }
+}
+
+undoBtn.addEventListener("click", () => {
+  if (!undoStack.length) {
+    setStatus("Nothing to undo.");
+    return;
+  }
+  currentImageData = undoStack.pop();
+  resultCtx.putImageData(currentImageData, 0, 0);
+  updateDownload();
+  setStatus("Undo applied.");
+});
+
+resetBtn.addEventListener("click", () => {
+  if (!originalImageData) return;
+  currentImageData = new ImageData(new Uint8ClampedArray(originalImageData.data), originalImageData.width, originalImageData.height);
+  resultCtx.putImageData(currentImageData, 0, 0);
+  undoStack = [];
+  pickedColor = null;
+  updateDownload();
+  setStatus("Image reset.");
+});
+
+function getPixelColor(imgData, x, y) {
+  const idx = (y * imgData.width + x) * 4;
+  const d = imgData.data;
+  return [d[idx], d[idx+1], d[idx+2], d[idx+3]];
+}
+
+function colorDistance(a, b) {
+  const dr = a[0] - b[0];
+  const dg = a[1] - b[1];
+  const db = a[2] - b[2];
+  return Math.sqrt(dr*dr + dg*dg + db*db);
+}
+
+function isSimilar(imgData, x, y, target, tol) {
+  const idx = (y * imgData.width + x) * 4;
+  const d = imgData.data;
+  return colorDistance([d[idx], d[idx+1], d[idx+2], d[idx+3]], target) <= tol;
+}
+
+function floodRemove(imgData, startX, startY, target, tol) {
+  const w = imgData.width;
+  const h = imgData.height;
+  const visited = new Uint8Array(w * h);
+  const stack = [[startX, startY]];
+  const d = imgData.data;
+
+  while (stack.length) {
+    const [x, y] = stack.pop();
+    if (x < 0 || y < 0 || x >= w || y >= h) continue;
+    const pos = y * w + x;
+    if (visited[pos]) continue;
+    visited[pos] = 1;
+
+    if (!isSimilar(imgData, x, y, target, tol)) continue;
+
+    const idx = pos * 4;
+    d[idx + 3] = 0;
+
+    stack.push([x+1,y], [x-1,y], [x,y+1], [x,y-1]);
+  }
+}
+
+function globalRemove(imgData, target, tol) {
+  const d = imgData.data;
+  for (let i = 0; i < d.length; i += 4) {
+    if (colorDistance([d[i], d[i+1], d[i+2], d[i+3]], target) <= tol) {
+      d[i+3] = 0;
+    }
+  }
+}
+
+function updateDownload() {
+  resultCanvas.toBlob(blob => {
+    const url = URL.createObjectURL(blob);
+    downloadBtn.href = url;
+    let name = (fileNameInput.value || "background-removed.png").replace(/[^a-z0-9_.-]/gi, "-");
+    if (!name.toLowerCase().endsWith(".png")) name += ".png";
+    downloadBtn.download = name;
+    downloadBtn.classList.remove("hidden");
+  }, "image/png");
+}
+
+aiRemoveBtn.addEventListener("click", async () => {
+  if (!loaded) {
+    setStatus("Choose an image first.");
+    return;
+  }
+
+  setStatus("Trying AI background removal... if this fails, use manual mode above.");
+  try {
+    const mod = await import("https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.5.5/+esm");
+    const blob = await new Promise(resolve => resultCanvas.toBlob(resolve, "image/png"));
+    const output = await mod.removeBackground(blob, { output: { format: "image/png" } });
+    const img = await loadImageFromBlob(output);
+    pushUndo();
+    resultCtx.clearRect(0,0,resultCanvas.width,resultCanvas.height);
+    resultCtx.drawImage(img,0,0,resultCanvas.width,resultCanvas.height);
+    currentImageData = resultCtx.getImageData(0,0,resultCanvas.width,resultCanvas.height);
+    updateDownload();
+    setStatus("AI background removal completed.");
+  } catch (error) {
+    console.error(error);
+    setStatus("AI removal failed. Use manual mode: click background, choose tolerance, then remove.");
+  }
+});
+
+function loadImageFromBlob(blob) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = reject;
+    img.src = URL.createObjectURL(blob);
+  });
+}
+</script>
+</body>
+</html>

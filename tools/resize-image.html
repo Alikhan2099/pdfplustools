@@ -1,0 +1,27 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Resize Image - PDFplusTools</title><meta name="description" content="Resize images by width and height, then download the resized image."/><link rel="stylesheet" href="../assets/styles.css"/></head><body><header class="site-header"><nav class="nav"><a href="../index.html" class="logo"><span class="logo-mark">P+</span> PDFplusTools</a><div class="nav-links">
+      <a href="../index.html#pdf-tools" class="nav-tool-btn">📄 PDF Tools</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-btn" tabindex="0">🧰 Other Tools ▾</span>
+        <div class="nav-dropdown-menu">
+          <a href="../index.html#business-tools" class="dropdown-item"><span class="dropdown-icon">🧾</span><span class="dropdown-text"><span class="dropdown-title">Business Tools</span><span class="dropdown-desc">Invoices, extraction, CSV exports</span></span></a>
+          <a href="../index.html#image-tools" class="dropdown-item"><span class="dropdown-icon">🖼️</span><span class="dropdown-text"><span class="dropdown-title">Image Tools</span><span class="dropdown-desc">Compress, resize, and edit images</span></span></a>
+          <a href="../index.html#text-content-tools" class="dropdown-item"><span class="dropdown-icon">🔤</span><span class="dropdown-text"><span class="dropdown-title">Text & Content Tools</span><span class="dropdown-desc">Word count, case, YouTube, SEO</span></span></a>
+          <a href="../index.html#calculators" class="dropdown-item"><span class="dropdown-icon">🧮</span><span class="dropdown-text"><span class="dropdown-title">Calculators</span><span class="dropdown-desc">Age, loan, unit conversions</span></span></a>
+          <a href="../index.html#utility-tools" class="dropdown-item"><span class="dropdown-icon">⚙️</span><span class="dropdown-text"><span class="dropdown-title">Utility Tools</span><span class="dropdown-desc">QR codes, passwords, quick helpers</span></span></a>
+        </div>
+      </div>
+    </div>
+  </nav></header><main class="container"><section class="panel"><div class="section-title"><div><h2>Resize Image</h2><p>Resize images by width and height, then download the resized image.</p></div><a class="btn btn-secondary" href="../index.html#tools">All tools</a></div><div class="form-grid three"><label>Choose Image<input id="imageInput" type="file" accept="image/png,image/jpeg,image/webp"/></label><label>Width px<input id="width" type="number" value="1200"/></label><label>Height px<input id="height" type="number" value="800"/></label></div><div class="actions"><button id="resizeBtn" class="btn-primary">Resize Image</button><a id="downloadBtn" class="btn btn-secondary" href="#" download="resized-image.jpg" style="display:none">Download</a></div><div class="preview-list"><div class="preview-card"><h3>Preview</h3><div class="preview-img-wrap"><img id="preview"/></div><div id="sizeText" class="small-muted"></div></div></div></section><section class="panel"><div class="faq"><details open><summary>Is this tool private?</summary><p>This  is designed to run in the browser where possible. For production, keep a clear privacy note for each file tool.</p></details><details><summary>Can I monetize this page?</summary><p>Yes. Add AdSense later, or make advanced features part of a Pro plan.</p></details></div></section></main><script>let file;imageInput.onchange=e=>{file=e.target.files[0];if(file){preview.src=URL.createObjectURL(file);sizeText.textContent='Original: '+(file.size/1024/1024).toFixed(2)+' MB'}};function load(f){return new Promise((res,rej)=>{let img=new Image();img.onload=()=>res(img);img.onerror=rej;img.src=URL.createObjectURL(f)})}resizeBtn.onclick=async()=>{if(!file)return alert('Choose image first');let img=await load(file),canvas=document.createElement('canvas');canvas.width=+width.value;canvas.height=+height.value;canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height);canvas.toBlob(blob=>{let url=URL.createObjectURL(blob);preview.src=url;downloadBtn.href=url;downloadBtn.style.display='inline-block';sizeText.textContent='Resized: '+canvas.width+' x '+canvas.height+' px, '+(blob.size/1024/1024).toFixed(2)+' MB'},'image/jpeg',.9)}</script><footer class="footer">
+  <div class="footer-links">
+    <a href="../index.html">Home</a>
+    <a href="../privacy-policy.html">Privacy Policy</a>
+    <a href="../terms.html">Terms of Use</a>
+    <a href="../cookie-policy.html">Cookie Policy</a>
+    <a href="../file-handling.html">File Handling</a>
+    <a href="../disclaimer.html">Disclaimer</a>
+    <a href="../refund-policy.html">Refund Policy</a>
+    <a href="../legal.html">Legal</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+  <div>© PDFplusTools. Free online PDF, image, invoice and utility tools.</div>
+</footer></body></html>

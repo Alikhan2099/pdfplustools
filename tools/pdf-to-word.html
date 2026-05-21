@@ -1,0 +1,32 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>PDF to Word - PDFplusTools</title><meta name="description" content="Extract text from a PDF into a Word-compatible document. This  focuses on text extraction, not perfect layout conversion."/><link rel="stylesheet" href="../assets/styles.css"/></head><body><header class="site-header"><nav class="nav"><a href="../index.html" class="logo"><span class="logo-mark">P+</span> PDFplusTools</a><div class="nav-links">
+      <a href="../index.html#pdf-tools" class="nav-tool-btn">📄 PDF Tools</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-btn" tabindex="0">🧰 Other Tools ▾</span>
+        <div class="nav-dropdown-menu">
+          <a href="../index.html#business-tools" class="dropdown-item"><span class="dropdown-icon">🧾</span><span class="dropdown-text"><span class="dropdown-title">Business Tools</span><span class="dropdown-desc">Invoices, extraction, CSV exports</span></span></a>
+          <a href="../index.html#image-tools" class="dropdown-item"><span class="dropdown-icon">🖼️</span><span class="dropdown-text"><span class="dropdown-title">Image Tools</span><span class="dropdown-desc">Compress, resize, and edit images</span></span></a>
+          <a href="../index.html#text-content-tools" class="dropdown-item"><span class="dropdown-icon">🔤</span><span class="dropdown-text"><span class="dropdown-title">Text & Content Tools</span><span class="dropdown-desc">Word count, case, YouTube, SEO</span></span></a>
+          <a href="../index.html#calculators" class="dropdown-item"><span class="dropdown-icon">🧮</span><span class="dropdown-text"><span class="dropdown-title">Calculators</span><span class="dropdown-desc">Age, loan, unit conversions</span></span></a>
+          <a href="../index.html#utility-tools" class="dropdown-item"><span class="dropdown-icon">⚙️</span><span class="dropdown-text"><span class="dropdown-title">Utility Tools</span><span class="dropdown-desc">QR codes, passwords, quick helpers</span></span></a>
+        </div>
+      </div>
+    </div>
+  </nav></header><main class="container"><section class="panel"><div class="section-title"><div><h2>PDF to Word</h2><p>Extract text from a PDF into a Word-compatible document. This  focuses on text extraction, not perfect layout conversion.</p></div><a class="btn btn-secondary" href="../index.html#tools">All tools</a></div><div class="notice">This  extracts selectable text from PDFs. Scanned PDFs need OCR, which can be added later as a Pro/server-side feature.</div><label>Choose PDF<input id="pdfFile" type="file" accept="application/pdf"/></label><div class="actions"><button id="convertBtn" class="btn-primary">Convert to Word</button><button id="copyBtn" class="btn-secondary">Copy Extracted Text</button></div><div id="status" class="status"></div><textarea id="textOut" placeholder="Extracted text will appear here..."></textarea></section><section class="panel"><div class="faq"><details open><summary>Is this tool private?</summary><p>This  is designed to run in the browser where possible. For production, keep a clear privacy note on each file-processing tool.</p></details><details><summary>Can this be monetized?</summary><p>Yes. Advanced batch processing, larger file limits, no ads, and saved history can become Pro features.</p></details></div></section></main><script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script><script>
+pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+let extracted='';
+convertBtn.onclick=async()=>{const f=pdfFile.files[0];if(!f)return status.textContent='Choose a PDF first.';status.textContent='Extracting text...';try{const pdf=await pdfjsLib.getDocument({data:await f.arrayBuffer()}).promise;let parts=[];for(let i=1;i<=pdf.numPages;i++){status.textContent=`Reading page ${i} of ${pdf.numPages}...`;const page=await pdf.getPage(i);const content=await page.getTextContent();const text=content.items.map(item=>item.str).join(' ');parts.push(`Page ${i}\n${text}`)}extracted=parts.join('\n\n');textOut.value=extracted;const htmlDoc=`<html><head><meta charset="utf-8"><title>Converted PDF Text</title></head><body><pre style="font-family:Arial;white-space:pre-wrap;line-height:1.5;">${extracted.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}</pre></body></html>`;const blob=new Blob([htmlDoc],{type:'application/msword'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=f.name.replace(/\.pdf$/i,'')+'-converted.doc';a.click();status.textContent='Done. Word-compatible .doc downloaded.'}catch(e){console.error(e);status.textContent='Could not extract text from this PDF.'}}
+copyBtn.onclick=async()=>{await navigator.clipboard.writeText(textOut.value);status.textContent='Copied extracted text.'}
+</script><footer class="footer">
+  <div class="footer-links">
+    <a href="../index.html">Home</a>
+    <a href="../privacy-policy.html">Privacy Policy</a>
+    <a href="../terms.html">Terms of Use</a>
+    <a href="../cookie-policy.html">Cookie Policy</a>
+    <a href="../file-handling.html">File Handling</a>
+    <a href="../disclaimer.html">Disclaimer</a>
+    <a href="../refund-policy.html">Refund Policy</a>
+    <a href="../legal.html">Legal</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+  <div>© PDFplusTools. Free online PDF, image, invoice and utility tools.</div>
+</footer></body></html>

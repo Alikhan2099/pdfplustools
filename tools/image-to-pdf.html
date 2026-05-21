@@ -1,0 +1,45 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Image to PDF Converter - PDFplusTools</title><link rel="stylesheet" href="../assets/styles.css"/></head><body><header class="site-header"><nav class="nav"><a href="../index.html" class="logo"><span class="logo-mark">P+</span> PDFplusTools</a><div class="nav-links">
+      <a href="../index.html#pdf-tools" class="nav-tool-btn">📄 PDF Tools</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-btn" tabindex="0">🧰 Other Tools ▾</span>
+        <div class="nav-dropdown-menu">
+          <a href="../index.html#business-tools" class="dropdown-item"><span class="dropdown-icon">🧾</span><span class="dropdown-text"><span class="dropdown-title">Business Tools</span><span class="dropdown-desc">Invoices, extraction, CSV exports</span></span></a>
+          <a href="../index.html#image-tools" class="dropdown-item"><span class="dropdown-icon">🖼️</span><span class="dropdown-text"><span class="dropdown-title">Image Tools</span><span class="dropdown-desc">Compress, resize, and edit images</span></span></a>
+          <a href="../index.html#text-content-tools" class="dropdown-item"><span class="dropdown-icon">🔤</span><span class="dropdown-text"><span class="dropdown-title">Text & Content Tools</span><span class="dropdown-desc">Word count, case, YouTube, SEO</span></span></a>
+          <a href="../index.html#calculators" class="dropdown-item"><span class="dropdown-icon">🧮</span><span class="dropdown-text"><span class="dropdown-title">Calculators</span><span class="dropdown-desc">Age, loan, unit conversions</span></span></a>
+          <a href="../index.html#utility-tools" class="dropdown-item"><span class="dropdown-icon">⚙️</span><span class="dropdown-text"><span class="dropdown-title">Utility Tools</span><span class="dropdown-desc">QR codes, passwords, quick helpers</span></span></a>
+        </div>
+      </div>
+    </div>
+  </nav></header><main class="container"><section class="panel"><div class="section-title"><div><h2>Image to PDF Converter</h2><p>Upload JPG, PNG, or WebP images, arrange page order, and download one PDF.</p></div><a class="btn btn-secondary" href="../index.html#tools">All tools</a></div><div class="notice">Privacy note: images are processed inside your browser in this .</div><div id="dropZone" class="drop-zone" style="margin-top:20px;"><input id="fileInput" type="file" accept="image/png,image/jpeg,image/webp" multiple hidden/><h3>Drop images here</h3><p>or</p><button id="selectBtn" class="btn-primary" type="button">Choose Images</button><p class="small-muted">Supported: JPG, PNG, WebP</p></div><div class="form-grid three" style="margin-top:22px;"><label>Page Size<select id="pageSize"><option value="a4">A4</option><option value="letter">Letter</option><option value="fit">Fit to Image</option></select></label><label>Orientation<select id="orientation"><option value="portrait">Portrait</option><option value="landscape">Landscape</option><option value="auto">Auto</option></select></label><label>Margin<select id="margin"><option value="0">No margin</option><option value="20" selected>Small</option><option value="40">Medium</option></select></label></div><div class="order-help">Organize page order before converting. Use First / Up / Down / Last. The first image becomes page 1.</div><div id="emptyState" class="output-box">No images selected yet.</div><div id="previewList" class="preview-list"></div><div class="actions"><button id="convertBtn" class="btn-primary" type="button">Convert to PDF</button><button id="clearBtn" class="btn-secondary" type="button">Clear Images</button></div><div id="status" class="status"></div></section></main><footer class="footer">
+  <div class="footer-links">
+    <a href="../index.html">Home</a>
+    <a href="../privacy-policy.html">Privacy Policy</a>
+    <a href="../terms.html">Terms of Use</a>
+    <a href="../cookie-policy.html">Cookie Policy</a>
+    <a href="../file-handling.html">File Handling</a>
+    <a href="../disclaimer.html">Disclaimer</a>
+    <a href="../refund-policy.html">Refund Policy</a>
+    <a href="../legal.html">Legal</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+  <div>© PDFplusTools. Free online PDF, image, invoice and utility tools.</div>
+</footer><script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script><script>
+(()=>{
+const fileInput=document.getElementById('fileInput'),selectBtn=document.getElementById('selectBtn'),dropZone=document.getElementById('dropZone'),previewList=document.getElementById('previewList'),emptyState=document.getElementById('emptyState'),convertBtn=document.getElementById('convertBtn'),clearBtn=document.getElementById('clearBtn'),statusBox=document.getElementById('status');
+let images=[]; const status=m=>statusBox.textContent=m||'';
+const ok=f=>['image/jpeg','image/png','image/webp'].includes(f.type)||/\.(jpe?g|png|webp)$/i.test(f.name);
+function addFiles(list){const selected=Array.from(list||[]).filter(ok); if(!selected.length) return status('Please choose JPG, PNG, or WebP images.'); selected.forEach(file=>images.push({file,url:URL.createObjectURL(file)})); render(); status(`${images.length} image(s) ready. Arrange order, then convert.`)}
+function esc(t){return String(t).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function btn(t,fn){const b=document.createElement('button'); b.type='button'; b.textContent=t; b.onclick=fn; return b}
+function render(){previewList.innerHTML=''; emptyState.style.display=images.length?'none':'block'; images.forEach((it,i)=>{const card=document.createElement('div'); card.className='preview-card'; card.innerHTML=`<div class="preview-img-wrap"><img src="${it.url}" alt=""></div><div class="preview-name"><span class="order-number">${i+1}</span>${esc(it.file.name)}</div><div class="small-muted">Page ${i+1} • ${(it.file.size/1024/1024).toFixed(2)} MB</div>`; const c=document.createElement('div'); c.className='preview-order-actions'; const first=btn('First',()=>moveTo(i,0)), up=btn('↑ Up',()=>moveTo(i,i-1)), down=btn('↓ Down',()=>moveTo(i,i+1)), last=btn('Last',()=>moveTo(i,images.length-1)), rm=btn('Remove',()=>remove(i)); first.disabled=up.disabled=i===0; down.disabled=last.disabled=i===images.length-1; rm.classList.add('danger'); c.append(first,up,down,last,rm); card.append(c); previewList.append(card)})}
+function moveTo(i,t){if(t<0||t>=images.length||i===t)return; const [x]=images.splice(i,1); images.splice(t,0,x); render()}
+function remove(i){URL.revokeObjectURL(images[i].url); images.splice(i,1); render(); status(`${images.length} image(s) ready.`)}
+function clearAll(){images.forEach(x=>URL.revokeObjectURL(x.url)); images=[]; render(); status('')}
+function load(url){return new Promise((res,rej)=>{const img=new Image(); img.onload=()=>res(img); img.onerror=rej; img.src=url})}
+function dims(ps,o,img){if(ps==='fit')return [Math.max(img.naturalWidth*.75,100),Math.max(img.naturalHeight*.75,100)]; let w=595.28,h=841.89; if(ps==='letter'){w=612;h=792} if(o==='landscape')[w,h]=[h,w]; if(o==='auto'&&((img.naturalWidth>img.naturalHeight)!=(w>h)))[w,h]=[h,w]; return [w,h]}
+function place(img,w,h,m){const mw=w-m*2,mh=h-m*2,r=img.naturalWidth/img.naturalHeight,br=mw/mh; let dw,dh; if(r>br){dw=mw;dh=dw/r} else {dh=mh;dw=dh*r} return {x:(w-dw)/2,y:(h-dh)/2,width:dw,height:dh}}
+async function convert(){if(!images.length)return status('Upload at least one image first.'); if(!window.jspdf)return status('PDF library did not load. Check internet connection.'); const {jsPDF}=window.jspdf; let pdf=null; const ps=pageSize.value,o=orientation.value,m=Number(margin.value||0); try{for(let i=0;i<images.length;i++){const img=await load(images[i].url),[w,h]=dims(ps,o,img); if(!pdf)pdf=new jsPDF({orientation:w>h?'landscape':'portrait',unit:'pt',format:[w,h],compress:true}); else pdf.addPage([w,h],w>h?'landscape':'portrait'); const canvas=document.createElement('canvas'); canvas.width=img.naturalWidth; canvas.height=img.naturalHeight; canvas.getContext('2d').drawImage(img,0,0); const p=place(img,w,h,m); pdf.addImage(canvas.toDataURL('image/jpeg',.92),'JPEG',p.x,p.y,p.width,p.height); status(`Added page ${i+1} of ${images.length}...`)} pdf.save('images-to-pdf.pdf'); status('Done. PDF downloaded.')}catch(e){console.error(e); status('Could not create the PDF. Try fewer or smaller images.')}}
+selectBtn.onclick=()=>fileInput.click(); fileInput.onchange=e=>{addFiles(e.target.files); fileInput.value=''}; ['dragenter','dragover'].forEach(n=>dropZone.addEventListener(n,e=>{e.preventDefault(); dropZone.classList.add('dragover')})); ['dragleave','drop'].forEach(n=>dropZone.addEventListener(n,e=>{e.preventDefault(); dropZone.classList.remove('dragover')})); dropZone.ondrop=e=>{e.preventDefault(); addFiles(e.dataTransfer.files)}; convertBtn.onclick=convert; clearBtn.onclick=clearAll; render();
+})();
+</script></body></html>

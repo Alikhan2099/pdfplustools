@@ -1,0 +1,31 @@
+Feature audit
+
+Total tool pages in /tools: 25
+Homepage tool cards restored: 25
+
+Visible homepage tools:
+- Image to PDF
+- Merge PDF
+- Split PDF
+- PDF Info
+- Compress PDF
+- PDF to JPG
+- PDF to Word
+- Invoice Generator
+- Bulk Invoice Extractor
+- Image Invoice Extractor
+- Improved Image Invoice Extractor
+- Semi-Manual Invoice Extractor
+- Manual Image Invoice Entry
+- Image Background Remover
+- Image Compressor
+- Resize Image
+- Word Counter
+- Case Converter
+- YouTube Title Generator
+- Meta Tag Generator
+- Age Calculator
+- Loan / EMI Calculator
+- Unit Converter
+- QR Code Generator
+- Password Generator
