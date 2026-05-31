@@ -56,6 +56,30 @@ const tools = [
     "keywords": "pdf to word doc"
   },
   {
+    "title": "Sign PDF",
+    "description": "Add typed or image signatures to PDF files online.",
+    "category": "PDF Tools",
+    "icon": "✍️",
+    "url": "tools/sign-pdf.html",
+    "keywords": "sign pdf online add signature to pdf"
+  },
+  {
+    "title": "Unlock PDF",
+    "description": "Try to rebuild accessible PDFs into an editable copy.",
+    "category": "PDF Tools",
+    "icon": "🔓",
+    "url": "tools/unlock-pdf.html",
+    "keywords": "unlock pdf online remove pdf restrictions"
+  },
+  {
+    "title": "Remove Watermark from PDF",
+    "description": "Cover visible watermark areas on PDFs you own or can edit.",
+    "category": "PDF Tools",
+    "icon": "🧽",
+    "url": "tools/remove-watermark-pdf.html",
+    "keywords": "remove watermark from pdf"
+  },
+  {
     "title": "Invoice Generator",
     "description": "Create a simple invoice and download it as PDF.",
     "category": "Business Tools",
@@ -105,7 +129,7 @@ const tools = [
   },
   {
     "title": "Image Background Remover",
-    "description": "Remove image backgrounds and download transparent PNGs.",
+    "description": "Remove image backgrounds with click-to-preview and transparent PNG download.",
     "category": "Image Tools",
     "icon": "🪄",
     "url": "tools/image-background-remover.html",
@@ -126,6 +150,38 @@ const tools = [
     "icon": "↔️",
     "url": "tools/resize-image.html",
     "keywords": "resize image width height"
+  },
+  {
+    "title": "Images to GIF Maker",
+    "description": "Create animated GIFs from JPG, PNG and WebP images.",
+    "category": "GIF Tools",
+    "icon": "🎞️",
+    "url": "tools/images-to-gif.html",
+    "keywords": "images to gif animated gif creator"
+  },
+  {
+    "title": "GIF Frame Extractor",
+    "description": "Extract frames from animated GIFs and download PNG images.",
+    "category": "GIF Tools",
+    "icon": "🧩",
+    "url": "tools/gif-frame-extractor.html",
+    "keywords": "gif frame extractor extract gif frames png"
+  },
+  {
+    "title": "Sprite Sheet to GIF",
+    "description": "Convert a sprite sheet image or GIF into an animated GIF.",
+    "category": "GIF Tools",
+    "icon": "🎮",
+    "url": "tools/sprite-sheet-to-gif.html",
+    "keywords": "sprite sheet to gif animated gif maker"
+  },
+  {
+    "title": "GIF to Sprite Sheet",
+    "description": "Convert an animated GIF into a PNG sprite sheet.",
+    "category": "GIF Tools",
+    "icon": "🧱",
+    "url": "tools/gif-to-sprite-sheet.html",
+    "keywords": "gif to sprite sheet png frames"
   },
   {
     "title": "Word Counter",
@@ -219,4 +275,5 @@ function setupSearch() {
     });
   });
 }
+
 document.addEventListener("DOMContentLoaded", setupSearch);
