@@ -1,0 +1,13 @@
+PDFplusTools Restored Clean Package
+Generated: 2026-05-31
+
+Fixes:
+- Rebuilt from the last good feature package instead of the broken commented package.
+- Removed HTML comments from live pages.
+- Removed BEGINNER/==== guide comments from CSS and JS.
+- Rebuilt assets/app.js with a valid tools array.
+- Rebuilt the homepage tool directory with static visible cards.
+- Confirmed tool count in homepage directory: 32
+
+Remaining detected issues: 0
+No ==== markers or HTML comments detected.

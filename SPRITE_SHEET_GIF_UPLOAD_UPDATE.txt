@@ -1,0 +1,7 @@
+Updated tools/sprite-sheet-to-gif.html
+
+Change:
+- Upload field now accepts GIF files.
+- GIF uploads are decoded into frames using gifuct-js.
+- User can preview frames and create/download a new GIF.
+- PNG/JPG/WebP sprite sheet uploads still work as before.

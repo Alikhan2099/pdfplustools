@@ -1,0 +1,43 @@
+PDFplusTools Final SEO + Code Comment Package
+Generated: 2026-05-27
+
+Changes completed:
+- Removed FAQ/monetization sections such as "Is this tool private?" and "Can I monetize this page?" from tool pages.
+- Added a long SEO-optimized explanatory guide section below every tool page.
+- Added tool-specific headings, usage steps, privacy notes, keyword wording and related tool links.
+- Added page-level HTML comments explaining major code areas.
+- Added comments to assets/app.js and assets/styles.css.
+- Preserved existing tool files and working JavaScript logic as much as possible.
+
+Tool pages updated: 29
+
+Updated files:
+- tools/age-calculator.html
+- tools/bulk-invoice-extractor.html
+- tools/case-converter.html
+- tools/compress-pdf.html
+- tools/gif-frame-extractor.html
+- tools/gif-to-sprite-sheet.html
+- tools/image-background-remover.html
+- tools/image-compressor.html
+- tools/image-invoice-extractor-improved.html
+- tools/image-invoice-extractor.html
+- tools/image-to-pdf.html
+- tools/images-to-gif.html
+- tools/invoice-generator.html
+- tools/loan-calculator.html
+- tools/manual-image-invoice-entry.html
+- tools/merge-pdf.html
+- tools/meta-tag-generator.html
+- tools/password-generator.html
+- tools/pdf-info.html
+- tools/pdf-to-jpg.html
+- tools/pdf-to-word.html
+- tools/qr-code-generator.html
+- tools/resize-image.html
+- tools/semi-manual-invoice-extractor.html
+- tools/split-pdf.html
+- tools/sprite-sheet-to-gif.html
+- tools/unit-converter.html
+- tools/word-counter.html
+- tools/youtube-title-generator.html

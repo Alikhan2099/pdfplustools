@@ -1,0 +1,11 @@
+PDFplusTools PDF Tools Expansion
+Generated: 2026-05-31
+Added:
+- tools/sign-pdf.html
+- tools/unlock-pdf.html
+- tools/remove-watermark-pdf.html
+Homepage:
+- Added Why Choose PDFplusTools? section.
+SEO:
+- New PDF tool pages include natural keyword phrases inside their About sections.
+- Existing tool page keyword headings were changed to Common uses and search intent.

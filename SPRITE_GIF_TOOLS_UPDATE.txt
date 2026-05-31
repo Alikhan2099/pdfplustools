@@ -1,0 +1,1 @@
+Added Sprite Sheet to GIF and GIF to Sprite Sheet tools.

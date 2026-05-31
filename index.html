@@ -6,6 +6,12 @@
 <title>PDFplusTools - Free PDF, Image, Invoice & Utility Tools</title>
 <meta name="description" content="Free online PDF tools, image tools, invoice tools, calculators and everyday utilities. Fast browser-based tools for documents, images and business tasks."/>
 <link rel="stylesheet" href="assets/styles.css"/>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#2563eb">
 </head>
 <body>
 <header class="site-header">
@@ -18,6 +24,7 @@
         <div class="nav-dropdown-menu">
           <a href="index.html#business-tools" class="dropdown-item"><span class="dropdown-icon">🧾</span><span class="dropdown-text"><span class="dropdown-title">Business Tools</span><span class="dropdown-desc">Invoices, extraction, CSV exports</span></span></a>
           <a href="index.html#image-tools" class="dropdown-item"><span class="dropdown-icon">🖼️</span><span class="dropdown-text"><span class="dropdown-title">Image Tools</span><span class="dropdown-desc">Compress, resize, and edit images</span></span></a>
+          <a href="index.html#gif-tools" class="dropdown-item"><span class="dropdown-icon">🎞️</span><span class="dropdown-text"><span class="dropdown-title">GIF Tools</span><span class="dropdown-desc">Create GIFs, sprites and extract frames</span></span></a>
           <a href="index.html#text-content-tools" class="dropdown-item"><span class="dropdown-icon">🔤</span><span class="dropdown-text"><span class="dropdown-title">Text & Content Tools</span><span class="dropdown-desc">Word count, case, YouTube, SEO</span></span></a>
           <a href="index.html#calculators" class="dropdown-item"><span class="dropdown-icon">🧮</span><span class="dropdown-text"><span class="dropdown-title">Calculators</span><span class="dropdown-desc">Age, loan, unit conversions</span></span></a>
           <a href="index.html#utility-tools" class="dropdown-item"><span class="dropdown-icon">⚙️</span><span class="dropdown-text"><span class="dropdown-title">Utility Tools</span><span class="dropdown-desc">QR codes, passwords, quick helpers</span></span></a>
@@ -30,7 +37,7 @@
   <div class="hero-inner">
     <div>
       <p class="eyebrow">Free online document and utility tools</p>
-      <h1>PDF tools plus image, invoice and everyday utilities.</h1>
+      <h1>PDF tools plus image, GIF, invoice and everyday utilities.</h1>
       <p>Convert images to PDF, merge PDFs, split PDFs, compress files, remove image backgrounds, create invoices, extract invoice data, generate QR codes, count words and more.</p>
       <div class="hero-actions">
         <a href="#pdf-tools" class="btn btn-primary">Explore PDF tools</a>
@@ -44,7 +51,7 @@
   </div>
 </section>
 <main class="container lift">
-  <section class="panel" id="tools">
+<section class="panel" id="tools">
     <div class="section-title"><div><h2>Tool Directory</h2><p>Choose a category or search for the tool you need.</p></div></div>
     <input id="toolSearch" class="search-box" type="search" placeholder="Search PDF, image, invoice, QR, calculator, text..."/>
     <div id="toolsGrid" style="margin-top:22px;"><div class="tool-section" id="pdf-tools">
@@ -83,6 +90,21 @@
           <div class="tool-icon">📝</div>
           <h3>PDF to Word</h3>
           <p>Extract PDF text into a Word-compatible document.</p>
+          <span class="category-label">PDF Tools</span>
+        </a><a class="tool-card" href="tools/sign-pdf.html">
+          <div class="tool-icon">✍️</div>
+          <h3>Sign PDF</h3>
+          <p>Add typed or image signatures to PDF files online.</p>
+          <span class="category-label">PDF Tools</span>
+        </a><a class="tool-card" href="tools/unlock-pdf.html">
+          <div class="tool-icon">🔓</div>
+          <h3>Unlock PDF</h3>
+          <p>Try to rebuild accessible PDFs into an editable copy.</p>
+          <span class="category-label">PDF Tools</span>
+        </a><a class="tool-card" href="tools/remove-watermark-pdf.html">
+          <div class="tool-icon">🧽</div>
+          <h3>Remove Watermark from PDF</h3>
+          <p>Cover visible watermark areas on PDFs you own or can edit.</p>
           <span class="category-label">PDF Tools</span>
         </a></div>
     </div>
@@ -125,7 +147,7 @@
       <div class="tools-grid"><a class="tool-card" href="tools/image-background-remover.html">
           <div class="tool-icon">🪄</div>
           <h3>Image Background Remover</h3>
-          <p>Remove image backgrounds and download transparent PNGs.</p>
+          <p>Remove image backgrounds with click-to-preview and transparent PNG download.</p>
           <span class="category-label">Image Tools</span>
         </a><a class="tool-card" href="tools/image-compressor.html">
           <div class="tool-icon">📉</div>
@@ -137,6 +159,30 @@
           <h3>Resize Image</h3>
           <p>Resize images by width and height.</p>
           <span class="category-label">Image Tools</span>
+        </a></div>
+    </div>
+<div class="tool-section" id="gif-tools">
+      <div class="tool-section-title"><h3>GIF Tools</h3></div>
+      <div class="tools-grid"><a class="tool-card" href="tools/images-to-gif.html">
+          <div class="tool-icon">🎞️</div>
+          <h3>Images to GIF Maker</h3>
+          <p>Create animated GIFs from JPG, PNG and WebP images.</p>
+          <span class="category-label">GIF Tools</span>
+        </a><a class="tool-card" href="tools/gif-frame-extractor.html">
+          <div class="tool-icon">🧩</div>
+          <h3>GIF Frame Extractor</h3>
+          <p>Extract frames from animated GIFs and download PNG images.</p>
+          <span class="category-label">GIF Tools</span>
+        </a><a class="tool-card" href="tools/sprite-sheet-to-gif.html">
+          <div class="tool-icon">🎮</div>
+          <h3>Sprite Sheet to GIF</h3>
+          <p>Convert a sprite sheet image or GIF into an animated GIF.</p>
+          <span class="category-label">GIF Tools</span>
+        </a><a class="tool-card" href="tools/gif-to-sprite-sheet.html">
+          <div class="tool-icon">🧱</div>
+          <h3>GIF to Sprite Sheet</h3>
+          <p>Convert an animated GIF into a PNG sprite sheet.</p>
+          <span class="category-label">GIF Tools</span>
         </a></div>
     </div>
 <div class="tool-section" id="text-content-tools">
@@ -197,7 +243,33 @@
         </a></div>
     </div></div>
   </section>
-  <section class="panel">
+
+  <section class="panel" id="why-choose-pdfplustools">
+    <div class="section-title">
+      <div>
+        <h2>Why Choose PDFplusTools?</h2>
+        <p>PDFplusTools is a free online toolkit for PDF tools, image tools, GIF tools, invoice tools, calculators and everyday document utilities. It is designed for fast browser-based tasks such as converting images to PDF, merging PDF files, compressing PDFs, signing PDFs, extracting GIF frames, creating sprite sheets, resizing images and preparing files for email, upload portals, work, school and business use.</p>
+      </div>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-card">
+        <h3>Free online PDF tools</h3>
+        <p>Use practical PDF tools to convert, merge, split, compress, sign, unlock and organize documents online. PDFplusTools helps users complete common PDF tasks quickly without downloading complicated software.</p>
+      </div>
+
+      <div class="why-card">
+        <h3>More than PDF converters</h3>
+        <p>PDFplusTools also includes image background remover, image compressor, resize image, GIF maker, GIF frame extractor, sprite sheet converter, invoice tools, QR code generator, password generator and text utilities.</p>
+      </div>
+
+      <div class="why-card">
+        <h3>Simple, mobile-friendly workflow</h3>
+        <p>The site is built for quick everyday document work on desktop and mobile. Upload a file, choose the settings, process it in the browser where supported, and download the final result in a clean, easy-to-use interface.</p>
+      </div>
+    </div>
+  </section>
+<section class="panel">
     <div class="section-title"><div><h2>Why use PDFplusTools?</h2><p>A clean collection of free online tools for common document, image, business and productivity tasks.</p></div></div>
     <div class="faq">
       <details open><summary>Can I reorder images before converting to PDF?</summary><p>Yes. The Image to PDF tool lets you move images first, up, down or last before creating the PDF.</p></details>
@@ -207,18 +279,8 @@
   </section>
 </main>
 <footer class="footer">
-  <div class="footer-links">
-    <a href="index.html">Home</a>
-    <a href="privacy-policy.html">Privacy Policy</a>
-    <a href="terms.html">Terms of Use</a>
-    <a href="cookie-policy.html">Cookie Policy</a>
-    <a href="file-handling.html">File Handling</a>
-    <a href="disclaimer.html">Disclaimer</a>
-    <a href="refund-policy.html">Refund Policy</a>
-    <a href="legal.html">Legal</a>
-    <a href="contact.html">Contact</a>
-  </div>
-  <div>© PDFplusTools. Free online PDF, image, invoice and utility tools.</div>
+  <div class="footer-links"><a href="index.html">Home</a><a href="privacy-policy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a><a href="cookie-policy.html">Cookie Policy</a><a href="file-handling.html">File Handling</a><a href="disclaimer.html">Disclaimer</a><a href="refund-policy.html">Refund Policy</a><a href="legal.html">Legal</a><a href="contact.html">Contact</a></div>
+  <div>© PDFplusTools. Free online PDF, image, GIF, invoice and utility tools.</div>
 </footer>
 <script src="assets/app.js"></script>
 </body>

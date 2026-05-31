@@ -1,0 +1,7 @@
+Updated tools/image-background-remover.html
+
+New feature:
+- Clicking the background now previews the area that will be removed.
+- The selected area is highlighted in red in the result canvas.
+- User can adjust tolerance before removing.
+- Remove Previewed Area only removes the highlighted area.

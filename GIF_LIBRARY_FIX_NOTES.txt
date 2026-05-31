@@ -1,0 +1,11 @@
+Fixed GIF library loading issue.
+
+Updated files:
+- tools/gif-frame-extractor.html
+- tools/gif-to-sprite-sheet.html
+- tools/sprite-sheet-to-gif.html
+
+Change:
+- Replaced gifuct-js CDN reference with unpkg UMD build.
+- Added getGifuctLibrary() helper to support different global names.
+- Updated GIF Frame Extractor, GIF to Sprite Sheet, and Sprite Sheet to GIF where GIF uploads are decoded.

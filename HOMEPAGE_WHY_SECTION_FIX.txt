@@ -1,0 +1,7 @@
+Homepage Why Choose PDFplusTools section fixed.
+
+Changes:
+- Removed duplicate Why Choose PDFplusTools sections.
+- Kept one SEO-optimized version.
+- Moved it to the lower position where the second section was appearing.
+- Remaining section count: 1

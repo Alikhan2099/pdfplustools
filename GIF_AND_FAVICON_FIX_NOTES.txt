@@ -1,0 +1,10 @@
+Fixes included:
+- GIF Frame Extractor now uses ESM import from jsDelivr for gifuct-js, avoiding the unreliable global library check.
+- GIF to Sprite Sheet and Sprite Sheet to GIF were also patched for consistent GIF decoding.
+- Added favicon.ico, favicon-48x48.png, favicon-96x96.png, apple-touch-icon.png, Android icons and site.webmanifest.
+- Added favicon link tags to all HTML pages.
+
+After upload, test:
+https://pdfplustools.com/favicon.ico
+https://pdfplustools.com/favicon-48x48.png
+https://pdfplustools.com/tools/gif-frame-extractor.html

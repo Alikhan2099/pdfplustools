@@ -1,0 +1,8 @@
+Updated tools/image-background-remover.html
+
+Removed:
+- Optional AI Attempt section
+- AI background removal button logic if present
+- AI-only helper code if present
+
+The background remover now focuses on manual click-to-preview removal only.
