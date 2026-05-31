@@ -1,27 +1,66 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Word Counter - PDFplusTools</title><meta name="description" content="Count words, characters, sentences, paragraphs, and estimated reading time."/><link rel="stylesheet" href="../assets/styles.css"/></head><body><header class="site-header"><nav class="nav"><a href="../index.html" class="logo"><span class="logo-mark">P+</span> PDFplusTools</a><div class="nav-links">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Word Counter - PDFplusTools</title><meta name="description" content="Count words, characters, sentences, paragraphs, and estimated reading time."/><link rel="stylesheet" href="../assets/styles.css"/><link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#2563eb">
+</head><body>
+<header class="site-header"><nav class="nav"><a href="../index.html" class="logo"><span class="logo-mark">P+</span> PDFplusTools</a><div class="nav-links">
       <a href="../index.html#pdf-tools" class="nav-tool-btn">📄 PDF Tools</a>
       <div class="nav-dropdown">
         <span class="nav-dropdown-btn" tabindex="0">🧰 Other Tools ▾</span>
         <div class="nav-dropdown-menu">
           <a href="../index.html#business-tools" class="dropdown-item"><span class="dropdown-icon">🧾</span><span class="dropdown-text"><span class="dropdown-title">Business Tools</span><span class="dropdown-desc">Invoices, extraction, CSV exports</span></span></a>
           <a href="../index.html#image-tools" class="dropdown-item"><span class="dropdown-icon">🖼️</span><span class="dropdown-text"><span class="dropdown-title">Image Tools</span><span class="dropdown-desc">Compress, resize, and edit images</span></span></a>
+          <a href="../index.html#gif-tools" class="dropdown-item"><span class="dropdown-icon">🎞️</span><span class="dropdown-text"><span class="dropdown-title">GIF Tools</span><span class="dropdown-desc">Create GIFs, sprites and extract frames</span></span></a>
           <a href="../index.html#text-content-tools" class="dropdown-item"><span class="dropdown-icon">🔤</span><span class="dropdown-text"><span class="dropdown-title">Text & Content Tools</span><span class="dropdown-desc">Word count, case, YouTube, SEO</span></span></a>
           <a href="../index.html#calculators" class="dropdown-item"><span class="dropdown-icon">🧮</span><span class="dropdown-text"><span class="dropdown-title">Calculators</span><span class="dropdown-desc">Age, loan, unit conversions</span></span></a>
           <a href="../index.html#utility-tools" class="dropdown-item"><span class="dropdown-icon">⚙️</span><span class="dropdown-text"><span class="dropdown-title">Utility Tools</span><span class="dropdown-desc">QR codes, passwords, quick helpers</span></span></a>
         </div>
       </div>
     </div>
-  </nav></header><main class="container"><section class="panel"><div class="section-title"><div><h2>Word Counter</h2><p>Count words, characters, sentences, paragraphs, and estimated reading time.</p></div><a class="btn btn-secondary" href="../index.html#tools">All tools</a></div><label>Paste your text<textarea id="textInput" placeholder="Paste or type your text here..."></textarea></label><div class="output-box"><div class="stat-grid"><div class="stat"><span>Words</span><strong id="words">0</strong></div><div class="stat"><span>Characters</span><strong id="chars">0</strong></div><div class="stat"><span>Sentences</span><strong id="sentences">0</strong></div><div class="stat"><span>Reading Time</span><strong id="reading">0m</strong></div></div></div><div class="actions"><button id="copyText" class="btn-secondary">Copy</button><button id="clearText" class="btn-secondary">Clear</button></div></section></main><script>const input=document.getElementById("textInput");function update(){let t=input.value,w=t.trim()?t.trim().split(/\s+/).length:0,c=t.length,s=t.trim()?(t.match(/[.!?]+/g)||[]).length:0,m=Math.ceil(w/220);words.textContent=w;chars.textContent=c;sentences.textContent=s;reading.textContent=m+"m"}input.oninput=update;clearText.onclick=()=>{input.value="";update()};copyText.onclick=async()=>{await navigator.clipboard.writeText(input.value);alert("Copied")};update();</script><footer class="footer">
-  <div class="footer-links">
-    <a href="../index.html">Home</a>
-    <a href="../privacy-policy.html">Privacy Policy</a>
-    <a href="../terms.html">Terms of Use</a>
-    <a href="../cookie-policy.html">Cookie Policy</a>
-    <a href="../file-handling.html">File Handling</a>
-    <a href="../disclaimer.html">Disclaimer</a>
-    <a href="../refund-policy.html">Refund Policy</a>
-    <a href="../legal.html">Legal</a>
-    <a href="../contact.html">Contact</a>
-  </div>
-  <div>© PDFplusTools. Free online PDF, image, invoice and utility tools.</div>
-</footer></body></html>
+  </nav></header><main class="container">
+
+  
+  <section class="panel seo-guide-section">
+    <h2>About the Word Counter Tool</h2>
+    <p>Count words, characters, sentences, paragraphs and reading time. This free online word counter page is designed for users who need a quick, simple and practical way to complete a file, document, image or productivity task without installing heavy desktop software. PDFplusTools is built around browser-friendly utilities, which means many features run directly in your web browser using HTML, CSS and JavaScript. The goal is to make common tasks easier for students, office workers, small business owners, freelancers, designers, content creators and anyone who regularly works with digital files.</p>
+
+    <p>The Word Counter tool is useful when you need a fast result and do not want to open a complicated application. For example, users often need to convert files, prepare documents for upload, reduce file size, create a clean output, organize information, extract data, generate a useful file, or prepare content for sharing. This tool keeps the workflow focused: open the page, add your file or information, adjust the available options, process the result and download the final output. The page is also designed to be mobile-friendly, so users can complete many tasks from a phone, tablet or laptop.</p>
+
+    <h3>What this tool can do</h3>
+    <p>The main purpose of this tool is to help users complete the task described in its title: Word Counter. Depending on the feature, the page may allow file upload, preview, ordering, conversion, extraction, compression, formatting, calculation, generation or download. The tool page includes clear controls, action buttons and status messages so users can understand what is happening at each step. Where possible, PDFplusTools keeps processing inside the browser, reducing the need for unnecessary account creation or complicated software setup.</p>
+
+    <p>This tool can support practical daily use cases. A student may use it to prepare an assignment file. An office worker may use it to organize documents before sending them by email. A small business owner may use it to process invoices, images or documents. A content creator may use it to prepare media files for social media. A freelancer may use it to handle client documents quickly. The feature is intentionally simple, but it is structured so more advanced options can be added later if users request them.</p>
+
+    <h3>How to use Word Counter</h3>
+    <ol>
+      <li>Open the Word Counter page from the PDFplusTools tool directory or from the related tools section.</li>
+      <li>Read the short instruction text at the top of the page to understand what file type or input is required.</li>
+      <li>Upload the required file, paste the text, enter the value or select the option requested by the tool.</li>
+      <li>Adjust the available settings such as page order, quality, size, speed, number of frames, range, output name or calculation option where applicable.</li>
+      <li>Click the main action button to process the file or generate the result.</li>
+      <li>Review the preview, status message or output area before downloading or copying the final result.</li>
+      <li>Download the generated file or copy the result for use in your work, school, business or personal task.</li>
+    </ol>
+
+    <p>For best results, use clear files and avoid extremely large uploads, especially when working from a mobile phone. Browser-based tools depend on the memory and processing power of the device being used. If a file is too large, try reducing the file size first, using fewer pages or frames, or testing on a desktop browser. For document and image tools, good source quality usually leads to better output quality. For OCR, invoice extraction or frame extraction tools, clear layout and good image quality can make a major difference.</p>
+
+    <h3>Why this page is useful</h3>
+    <p>The Word Counter tool is part of a larger collection of free online PDF tools, image tools, GIF tools, invoice tools, calculators, text tools and utility tools. Instead of searching for a different website for every small task, users can keep using PDFplusTools as a single lightweight hub. The site is designed with simple navigation, category sections and related links so users can move from one task to another, such as converting an image to PDF, compressing a PDF, extracting GIF frames, resizing an image, creating an invoice or generating a QR code.</p>
+
+    <p>Another advantage is speed. Many users do not want to install software just to perform a one-time action. Online tools are especially helpful when a user is on a shared computer, mobile device or work laptop where installing apps is not convenient. PDFplusTools focuses on clear user controls and quick outputs. The page structure also helps users understand what the tool does before they use it, which is important for trust, usability and search engine visibility.</p>
+
+    <h3>Privacy and file handling</h3>
+    <p>Many tools on PDFplusTools are designed to work in the browser. Browser-based processing means the selected file can be handled locally by JavaScript in the user’s browser, depending on the tool and the external libraries required. Users should still avoid processing highly sensitive, confidential or legally restricted files unless they understand the risks and are comfortable using an online tool. For business, invoice, accounting or tax-related outputs, users should always review results before relying on them.</p>
+
+    <h3>Common uses and search intent</h3>
+    <p>This page is relevant for users searching for terms such as <strong>word counter, word counter online, free word counter, word counter tool, word counter converter</strong>. The wording on this page is written to help users and search engines understand the purpose of the tool clearly. It explains the tool name, the benefit, the workflow, practical use cases, file handling considerations and related utilities. This makes the page more useful than a simple upload button and gives visitors enough information to decide whether the tool fits their task.</p>
+
+    <h3>Related tools</h3>
+    <p>After using Word Counter, you may also need one of these related PDFplusTools utilities:</p>
+    <div class="related-tools-box"><a href="case-converter.html">Case Converter</a><a href="meta-tag-generator.html">Meta Tag Generator</a><a href="youtube-title-generator.html">YouTube Title Generator</a></div>
+  </section>
+
+</main>
+<script>const input=document.getElementById("textInput");function update(){let t=input.value,w=t.trim()?t.trim().split(/\s+/).length:0,c=t.length,s=t.trim()?(t.match(/[.!?]+/g)||[]).length:0,m=Math.ceil(w/220);words.textContent=w;chars.textContent=c;sentences.textContent=s;reading.textContent=m+"m"}input.oninput=update;clearText.onclick=()=>{input.value="";update()};copyText.onclick=async()=>{await navigator.clipboard.writeText(input.value);alert("Copied")};update();</script><footer class="footer"><div class="footer-links"><a href="../index.html">Home</a><a href="../privacy-policy.html">Privacy Policy</a><a href="../terms.html">Terms of Use</a><a href="../cookie-policy.html">Cookie Policy</a><a href="../file-handling.html">File Handling</a><a href="../disclaimer.html">Disclaimer</a><a href="../refund-policy.html">Refund Policy</a><a href="../legal.html">Legal</a><a href="../contact.html">Contact</a></div><div>© PDFplusTools. Free online PDF, image, GIF, invoice and utility tools.</div></footer></body></html>
