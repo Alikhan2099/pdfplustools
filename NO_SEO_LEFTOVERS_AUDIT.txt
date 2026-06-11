@@ -1,0 +1,19 @@
+PDFplusTools No SEO Leftovers Release
+Generated: 2026-06-10
+
+Cleanup performed:
+- Renamed internal class seo-guide-section to tool-guide-section.
+- Removed visible Search intent sections from tool pages.
+- Removed any old SEO keywords / monetization / AdSense / ChatGPT-style leftovers found by audit patterns.
+- Removed HTML comments and broken marker lines.
+- Kept normal user-facing tool help sections such as About, How to use, Privacy, Related tools.
+
+HTML files changed: 43
+Search-intent/SEO heading blocks removed: 116
+Homepage tool links detected: 32
+Sitemap URLs detected: 41
+
+FAILED CHECKS: 0
+No unwanted SEO/chat/comment leftovers detected by final audit patterns.
+Reported tool pages still have interfaces, controls and scripts.
+Homepage tool links and sitemap entries remain present.

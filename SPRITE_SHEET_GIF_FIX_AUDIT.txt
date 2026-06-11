@@ -1,0 +1,26 @@
+PDFplusTools Sprite Sheet to GIF Fix Release
+Generated: 2026-06-10
+
+Fixed:
+- Rebuilt Sprite Sheet to GIF so Create GIF and Download GIF are wired to internal browser code.
+- Removed dependency on external GIF maker worker for GIF creation.
+- Added measurement controls: start X/Y, frame width/height, horizontal/vertical gaps and output scale.
+- Added Auto Measure button.
+- Kept homepage, app.js and sitemap intact.
+
+Verification:
+- Tool pages detected: 33
+- Homepage tool links detected: 33
+- assets/app.js tool entries detected: 33
+- Sitemap URLs detected: 42
+- Sprite Sheet to GIF required IDs checked: 21
+- Create GIF code path checked
+- Download GIF href code path checked
+- Internal GIF encoder functions checked
+- Unwanted SEO/chat/comment leftovers checked
+
+FAILED CHECKS: 0
+Sprite Sheet to GIF is fixed and includes measurement controls.
+Create GIF and Download GIF are wired to internal browser GIF generation.
+No unwanted SEO/chat/comment leftovers detected.
+Homepage, app.js and sitemap remain consistent.

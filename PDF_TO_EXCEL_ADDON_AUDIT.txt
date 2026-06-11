@@ -1,0 +1,25 @@
+PDFplusTools PDF to Excel Add-on Release
+Generated: 2026-06-10
+
+Added:
+- tools/pdf-to-excel.html
+- Homepage PDF Tools card
+- assets/app.js tool directory entry
+- sitemap.xml URL
+
+Verification:
+- Tool pages detected: 33
+- Homepage tool links detected: 33
+- assets/app.js tool entries detected: 33
+- Sitemap URLs detected: 42
+- PDF to Excel required controls checked: 8
+- Local homepage links checked
+- Local app.js links checked
+- Local sitemap file paths checked
+- Unwanted SEO/chat/comment leftovers checked
+
+FAILED CHECKS: 0
+PDF to Excel has been added and wired correctly.
+No unwanted SEO/chat/comment leftovers detected.
+Homepage, app.js and sitemap all include the new tool.
+All local links in homepage/app.js/sitemap passed.

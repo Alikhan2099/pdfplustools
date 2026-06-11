@@ -1,0 +1,25 @@
+PDFplusTools Sprite Column Drag Fix Release
+Generated: 2026-06-11
+
+Fixed:
+- Enabled pointer events on the grid overlay for more reliable dragging.
+- Increased the hit area of vertical column drag lines.
+- Increased the hit area of horizontal row drag lines as well.
+- Kept labels non-clickable so they do not block dragging.
+- Added cursor state during drag for better feedback.
+
+Verification:
+- Tool pages detected: 33
+- Homepage tool links detected: 33
+- assets/app.js tool entries detected: 33
+- Sitemap URLs detected: 42
+- Column drag hit-area fix checked
+- Row drag remains present
+- Create GIF / Download GIF code preserved
+- Unwanted SEO/chat/comment leftovers checked
+
+FAILED CHECKS: 0
+Column dragging has been fixed with wider, more reliable drag handles.
+Row dragging, GIF creation and download remain intact.
+Homepage, app.js and sitemap remain consistent.
+No unwanted SEO/chat/comment leftovers detected.

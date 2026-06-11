@@ -1,0 +1,28 @@
+PDFplusTools Sprite Outer Boundary Drag Release
+Generated: 2026-06-11
+
+Fixed:
+- Outer capture boundary lines are now visible and draggable.
+- Top, bottom, left and right capture boundaries can now be moved.
+- Internal row and column split lines remain draggable.
+- Areas outside the selected capture boundary are lightly shaded.
+- Capture measurements now show boundary/split coordinates.
+- GIF generation/download logic remains intact.
+
+Verification:
+- Tool pages detected: 33
+- Homepage tool links detected: 33
+- assets/app.js tool entries detected: 33
+- Sitemap URLs detected: 42
+- Draggable outer boundaries checked
+- Draggable internal split lines checked
+- Outside-boundary shading checked
+- GIF generation/download code preserved
+- Unwanted SEO/chat/comment leftovers checked
+
+FAILED CHECKS: 0
+Top, bottom, left and right capture boundaries are now draggable.
+Internal row and column split lines remain draggable.
+Preview and GIF generation remain intact.
+Homepage, app.js and sitemap remain consistent.
+No unwanted SEO/chat/comment leftovers detected.

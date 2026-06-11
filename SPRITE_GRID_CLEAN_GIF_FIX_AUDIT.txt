@@ -1,0 +1,28 @@
+PDFplusTools Sprite Sheet Grid Cleanup + GIF Fix Release
+Generated: 2026-06-11
+
+Fixed:
+- Removed confusing extra outer grid lines from the sprite sheet overlay.
+- For 1 column, no vertical internal line is shown; only row split lines are shown.
+- Kept a clean capture boundary using a simple overlay outline.
+- Preview frames and GIF creation now use the same capture logic.
+- GIF creation now normalizes frames without stretching, using the largest frame size as the output canvas.
+- Replaced the previous dictionary-heavy LZW encoder with a simpler clear-code encoder to reduce distorted GIF output risk.
+
+Verification:
+- Tool pages detected: 33
+- Homepage tool links detected: 33
+- assets/app.js tool entries detected: 33
+- Sitemap URLs detected: 42
+- Internal-only split lines checked
+- One-column confusion fix checked
+- GIF creation/download code checked
+- Simpler GIF encoder checked
+- Unwanted SEO/chat/comment leftovers checked
+
+FAILED CHECKS: 0
+Sprite Sheet to GIF grid now hides confusing extra outer lines.
+Preview and GIF creation use the same capture logic.
+GIF encoder updated to reduce distorted output risk.
+Homepage, app.js and sitemap remain consistent.
+No unwanted SEO/chat/comment leftovers detected.

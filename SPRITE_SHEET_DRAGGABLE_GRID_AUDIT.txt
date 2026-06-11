@@ -1,0 +1,33 @@
+PDFplusTools Sprite Sheet Draggable Grid Release
+Generated: 2026-06-11
+
+Added:
+- Visual grid overlay on the uploaded sprite sheet.
+- Grid updates when columns and rows are defined.
+- Draggable vertical column borders.
+- Draggable horizontal row borders.
+- Red outer capture borders and blue internal split borders.
+- Measurement summary showing image size, grid size, X borders and Y borders.
+- Frame previews showing source capture coordinates.
+
+Kept:
+- Internal browser GIF generation.
+- Create GIF and Download GIF workflow.
+- PDF to Excel and all previous tools.
+
+Verification:
+- Tool pages detected: 33
+- Homepage tool links detected: 33
+- assets/app.js tool entries detected: 33
+- Sitemap URLs detected: 42
+- Sprite Sheet required IDs checked: 19
+- Draggable grid functions checked
+- Create GIF code path checked
+- Download GIF code path checked
+- Unwanted SEO/chat/comment leftovers checked
+
+FAILED CHECKS: 0
+Sprite Sheet to GIF now includes a draggable row/column grid overlay.
+Create GIF and Download GIF remain wired to browser GIF generation.
+Homepage, app.js and sitemap remain consistent.
+No unwanted SEO/chat/comment leftovers detected.

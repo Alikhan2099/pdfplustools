@@ -1,0 +1,25 @@
+PDFplusTools Sprite Row Drag Fix Release
+Generated: 2026-06-11
+
+Fixed:
+- Row dragging made easier with larger horizontal drag handles.
+- Added fallback overlay detection so dragging works even when clicking slightly near a row line.
+- Kept column dragging fix intact.
+- Kept GIF generation/download fix intact.
+
+Verification:
+- Tool pages detected: 33
+- Homepage tool links detected: 33
+- assets/app.js tool entries detected: 33
+- Sitemap URLs detected: 42
+- Row drag larger handle checked
+- Overlay fallback drag checked
+- Column dragging fix preserved
+- GIF creation/download code preserved
+- Unwanted SEO/chat/comment leftovers checked
+
+FAILED CHECKS: 0
+Row dragging has been fixed with larger handles and overlay fallback detection.
+Column dragging, GIF creation and download remain intact.
+Homepage, app.js and sitemap remain consistent.
+No unwanted SEO/chat/comment leftovers detected.
