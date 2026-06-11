@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><title>PDF to Excel Converter - PDFplusTools</title><meta content="Convert selectable PDF text into an Excel spreadsheet in your browser. Export PDF rows and text into XLSX format for quick review and editing." name="description"/><link href="../assets/styles.css" rel="stylesheet"/><link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="/favicon-48x48.png" rel="icon" sizes="48x48" type="image/png"/>
+<link href="/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/site.webmanifest" rel="manifest"/>
+<meta content="#2563eb" name="theme-color"/>
+<link href="https://pdfplustools.com/tools/pdf-to-excel.html" rel="canonical"/>
+</head><body>
+<header class="site-header"><nav class="nav"><a class="logo" href="../index.html"><span class="logo-mark">P+</span> PDFplusTools</a><div class="nav-links">
+<a class="nav-tool-btn" href="../index.html#pdf-tools">📄 PDF Tools</a>
+<div class="nav-dropdown">
+<span class="nav-dropdown-btn" tabindex="0">🧰 Other Tools ▾</span>
+<div class="nav-dropdown-menu">
+<a class="dropdown-item" href="../index.html#business-tools"><span class="dropdown-icon">🧾</span><span class="dropdown-text"><span class="dropdown-title">Business Tools</span><span class="dropdown-desc">Invoices, extraction, CSV exports</span></span></a>
+<a class="dropdown-item" href="../index.html#image-tools"><span class="dropdown-icon">🖼️</span><span class="dropdown-text"><span class="dropdown-title">Image Tools</span><span class="dropdown-desc">Compress, resize, and edit images</span></span></a>
+<a class="dropdown-item" href="../index.html#gif-tools"><span class="dropdown-icon">🎞️</span><span class="dropdown-text"><span class="dropdown-title">GIF Tools</span><span class="dropdown-desc">Create GIFs, sprites and extract frames</span></span></a>
+<a class="dropdown-item" href="../index.html#text-content-tools"><span class="dropdown-icon">🔤</span><span class="dropdown-text"><span class="dropdown-title">Text &amp; Content Tools</span><span class="dropdown-desc">Word count, case, YouTube, SEO</span></span></a>
+<a class="dropdown-item" href="../index.html#calculators"><span class="dropdown-icon">🧮</span><span class="dropdown-text"><span class="dropdown-title">Calculators</span><span class="dropdown-desc">Age, loan, unit conversions</span></span></a>
+<a class="dropdown-item" href="../index.html#utility-tools"><span class="dropdown-icon">⚙️</span><span class="dropdown-text"><span class="dropdown-title">Utility Tools</span><span class="dropdown-desc">QR codes, passwords, quick helpers</span></span></a>
+</div>
+</div>
+</div>
+</nav></header>
+<main class="container">
+<section class="panel">
+  <div class="section-title">
+    <div>
+      <h2>PDF to Excel</h2>
+      <p>Extract selectable PDF text into an Excel spreadsheet. This tool works best with digital PDFs that contain selectable text, not scanned image-only PDFs.</p>
+    </div>
+    <a class="btn btn-secondary" href="../index.html#tools">All tools</a>
+  </div>
+
+  <div class="notice">
+    This browser-based converter reads text positions from your PDF and exports rows into an Excel file. Complex tables may need manual review after download.
+  </div>
+
+  <label>Choose PDF
+    <input accept="application/pdf" id="pdfFile" type="file"/>
+  </label>
+
+  <div class="grid-2">
+    <label>Row grouping tolerance
+      <input id="rowTolerance" min="2" max="12" step="1" type="number" value="5"/>
+    </label>
+    <label>Output file name
+      <input id="outputName" placeholder="converted-pdf.xlsx" type="text"/>
+    </label>
+  </div>
+
+  <div class="actions">
+    <button class="btn-primary" id="convertBtn">Convert PDF to Excel</button>
+    <button class="btn-secondary" id="downloadBtn" disabled>Download Excel</button>
+    <button class="btn-secondary" id="clearBtn">Clear</button>
+  </div>
+
+  <div class="status" id="status"></div>
+
+  <div class="table-wrap">
+    <table id="previewTable">
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Row</th>
+          <th>Column 1</th>
+          <th>Column 2</th>
+          <th>Column 3</th>
+          <th>Column 4</th>
+          <th>Column 5</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
+
+<section class="panel tool-guide-section">
+  <h2>About the PDF to Excel Tool</h2>
+  <p>The PDF to Excel tool helps you convert text from a PDF into an editable spreadsheet. It is useful when you need to review PDF rows in Excel, copy information into a workbook, or extract simple table-like data from a digital PDF.</p>
+  <h3>How to use PDF to Excel</h3>
+  <ol>
+    <li>Upload a PDF that contains selectable text.</li>
+    <li>Adjust the row grouping tolerance if rows are splitting incorrectly.</li>
+    <li>Click Convert PDF to Excel.</li>
+    <li>Review the preview table.</li>
+    <li>Download the Excel file and clean up the layout if needed.</li>
+  </ol>
+  <h3>Important note</h3>
+  <p>This tool does not perform OCR. If your PDF is a scanned image, the text may not extract. For best results, use clear digital PDFs with selectable text. Very complex tables, multi-column layouts and statements may require manual review after export.</p>
+  <h3>Related tools</h3>
+  <div class="related-tools-box">
+    <a href="pdf-to-word.html">PDF to Word</a>
+    <a href="pdf-to-jpg.html">PDF to JPG</a>
+    <a href="image-to-pdf.html">Image to PDF</a>
+    <a href="merge-pdf.html">Merge PDF</a>
+    <a href="compress-pdf.html">Compress PDF</a>
+  </div>
+</section>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script>
+pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+let workbookBlob=null;
+let lastRows=[];
+
+function cleanCell(value){
+  return String(value || '').replace(/\s+/g,' ').trim();
+}
+
+function groupTextItems(items,tolerance){
+  const positioned=items
+    .map(item=>({text:cleanCell(item.str),x:item.transform[4]||0,y:item.transform[5]||0}))
+    .filter(item=>item.text);
+  positioned.sort((a,b)=>Math.abs(b.y-a.y)>tolerance?b.y-a.y:a.x-b.x);
+
+  const lines=[];
+  for(const item of positioned){
+    let line=lines.find(row=>Math.abs(row.y-item.y)<=tolerance);
+    if(!line){
+      line={y:item.y,items:[]};
+      lines.push(line);
+    }
+    line.items.push(item);
+  }
+
+  return lines
+    .sort((a,b)=>b.y-a.y)
+    .map(line=>line.items.sort((a,b)=>a.x-b.x).map(item=>item.text))
+    .filter(cols=>cols.length);
+}
+
+function buildPreview(rows){
+  const tbody=document.querySelector('#previewTable tbody');
+  tbody.innerHTML='';
+  rows.slice(0,80).forEach(row=>{
+    const tr=document.createElement('tr');
+    for(let i=0;i<7;i++){
+      const td=document.createElement('td');
+      td.textContent=row[i] || '';
+      tr.appendChild(td);
+    }
+    tbody.appendChild(tr);
+  });
+}
+
+convertBtn.onclick=async()=>{
+  const file=pdfFile.files[0];
+  if(!file){
+    status.textContent='Choose a PDF first.';
+    return;
+  }
+
+  workbookBlob=null;
+  downloadBtn.disabled=true;
+  lastRows=[];
+  document.querySelector('#previewTable tbody').innerHTML='';
+  status.textContent='Reading PDF...';
+
+  try{
+    const tolerance=Math.max(2,Math.min(12,Number(rowTolerance.value)||5));
+    const pdf=await pdfjsLib.getDocument({data:await file.arrayBuffer()}).promise;
+    const sheetRows=[['Page','Row','Column 1','Column 2','Column 3','Column 4','Column 5','Column 6','Column 7','Column 8','Column 9','Column 10']];
+
+    for(let pageNo=1;pageNo<=pdf.numPages;pageNo++){
+      status.textContent=`Extracting page ${pageNo} of ${pdf.numPages}...`;
+      const page=await pdf.getPage(pageNo);
+      const content=await page.getTextContent();
+      const lines=groupTextItems(content.items,tolerance);
+      lines.forEach((cols,index)=>{
+        sheetRows.push([pageNo,index+1,...cols]);
+      });
+    }
+
+    if(sheetRows.length===1){
+      status.textContent='No selectable text was found. This may be a scanned PDF.';
+      return;
+    }
+
+    lastRows=sheetRows.slice(1);
+    buildPreview(lastRows);
+
+    const wb=XLSX.utils.book_new();
+    const ws=XLSX.utils.aoa_to_sheet(sheetRows);
+    ws['!cols']=[{wch:8},{wch:8},{wch:28},{wch:28},{wch:28},{wch:28},{wch:28},{wch:28},{wch:28},{wch:28},{wch:28},{wch:28}];
+    XLSX.utils.book_append_sheet(wb,ws,'PDF Extract');
+
+    const array=XLSX.write(wb,{bookType:'xlsx',type:'array'});
+    workbookBlob=new Blob([array],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+    downloadBtn.disabled=false;
+    status.textContent=`Done. Extracted ${lastRows.length} rows from ${pdf.numPages} page(s). Review the preview and download Excel.`;
+  }catch(e){
+    console.error(e);
+    status.textContent='Could not convert this PDF. Try a smaller digital PDF with selectable text.';
+  }
+};
+
+downloadBtn.onclick=()=>{
+  if(!workbookBlob)return;
+  const name=(outputName.value||pdfFile.files[0]?.name?.replace(/\.pdf$/i,'')+'-converted.xlsx'||'converted-pdf.xlsx').replace(/[^a-z0-9_ .-]/gi,'').trim();
+  const finalName=name.toLowerCase().endsWith('.xlsx')?name:name+'.xlsx';
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(workbookBlob);
+  a.download=finalName;
+  a.click();
+  URL.revokeObjectURL(a.href);
+};
+
+clearBtn.onclick=()=>{
+  pdfFile.value='';
+  outputName.value='';
+  workbookBlob=null;
+  lastRows=[];
+  downloadBtn.disabled=true;
+  document.querySelector('#previewTable tbody').innerHTML='';
+  status.textContent='';
+};
+</script>
+<footer class="footer"><div class="footer-links"><a href="../index.html">Home</a><a href="../privacy-policy.html">Privacy Policy</a><a href="../terms.html">Terms of Use</a><a href="../cookie-policy.html">Cookie Policy</a><a href="../file-handling.html">File Handling</a><a href="../disclaimer.html">Disclaimer</a><a href="../refund-policy.html">Refund Policy</a><a href="../legal.html">Legal</a><a href="../contact.html">Contact</a></div><div>© PDFplusTools. Free online PDF, image, GIF, invoice and utility tools.</div></footer></body></html>

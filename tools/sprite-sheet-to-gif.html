@@ -1,331 +1,837 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Sprite Sheet to GIF Converter Online Free - PDFplusTools</title><meta name="description" content="Convert a sprite sheet image into an animated GIF online."/><link rel="stylesheet" href="../assets/styles.css"/><link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
-<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="manifest" href="/site.webmanifest">
-<meta name="theme-color" content="#2563eb">
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><title>Sprite Sheet to GIF Converter Online Free - PDFplusTools</title><meta content="Convert a sprite sheet image into an animated GIF online." name="description"/><link href="../assets/styles.css" rel="stylesheet"/><link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="/favicon-48x48.png" rel="icon" sizes="48x48" type="image/png"/>
+<link href="/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/site.webmanifest" rel="manifest"/>
+<meta content="#2563eb" name="theme-color"/>
+<link href="https://pdfplustools.com/tools/sprite-sheet-to-gif.html" rel="canonical"/>
 </head><body>
-<header class="site-header"><nav class="nav"><a href="../index.html" class="logo"><span class="logo-mark">P+</span> PDFplusTools</a><div class="nav-links">
-      <a href="../index.html#pdf-tools" class="nav-tool-btn">📄 PDF Tools</a>
-      <div class="nav-dropdown">
-        <span class="nav-dropdown-btn" tabindex="0">🧰 Other Tools ▾</span>
-        <div class="nav-dropdown-menu">
-          <a href="../index.html#business-tools" class="dropdown-item"><span class="dropdown-icon">🧾</span><span class="dropdown-text"><span class="dropdown-title">Business Tools</span><span class="dropdown-desc">Invoices, extraction, CSV exports</span></span></a>
-          <a href="../index.html#image-tools" class="dropdown-item"><span class="dropdown-icon">🖼️</span><span class="dropdown-text"><span class="dropdown-title">Image Tools</span><span class="dropdown-desc">Compress, resize, and edit images</span></span></a>
-          <a href="../index.html#gif-tools" class="dropdown-item"><span class="dropdown-icon">🎞️</span><span class="dropdown-text"><span class="dropdown-title">GIF Tools</span><span class="dropdown-desc">Create GIFs, sprites and extract frames</span></span></a>
-          <a href="../index.html#text-content-tools" class="dropdown-item"><span class="dropdown-icon">🔤</span><span class="dropdown-text"><span class="dropdown-title">Text & Content Tools</span><span class="dropdown-desc">Word count, case, YouTube, SEO</span></span></a>
-          <a href="../index.html#calculators" class="dropdown-item"><span class="dropdown-icon">🧮</span><span class="dropdown-text"><span class="dropdown-title">Calculators</span><span class="dropdown-desc">Age, loan, unit conversions</span></span></a>
-          <a href="../index.html#utility-tools" class="dropdown-item"><span class="dropdown-icon">⚙️</span><span class="dropdown-text"><span class="dropdown-title">Utility Tools</span><span class="dropdown-desc">QR codes, passwords, quick helpers</span></span></a>
-        </div>
-      </div>
-    </div>
-  </nav></header>
+<header class="site-header"><nav class="nav"><a class="logo" href="../index.html"><span class="logo-mark">P+</span> PDFplusTools</a><div class="nav-links">
+<a class="nav-tool-btn" href="../index.html#pdf-tools">📄 PDF Tools</a>
+<div class="nav-dropdown">
+<span class="nav-dropdown-btn" tabindex="0">🧰 Other Tools ▾</span>
+<div class="nav-dropdown-menu">
+<a class="dropdown-item" href="../index.html#business-tools"><span class="dropdown-icon">🧾</span><span class="dropdown-text"><span class="dropdown-title">Business Tools</span><span class="dropdown-desc">Invoices, extraction, CSV exports</span></span></a>
+<a class="dropdown-item" href="../index.html#image-tools"><span class="dropdown-icon">🖼️</span><span class="dropdown-text"><span class="dropdown-title">Image Tools</span><span class="dropdown-desc">Compress, resize, and edit images</span></span></a>
+<a class="dropdown-item" href="../index.html#gif-tools"><span class="dropdown-icon">🎞️</span><span class="dropdown-text"><span class="dropdown-title">GIF Tools</span><span class="dropdown-desc">Create GIFs, sprites and extract frames</span></span></a>
+<a class="dropdown-item" href="../index.html#text-content-tools"><span class="dropdown-icon">🔤</span><span class="dropdown-text"><span class="dropdown-title">Text &amp; Content Tools</span><span class="dropdown-desc">Word count, case, YouTube, SEO</span></span></a>
+<a class="dropdown-item" href="../index.html#calculators"><span class="dropdown-icon">🧮</span><span class="dropdown-text"><span class="dropdown-title">Calculators</span><span class="dropdown-desc">Age, loan, unit conversions</span></span></a>
+<a class="dropdown-item" href="../index.html#utility-tools"><span class="dropdown-icon">⚙️</span><span class="dropdown-text"><span class="dropdown-title">Utility Tools</span><span class="dropdown-desc">QR codes, passwords, quick helpers</span></span></a>
+</div>
+</div>
+</div>
+</nav></header>
+
 <main class="container">
-<section class="panel"><div class="section-title"><div><h2>Sprite Sheet to GIF</h2><p>Convert a sprite sheet into an animated GIF by slicing the sheet into frames.</p></div><a class="btn btn-secondary" href="../index.html#gif-tools">GIF Tools</a></div><div class="notice">Upload a sprite sheet, enter rows and columns, preview frames, then create an animated GIF.</div>
-<div class="gif-settings-grid"><label>Sprite Sheet Image or GIF or GIF<input id="spriteInput" type="file" accept="image/png,image/jpeg,image/webp,image/gif"/></label><label>Columns<input id="colsInput" type="number" min="1" value="4"/></label><label>Rows<input id="rowsInput" type="number" min="1" value="4"/></label><label>Frame count<input id="frameCountInput" type="number" min="1" value="16"/></label><label>Frame delay, milliseconds<input id="delayInput" type="number" min="50" max="5000" value="120"/></label><label>GIF quality<select id="qualityInput"><option value="5">High quality</option><option value="10" selected>Balanced</option><option value="20">Smaller file</option></select></label></div>
-<div class="actions"><button id="previewBtn" class="btn-secondary" type="button">Preview Frames</button><button id="createBtn" class="btn-primary" type="button">Create GIF</button><a id="downloadBtn" class="btn btn-secondary hidden" download="sprite-sheet.gif">Download GIF</a><button id="clearBtn" class="btn-secondary" type="button">Clear</button></div><div id="status" class="status"></div>
-<div class="sprite-canvas-wrap"><h3>Sprite Sheet Preview</h3><canvas id="sheetCanvas"></canvas></div><div class="output-box"><h3>Generated GIF Preview</h3><img id="gifPreview" style="max-width:100%;border-radius:16px;border:1px solid #e5e7eb;background:white"/></div><div id="framesGrid" class="sprite-grid-preview"></div></section>
-  
-  <section class="panel seo-guide-section">
-    <h2>About the Sprite Sheet to GIF Tool</h2>
-    <p>Convert a sprite sheet image or GIF into an animated GIF. This free online sprite sheet to gif page is designed for users who need a quick, simple and practical way to complete a file, document, image or productivity task without installing heavy desktop software. PDFplusTools is built around browser-friendly utilities, which means many features run directly in your web browser using HTML, CSS and JavaScript. The goal is to make common tasks easier for students, office workers, small business owners, freelancers, designers, content creators and anyone who regularly works with digital files.</p>
+<section class="panel">
+  <div class="section-title">
+    <div>
+      <h2>Sprite Sheet to GIF</h2>
+      <p>Convert a sprite sheet into an animated GIF with a draggable row and column grid.</p>
+    </div>
+    <a class="btn btn-secondary" href="../index.html#gif-tools">GIF Tools</a>
+  </div>
 
-    <p>The Sprite Sheet to GIF tool is useful when you need a fast result and do not want to open a complicated application. For example, users often need to convert files, prepare documents for upload, reduce file size, create a clean output, organize information, extract data, generate a useful file, or prepare content for sharing. This tool keeps the workflow focused: open the page, add your file or information, adjust the available options, process the result and download the final output. The page is also designed to be mobile-friendly, so users can complete many tasks from a phone, tablet or laptop.</p>
+  <div class="notice">
+    Upload a sprite sheet, set columns and rows, then drag the blue grid borders over the image to control exactly where each frame is captured.
+  </div>
 
-    <h3>What this tool can do</h3>
-    <p>The main purpose of this tool is to help users complete the task described in its title: Sprite Sheet to GIF. Depending on the feature, the page may allow file upload, preview, ordering, conversion, extraction, compression, formatting, calculation, generation or download. The tool page includes clear controls, action buttons and status messages so users can understand what is happening at each step. Where possible, PDFplusTools keeps processing inside the browser, reducing the need for unnecessary account creation or complicated software setup.</p>
+  <style>
+    .sheet-editor-wrap{overflow:auto;border:1px solid #e5e7eb;border-radius:16px;background:#f8fafc;padding:12px;margin-top:14px}
+    .sheet-editor{position:relative;display:inline-block;max-width:100%;line-height:0;background:white;border-radius:12px;overflow:hidden}
+    .sheet-editor canvas{display:block;max-width:100%;height:auto}
+    .grid-overlay{position:absolute;left:0;top:0;pointer-events:auto;z-index:5;outline:2px solid rgba(37,99,235,.65);outline-offset:-2px;cursor:crosshair}
+    .grid-line{position:absolute;pointer-events:auto;touch-action:none;user-select:none;-webkit-user-select:none;z-index:20}
+    .grid-line.vertical{width:18px;top:0;bottom:0;cursor:ew-resize;transform:translateX(-9px);background:linear-gradient(to right, transparent 0, transparent 7px, rgba(37,99,235,.95) 7px, rgba(37,99,235,.95) 11px, transparent 11px, transparent 100%)}
+.grid-line.vertical.edge{background:linear-gradient(to right, transparent 0, transparent 6px, rgba(245,124,0,.98) 6px, rgba(245,124,0,.98) 12px, transparent 12px, transparent 100%)}
+    .grid-line.horizontal{height:24px;left:0;right:0;cursor:ns-resize;transform:translateY(-12px);background:linear-gradient(to bottom, transparent 0, transparent 10px, rgba(37,99,235,.95) 10px, rgba(37,99,235,.95) 14px, transparent 14px, transparent 100%)}
+.grid-line.horizontal.edge{background:linear-gradient(to bottom, transparent 0, transparent 9px, rgba(245,124,0,.98) 9px, rgba(245,124,0,.98) 15px, transparent 15px, transparent 100%)}
+    .grid-line.edge{background:none}
+    .overlay-mask{position:absolute;background:rgba(15,23,42,.18);pointer-events:none;z-index:4}
+.grid-cell-label{position:absolute;z-index:6;transform:translate(-50%,-50%);font-size:11px;font-weight:700;color:white;background:rgba(15,23,42,.72);border-radius:999px;padding:4px 7px;line-height:1;pointer-events:none;white-space:nowrap}
+    .grid-help{font-size:13px;color:#475569;margin-top:8px}
+    .measurement-box{margin-top:12px;padding:12px;border:1px solid #e5e7eb;border-radius:14px;background:#fff}
+    .measurement-box code{white-space:normal}
+  </style>
 
-    <p>This tool can support practical daily use cases. A student may use it to prepare an assignment file. An office worker may use it to organize documents before sending them by email. A small business owner may use it to process invoices, images or documents. A content creator may use it to prepare media files for social media. A freelancer may use it to handle client documents quickly. The feature is intentionally simple, but it is structured so more advanced options can be added later if users request them.</p>
+  <div class="gif-settings-grid">
+    <label>Sprite sheet image
+      <input accept="image/png,image/jpeg,image/webp,image/gif" id="spriteInput" type="file"/>
+    </label>
+    <label>Columns
+      <input id="colsInput" min="1" type="number" value="4"/>
+    </label>
+    <label>Rows
+      <input id="rowsInput" min="1" type="number" value="4"/>
+    </label>
+    <label>Frame count
+      <input id="frameCountInput" min="1" type="number" value="16"/>
+    </label>
+    <label>Frame delay, milliseconds
+      <input id="delayInput" max="5000" min="20" type="number" value="120"/>
+    </label>
+    <label>Output scale %
+      <input id="scaleInput" max="400" min="10" type="number" value="100"/>
+    </label>
+  </div>
 
-    <h3>How to use Sprite Sheet to GIF</h3>
-    <ol>
-      <li>Open the Sprite Sheet to GIF page from the PDFplusTools tool directory or from the related tools section.</li>
-      <li>Read the short instruction text at the top of the page to understand what file type or input is required.</li>
-      <li>Upload the required file, paste the text, enter the value or select the option requested by the tool.</li>
-      <li>Adjust the available settings such as page order, quality, size, speed, number of frames, range, output name or calculation option where applicable.</li>
-      <li>Click the main action button to process the file or generate the result.</li>
-      <li>Review the preview, status message or output area before downloading or copying the final result.</li>
-      <li>Download the generated file or copy the result for use in your work, school, business or personal task.</li>
-    </ol>
+  <div class="actions">
+    <button class="btn-secondary" id="applyGridBtn" type="button">Apply Columns / Rows</button>
+    <button class="btn-secondary" id="resetGridBtn" type="button">Reset Grid to Full Sheet</button>
+    <button class="btn-secondary" id="previewBtn" type="button">Preview Frames</button>
+    <button class="btn-primary" id="createBtn" type="button">Create GIF</button>
+    <a class="btn btn-secondary hidden" download="sprite-sheet.gif" id="downloadBtn">Download GIF</a>
+    <button class="btn-secondary" id="clearBtn" type="button">Clear</button>
+  </div>
 
-    <p>For best results, use clear files and avoid extremely large uploads, especially when working from a mobile phone. Browser-based tools depend on the memory and processing power of the device being used. If a file is too large, try reducing the file size first, using fewer pages or frames, or testing on a desktop browser. For document and image tools, good source quality usually leads to better output quality. For OCR, invoice extraction or frame extraction tools, clear layout and good image quality can make a major difference.</p>
+  <div class="status" id="status"></div>
 
-    <h3>Why this page is useful</h3>
-    <p>The Sprite Sheet to GIF tool is part of a larger collection of free online PDF tools, image tools, GIF tools, invoice tools, calculators, text tools and utility tools. Instead of searching for a different website for every small task, users can keep using PDFplusTools as a single lightweight hub. The site is designed with simple navigation, category sections and related links so users can move from one task to another, such as converting an image to PDF, compressing a PDF, extracting GIF frames, resizing an image, creating an invoice or generating a QR code.</p>
+  <div class="sheet-editor-wrap">
+    <div class="sheet-editor" id="sheetEditor">
+      <canvas id="sheetCanvas"></canvas>
+      <div class="grid-overlay" id="gridOverlay"></div>
+    </div>
+    <div class="grid-help">
+      Drag the blue internal split lines or the orange outer boundary lines to adjust the exact capture area.
+    </div>
+  </div>
 
-    <p>Another advantage is speed. Many users do not want to install software just to perform a one-time action. Online tools are especially helpful when a user is on a shared computer, mobile device or work laptop where installing apps is not convenient. PDFplusTools focuses on clear user controls and quick outputs. The page structure also helps users understand what the tool does before they use it, which is important for trust, usability and search engine visibility.</p>
+  <div class="measurement-box">
+    <strong>Capture measurements</strong>
+    <div id="measurementSummary">Upload a sprite sheet to see grid measurements.</div>
+  </div>
 
-    <h3>Privacy and file handling</h3>
-    <p>Many tools on PDFplusTools are designed to work in the browser. Browser-based processing means the selected file can be handled locally by JavaScript in the user’s browser, depending on the tool and the external libraries required. Users should still avoid processing highly sensitive, confidential or legally restricted files unless they understand the risks and are comfortable using an online tool. For business, invoice, accounting or tax-related outputs, users should always review results before relying on them.</p>
+  <div class="output-box">
+    <h3>Generated GIF Preview</h3>
+    <img id="gifPreview" alt="Generated GIF preview" style="max-width:100%;border-radius:16px;border:1px solid #e5e7eb;background:white"/>
+  </div>
 
-    <h3>Common uses and search intent</h3>
-    <p>This page is relevant for users searching for terms such as <strong>sprite sheet to gif, sprite sheet to gif online, free sprite sheet to gif, sprite sheet to gif tool, sprite sheet to gif converter, free online GIF tools, animated GIF tool, GIF converter</strong>. The wording on this page is written to help users and search engines understand the purpose of the tool clearly. It explains the tool name, the benefit, the workflow, practical use cases, file handling considerations and related utilities. This makes the page more useful than a simple upload button and gives visitors enough information to decide whether the tool fits their task.</p>
+  <div class="sprite-grid-preview" id="framesGrid"></div>
+</section>
 
-    <h3>Related tools</h3>
-    <p>After using Sprite Sheet to GIF, you may also need one of these related PDFplusTools utilities:</p>
-    <div class="related-tools-box"><a href="images-to-gif.html">Images to GIF Maker</a><a href="gif-frame-extractor.html">GIF Frame Extractor</a><a href="gif-to-sprite-sheet.html">GIF to Sprite Sheet</a><a href="image-compressor.html">Image Compressor</a></div>
-  </section>
+<section class="panel tool-guide-section">
+  <h2>About the Sprite Sheet to GIF Tool</h2>
+  <p>The Sprite Sheet to GIF tool converts a grid-based sprite sheet into an animated GIF directly in your browser. It is useful for game assets, pixel art, icon animations, small character loops and frame-by-frame previews.</p>
 
-</main><footer class="footer"><div class="footer-links"><a href="../index.html">Home</a><a href="../privacy-policy.html">Privacy Policy</a><a href="../terms.html">Terms of Use</a><a href="../cookie-policy.html">Cookie Policy</a><a href="../file-handling.html">File Handling</a><a href="../disclaimer.html">Disclaimer</a><a href="../refund-policy.html">Refund Policy</a><a href="../legal.html">Legal</a><a href="../contact.html">Contact</a></div><div>© PDFplusTools. Free online PDF, image, GIF, invoice and utility tools.</div></footer>
+  <h3>Draggable grid feature</h3>
+  <p>After uploading a sprite sheet, enter the number of columns and rows. The tool displays a visual grid over the image. You can drag the outer capture boundaries and the internal row or column borders to adjust exactly where each frame is captured.</p>
 
-<script src="https://cdn.jsdelivr.net/npm/gif.js.optimized@1.0.1/dist/gif.js"></script><script type="module">
-import { parseGIF, decompressFrames } from "https://cdn.jsdelivr.net/npm/gifuct-js@2.1.2/+esm";
+  <h3>How to use Sprite Sheet to GIF</h3>
+  <ol>
+    <li>Upload a PNG, JPG, WebP or GIF sprite sheet.</li>
+    <li>Enter the columns and rows used by your sprite sheet.</li>
+    <li>Click Apply Columns / Rows to draw the grid.</li>
+    <li>Drag the blue or red grid borders if the automatic split is not aligned.</li>
+    <li>Click Preview Frames to confirm the captured frames.</li>
+    <li>Click Create GIF and then Download GIF.</li>
+  </ol>
 
+  <h3>Important note</h3>
+  <p>This tool works best with small to medium sprite sheets. Very large images, too many frames or high output scaling can slow down browser processing. If the output is too large, reduce frame count or output scale.</p>
+
+  <h3>Related tools</h3>
+  <div class="related-tools-box">
+    <a href="images-to-gif.html">Images to GIF</a>
+    <a href="gif-frame-extractor.html">GIF Frame Extractor</a>
+    <a href="gif-to-sprite-sheet.html">GIF to Sprite Sheet</a>
+    <a href="image-compressor.html">Image Compressor</a>
+  </div>
+</section>
+</main>
+
+<footer class="footer"><div class="footer-links"><a href="../index.html">Home</a><a href="../privacy-policy.html">Privacy Policy</a><a href="../terms.html">Terms of Use</a><a href="../cookie-policy.html">Cookie Policy</a><a href="../file-handling.html">File Handling</a><a href="../disclaimer.html">Disclaimer</a><a href="../refund-policy.html">Refund Policy</a><a href="../legal.html">Legal</a><a href="../contact.html">Contact</a></div><div>© PDFplusTools. Free online PDF, image, GIF, invoice and utility tools.</div></footer>
+
+<script>
 const spriteInput = document.getElementById("spriteInput");
 const colsInput = document.getElementById("colsInput");
 const rowsInput = document.getElementById("rowsInput");
 const frameCountInput = document.getElementById("frameCountInput");
 const delayInput = document.getElementById("delayInput");
-const qualityInput = document.getElementById("qualityInput");
+const scaleInput = document.getElementById("scaleInput");
+const applyGridBtn = document.getElementById("applyGridBtn");
+const resetGridBtn = document.getElementById("resetGridBtn");
 const previewBtn = document.getElementById("previewBtn");
 const createBtn = document.getElementById("createBtn");
 const clearBtn = document.getElementById("clearBtn");
 const downloadBtn = document.getElementById("downloadBtn");
 const statusBox = document.getElementById("status");
+const sheetEditor = document.getElementById("sheetEditor");
 const sheetCanvas = document.getElementById("sheetCanvas");
 const sheetCtx = sheetCanvas.getContext("2d");
+const gridOverlay = document.getElementById("gridOverlay");
 const framesGrid = document.getElementById("framesGrid");
 const gifPreview = document.getElementById("gifPreview");
+const measurementSummary = document.getElementById("measurementSummary");
 
 let spriteImage = null;
-let extractedGifFrames = [];
-let sourceMode = "image";
+let spriteObjectUrl = "";
+let currentGifUrl = "";
+let cachedFrames = [];
+let xLines = [];
+let yLines = [];
+let activeDrag = null;
+const MIN_CELL_SIZE = 2;
 
 function setStatus(message) {
   statusBox.textContent = message || "";
 }
 
+function safeNumber(input, fallback, min, max) {
+  const value = Number(input.value);
+  if (!Number.isFinite(value)) return fallback;
+  return Math.max(min, Math.min(max, value));
+}
+
 function loadImageFromFile(file) {
   return new Promise((resolve, reject) => {
+    const url = URL.createObjectURL(file);
     const img = new Image();
-    img.onload = () => resolve(img);
-    img.onerror = reject;
-    img.src = URL.createObjectURL(file);
+    img.onload = () => resolve({ img, url });
+    img.onerror = () => {
+      URL.revokeObjectURL(url);
+      reject(new Error("Image could not load"));
+    };
+    img.src = url;
   });
 }
 
-function isGifFile(file) {
-  return file && (file.type === "image/gif" || file.name.toLowerCase().endsWith(".gif"));
+function clearGifOutput() {
+  if (currentGifUrl) URL.revokeObjectURL(currentGifUrl);
+  currentGifUrl = "";
+  downloadBtn.removeAttribute("href");
+  downloadBtn.classList.add("hidden");
+  gifPreview.removeAttribute("src");
+}
+
+function drawSheetPreview() {
+  if (!spriteImage) return;
+  sheetCanvas.width = spriteImage.naturalWidth;
+  sheetCanvas.height = spriteImage.naturalHeight;
+  sheetCtx.clearRect(0, 0, sheetCanvas.width, sheetCanvas.height);
+  sheetCtx.imageSmoothingEnabled = false;
+  sheetCtx.drawImage(spriteImage, 0, 0);
+}
+
+function buildEvenLines(max, count) {
+  const lines = [];
+  for (let i = 0; i <= count; i++) {
+    lines.push(Math.round((max * i) / count));
+  }
+  lines[0] = 0;
+  lines[lines.length - 1] = max;
+  return lines;
+}
+
+function applyGrid(resetToFullSheet) {
+  if (!spriteImage) {
+    setStatus("Upload a sprite sheet first.");
+    return;
+  }
+
+  const cols = safeNumber(colsInput, 4, 1, 200);
+  const rows = safeNumber(rowsInput, 4, 1, 200);
+  colsInput.value = cols;
+  rowsInput.value = rows;
+
+  const maxFrames = cols * rows;
+  frameCountInput.value = Math.min(maxFrames, Math.max(1, Number(frameCountInput.value || maxFrames)));
+
+  if (resetToFullSheet || xLines.length !== cols + 1 || yLines.length !== rows + 1) {
+    xLines = buildEvenLines(spriteImage.naturalWidth, cols);
+    yLines = buildEvenLines(spriteImage.naturalHeight, rows);
+  }
+
+  renderGridOverlay();
+  clearGifOutput();
+  framesGrid.innerHTML = "";
+  setStatus("Grid applied. Drag borders to adjust the split lines.");
+}
+
+function getDisplayRect() {
+  return sheetCanvas.getBoundingClientRect();
+}
+
+function naturalToDisplayX(x) {
+  const rect = getDisplayRect();
+  return x / sheetCanvas.width * rect.width;
+}
+
+function naturalToDisplayY(y) {
+  const rect = getDisplayRect();
+  return y / sheetCanvas.height * rect.height;
+}
+
+function displayToNaturalX(displayX) {
+  const rect = getDisplayRect();
+  return Math.round(displayX / rect.width * sheetCanvas.width);
+}
+
+function displayToNaturalY(displayY) {
+  const rect = getDisplayRect();
+  return Math.round(displayY / rect.height * sheetCanvas.height);
+}
+
+function renderGridOverlay() {
+  gridOverlay.innerHTML = "";
+
+  if (!spriteImage || !xLines.length || !yLines.length) {
+    measurementSummary.textContent = "Upload a sprite sheet to see grid measurements.";
+    return;
+  }
+
+  const rect = getDisplayRect();
+  gridOverlay.style.width = rect.width + "px";
+  gridOverlay.style.height = rect.height + "px";
+
+  const left = naturalToDisplayX(xLines[0]);
+  const right = naturalToDisplayX(xLines[xLines.length - 1]);
+  const top = naturalToDisplayY(yLines[0]);
+  const bottom = naturalToDisplayY(yLines[yLines.length - 1]);
+
+  // Shade areas outside the selected capture boundary so the user can see exactly
+  // which part of the sprite sheet is being used.
+  const masks = [
+    { left: 0, top: 0, width: rect.width, height: Math.max(0, top) },
+    { left: 0, top: bottom, width: rect.width, height: Math.max(0, rect.height - bottom) },
+    { left: 0, top: top, width: Math.max(0, left), height: Math.max(0, bottom - top) },
+    { left: right, top: top, width: Math.max(0, rect.width - right), height: Math.max(0, bottom - top) }
+  ];
+
+  masks.forEach(mask => {
+    if (mask.width <= 0 || mask.height <= 0) return;
+    const div = document.createElement("div");
+    div.className = "overlay-mask";
+    div.style.left = mask.left + "px";
+    div.style.top = mask.top + "px";
+    div.style.width = mask.width + "px";
+    div.style.height = mask.height + "px";
+    gridOverlay.appendChild(div);
+  });
+
+  // Draw all capture/grid lines. Outer lines are orange and draggable. Internal lines are blue.
+  xLines.forEach((x, index) => {
+    const line = document.createElement("div");
+    const isEdge = index === 0 || index === xLines.length - 1;
+    line.className = "grid-line vertical" + (isEdge ? " edge" : "");
+    line.style.left = naturalToDisplayX(x) + "px";
+    line.dataset.axis = "x";
+    line.dataset.index = String(index);
+    line.title = (isEdge ? "Capture boundary X " : "Column border X ") + x + " px";
+    line.addEventListener("pointerdown", startDrag);
+    gridOverlay.appendChild(line);
+  });
+
+  yLines.forEach((y, index) => {
+    const line = document.createElement("div");
+    const isEdge = index === 0 || index === yLines.length - 1;
+    line.className = "grid-line horizontal" + (isEdge ? " edge" : "");
+    line.style.top = naturalToDisplayY(y) + "px";
+    line.dataset.axis = "y";
+    line.dataset.index = String(index);
+    line.title = (isEdge ? "Capture boundary Y " : "Row border Y ") + y + " px";
+    line.addEventListener("pointerdown", startDrag);
+    gridOverlay.appendChild(line);
+  });
+
+  for (let r = 0; r < yLines.length - 1; r++) {
+    for (let c = 0; c < xLines.length - 1; c++) {
+      const cx = (xLines[c] + xLines[c + 1]) / 2;
+      const cy = (yLines[r] + yLines[r + 1]) / 2;
+      const label = document.createElement("div");
+      label.className = "grid-cell-label";
+      label.style.left = naturalToDisplayX(cx) + "px";
+      label.style.top = naturalToDisplayY(cy) + "px";
+      label.textContent = "R" + (r + 1) + " C" + (c + 1);
+      gridOverlay.appendChild(label);
+    }
+  }
+
+  updateMeasurementSummary();
+}
+
+function findNearestGridLine(event) {
+  if (!spriteImage || !xLines.length || !yLines.length) return null;
+
+  const rect = getDisplayRect();
+  const localX = event.clientX - rect.left;
+  const localY = event.clientY - rect.top;
+  const tolerance = 22;
+
+  let best = null;
+
+  // Check all horizontal row/boundary lines, including top and bottom capture boundaries.
+  for (let i = 0; i < yLines.length; i++) {
+    const displayY = naturalToDisplayY(yLines[i]);
+    const distance = Math.abs(localY - displayY);
+    if (distance <= tolerance && localX >= 0 && localX <= rect.width) {
+      best = { axis: "y", index: i, distance };
+      break;
+    }
+  }
+
+  // Check all vertical column/boundary lines, including left and right capture boundaries.
+  for (let i = 0; i < xLines.length; i++) {
+    const displayX = naturalToDisplayX(xLines[i]);
+    const distance = Math.abs(localX - displayX);
+    if (distance <= tolerance && localY >= 0 && localY <= rect.height) {
+      if (!best || distance < best.distance) {
+        best = { axis: "x", index: i, distance };
+      }
+    }
+  }
+
+  return best;
+}
+
+function startDragByAxis(event, axis, index) {
+  if (!spriteImage) return;
+  event.preventDefault();
+  event.stopPropagation();
+  activeDrag = { axis, index: Number(index) };
+  document.body.style.cursor = axis === "x" ? "ew-resize" : "ns-resize";
+  document.addEventListener("pointermove", onDrag);
+  document.addEventListener("pointerup", stopDrag, { once: true });
+  document.addEventListener("pointercancel", stopDrag, { once: true });
+}
+
+function startOverlayDrag(event) {
+  if (!spriteImage || event.target.classList.contains("grid-line")) return;
+  const nearest = findNearestGridLine(event);
+  if (!nearest) return;
+  startDragByAxis(event, nearest.axis, nearest.index);
+}
+
+function updateOverlayCursor(event) {
+  if (!spriteImage) return;
+  const nearest = findNearestGridLine(event);
+  if (!nearest) {
+    gridOverlay.style.cursor = "crosshair";
+    return;
+  }
+  gridOverlay.style.cursor = nearest.axis === "x" ? "ew-resize" : "ns-resize";
+}
+
+function updateMeasurementSummary() {
+  if (!spriteImage || xLines.length < 2 || yLines.length < 2) {
+    measurementSummary.textContent = "Upload a sprite sheet to see grid measurements.";
+    return;
+  }
+
+  const cols = xLines.length - 1;
+  const rows = yLines.length - 1;
+  const firstW = xLines[1] - xLines[0];
+  const firstH = yLines[1] - yLines[0];
+  const lastW = xLines[xLines.length - 1] - xLines[xLines.length - 2];
+  const lastH = yLines[yLines.length - 1] - yLines[yLines.length - 2];
+
+  measurementSummary.innerHTML =
+    "<code>Image: " + spriteImage.naturalWidth + " × " + spriteImage.naturalHeight + " px</code><br>" +
+    "<code>Grid: " + cols + " columns × " + rows + " rows = " + (cols * rows) + " cells</code><br>" +
+    "<code>X boundaries/splits: " + xLines.join(", ") + "</code><br>" +
+    "<code>Y boundaries/splits: " + yLines.join(", ") + "</code><br>" +
+    "<code>First cell: " + firstW + " × " + firstH + " px | Last cell: " + lastW + " × " + lastH + " px</code>";
+}
+
+function startDrag(event) {
+  const target = event.currentTarget;
+  startDragByAxis(event, target.dataset.axis, target.dataset.index);
+}
+
+function clampLine(axis, index, value) {
+  const lines = axis === "x" ? xLines : yLines;
+  const maxValue = axis === "x" ? spriteImage.naturalWidth : spriteImage.naturalHeight;
+  const min = index === 0 ? 0 : lines[index - 1] + MIN_CELL_SIZE;
+  const max = index === lines.length - 1 ? maxValue : lines[index + 1] - MIN_CELL_SIZE;
+  return Math.max(min, Math.min(max, value));
+}
+
+function onDrag(event) {
+  if (!activeDrag || !spriteImage) return;
+  const rect = getDisplayRect();
+
+  if (activeDrag.axis === "x") {
+    const displayX = event.clientX - rect.left;
+    const naturalX = displayToNaturalX(displayX);
+    xLines[activeDrag.index] = clampLine("x", activeDrag.index, naturalX);
+  } else {
+    const displayY = event.clientY - rect.top;
+    const naturalY = displayToNaturalY(displayY);
+    yLines[activeDrag.index] = clampLine("y", activeDrag.index, naturalY);
+  }
+
+  clearGifOutput();
+  framesGrid.innerHTML = "";
+  renderGridOverlay();
+}
+
+function stopDrag() {
+  activeDrag = null;
+  document.body.style.cursor = "";
+  document.removeEventListener("pointermove", onDrag);
+  updateMeasurementSummary();
+}
+
+function getSettings() {
+  if (!spriteImage) throw new Error("Upload a sprite sheet first.");
+  if (xLines.length < 2 || yLines.length < 2) throw new Error("Apply the grid first.");
+
+  const cols = xLines.length - 1;
+  const rows = yLines.length - 1;
+  const maxFrames = cols * rows;
+  const frameCount = Math.min(maxFrames, safeNumber(frameCountInput, maxFrames, 1, maxFrames));
+  const delay = safeNumber(delayInput, 120, 20, 5000);
+  const scale = safeNumber(scaleInput, 100, 10, 400);
+  return { cols, rows, frameCount, delay, scale };
+}
+
+function getCellBounds(index) {
+  const settings = getSettings();
+  const col = index % settings.cols;
+  const row = Math.floor(index / settings.cols);
+  const sx = xLines[col];
+  const sy = yLines[row];
+  const sw = Math.max(1, xLines[col + 1] - xLines[col]);
+  const sh = Math.max(1, yLines[row + 1] - yLines[row]);
+  return { sx, sy, sw, sh };
+}
+
+function makeFrameCanvas(index, settings) {
+  const cell = getCellBounds(index);
+  const outW = Math.max(1, Math.round(cell.sw * settings.scale / 100));
+  const outH = Math.max(1, Math.round(cell.sh * settings.scale / 100));
+
+  const canvas = document.createElement("canvas");
+  canvas.width = outW;
+  canvas.height = outH;
+  const ctx = canvas.getContext("2d", { willReadFrequently: true });
+  ctx.imageSmoothingEnabled = false;
+  ctx.clearRect(0, 0, outW, outH);
+  ctx.drawImage(spriteImage, cell.sx, cell.sy, cell.sw, cell.sh, 0, 0, outW, outH);
+  return canvas;
+}
+
+function buildFrames() {
+  const settings = getSettings();
+  const rawFrames = [];
+  const bounds = [];
+
+  for (let i = 0; i < settings.frameCount; i++) {
+    const cell = getCellBounds(i);
+    bounds.push(cell);
+    rawFrames.push(makeFrameCanvas(i, settings));
+  }
+
+  // GIF frames should all have the same canvas size. Use the largest preview size
+  // and place smaller frames without stretching. This prevents distorted GIF output.
+  const maxW = Math.max(...rawFrames.map(frame => frame.width));
+  const maxH = Math.max(...rawFrames.map(frame => frame.height));
+
+  const normalized = rawFrames.map(frame => {
+    if (frame.width === maxW && frame.height === maxH) return frame;
+    const canvas = document.createElement("canvas");
+    canvas.width = maxW;
+    canvas.height = maxH;
+    const ctx = canvas.getContext("2d");
+    ctx.imageSmoothingEnabled = false;
+    ctx.clearRect(0, 0, maxW, maxH);
+    ctx.drawImage(frame, 0, 0);
+    return canvas;
+  });
+
+  return { frames: normalized, rawFrames, bounds, settings };
+}
+
+function previewFrames() {
+  try {
+    const built = buildFrames();
+    cachedFrames = built.frames;
+    framesGrid.innerHTML = "";
+
+    built.rawFrames.forEach((canvas, index) => {
+      const cell = built.bounds[index];
+      const card = document.createElement("div");
+      card.className = "sprite-frame-card";
+
+      const preview = document.createElement("canvas");
+      preview.width = canvas.width;
+      preview.height = canvas.height;
+      preview.getContext("2d").drawImage(canvas, 0, 0);
+
+      const label = document.createElement("p");
+      label.innerHTML =
+        "<strong>Frame " + (index + 1) + "</strong><br>" +
+        "Source: x" + cell.sx + ", y" + cell.sy + ", " + cell.sw + " × " + cell.sh + " px<br>" +
+        "Preview: " + canvas.width + " × " + canvas.height + " px";
+
+      card.append(preview, label);
+      framesGrid.append(card);
+    });
+
+    clearGifOutput();
+    setStatus("Preview ready. " + cachedFrames.length + " frame(s). GIF output will use " + cachedFrames[0].width + " × " + cachedFrames[0].height + " px frames.");
+  } catch (error) {
+    setStatus(error.message);
+  }
+}
+
+function makePalette() {
+  const palette = [];
+  for (let r = 0; r < 6; r++) {
+    for (let g = 0; g < 6; g++) {
+      for (let b = 0; b < 6; b++) {
+        palette.push(r * 51, g * 51, b * 51);
+      }
+    }
+  }
+  for (let i = 0; i < 39; i++) {
+    const v = Math.round(i * 255 / 38);
+    palette.push(v, v, v);
+  }
+  while (palette.length < 256 * 3) palette.push(0, 0, 0);
+  palette[255 * 3] = 0;
+  palette[255 * 3 + 1] = 0;
+  palette[255 * 3 + 2] = 0;
+  return palette;
+}
+
+function pixelToPaletteIndex(r, g, b, a) {
+  if (a < 128) return 255;
+  const ri = Math.max(0, Math.min(5, Math.round(r / 51)));
+  const gi = Math.max(0, Math.min(5, Math.round(g / 51)));
+  const bi = Math.max(0, Math.min(5, Math.round(b / 51)));
+  return ri * 36 + gi * 6 + bi;
+}
+
+function canvasToIndexedPixels(canvas) {
+  const ctx = canvas.getContext("2d", { willReadFrequently: true });
+  const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+  const indexes = new Uint8Array(canvas.width * canvas.height);
+  let hasTransparency = false;
+
+  for (let i = 0, p = 0; i < data.length; i += 4, p++) {
+    const index = pixelToPaletteIndex(data[i], data[i + 1], data[i + 2], data[i + 3]);
+    if (index === 255) hasTransparency = true;
+    indexes[p] = index;
+  }
+  return { indexes, hasTransparency };
+}
+
+class GifWriter {
+  constructor() {
+    this.bytes = [];
+  }
+  byte(value) {
+    this.bytes.push(value & 255);
+  }
+  bytesArray(values) {
+    for (const value of values) this.byte(value);
+  }
+  string(value) {
+    for (let i = 0; i < value.length; i++) this.byte(value.charCodeAt(i));
+  }
+  short(value) {
+    this.byte(value & 255);
+    this.byte((value >> 8) & 255);
+  }
+}
+
+function lzwEncode(indexes, minCodeSize) {
+  // Robust GIF LZW stream: emit literal pixel codes and clear often before the
+  // decoder increases bit width. This creates larger but more reliable GIFs.
+  const clearCode = 1 << minCodeSize;
+  const endCode = clearCode + 1;
+  const codeSize = minCodeSize + 1;
+  let bitBuffer = 0;
+  let bitCount = 0;
+  const output = [];
+
+  function emit(code) {
+    bitBuffer |= code << bitCount;
+    bitCount += codeSize;
+    while (bitCount >= 8) {
+      output.push(bitBuffer & 255);
+      bitBuffer >>= 8;
+      bitCount -= 8;
+    }
+  }
+
+  emit(clearCode);
+  let literalCount = 0;
+
+  for (let i = 0; i < indexes.length; i++) {
+    // Clear before the decoder dictionary reaches the 10-bit threshold.
+    if (literalCount >= 240) {
+      emit(clearCode);
+      literalCount = 0;
+    }
+    emit(indexes[i]);
+    literalCount++;
+  }
+
+  emit(endCode);
+  if (bitCount > 0) output.push(bitBuffer & 255);
+  return output;
+}
+
+function writeSubBlocks(writer, data) {
+  for (let i = 0; i < data.length; i += 255) {
+    const chunk = data.slice(i, i + 255);
+    writer.byte(chunk.length);
+    writer.bytesArray(chunk);
+  }
+  writer.byte(0);
+}
+
+function encodeAnimatedGif(frames, delayMs) {
+  if (!frames.length) throw new Error("No frames to encode.");
+
+  const width = frames[0].width;
+  const height = frames[0].height;
+  if (!width || !height) throw new Error("Invalid frame size.");
+
+  const writer = new GifWriter();
+  const palette = makePalette();
+  const delayCs = Math.max(2, Math.round(delayMs / 10));
+
+  writer.string("GIF89a");
+  writer.short(width);
+  writer.short(height);
+  writer.byte(0xF7);
+  writer.byte(0);
+  writer.byte(0);
+  writer.bytesArray(palette);
+
+  writer.byte(0x21);
+  writer.byte(0xFF);
+  writer.byte(11);
+  writer.string("NETSCAPE2.0");
+  writer.byte(3);
+  writer.byte(1);
+  writer.short(0);
+  writer.byte(0);
+
+  frames.forEach(canvas => {
+    const frame = canvasToIndexedPixels(canvas);
+
+    writer.byte(0x21);
+    writer.byte(0xF9);
+    writer.byte(4);
+    writer.byte(0x08 | (frame.hasTransparency ? 1 : 0));
+    writer.short(delayCs);
+    writer.byte(frame.hasTransparency ? 255 : 0);
+    writer.byte(0);
+
+    writer.byte(0x2C);
+    writer.short(0);
+    writer.short(0);
+    writer.short(width);
+    writer.short(height);
+    writer.byte(0);
+
+    writer.byte(8);
+    const lzwData = lzwEncode(frame.indexes, 8);
+    writeSubBlocks(writer, lzwData);
+  });
+
+  writer.byte(0x3B);
+  return new Blob([new Uint8Array(writer.bytes)], { type: "image/gif" });
+}
+
+async function createGif() {
+  try {
+    createBtn.disabled = true;
+    clearGifOutput();
+
+    const built = buildFrames();
+    cachedFrames = built.frames;
+
+    // Refresh visual preview from the same capture data used for GIF creation.
+    previewFrames();
+
+    if (cachedFrames.length > 150) {
+      setStatus("Too many frames. Please use 150 frames or fewer for browser-based GIF creation.");
+      createBtn.disabled = false;
+      return;
+    }
+
+    setStatus("Creating GIF from " + cachedFrames.length + " frame(s) at " + cachedFrames[0].width + " × " + cachedFrames[0].height + " px...");
+    await new Promise(resolve => setTimeout(resolve, 20));
+
+    const blob = encodeAnimatedGif(cachedFrames, built.settings.delay);
+    currentGifUrl = URL.createObjectURL(blob);
+    gifPreview.src = currentGifUrl;
+    downloadBtn.href = currentGifUrl;
+    downloadBtn.download = (spriteInput.files[0]?.name || "sprite-sheet").replace(/\.[^.]+$/, "") + ".gif";
+    downloadBtn.classList.remove("hidden");
+
+    setStatus("GIF created. Click Download GIF.");
+  } catch (error) {
+    console.error(error);
+    setStatus(error.message || "Could not create GIF. Try fewer frames, lower scale or a smaller image.");
+  } finally {
+    createBtn.disabled = false;
+  }
 }
 
 spriteInput.addEventListener("change", async () => {
   const file = spriteInput.files[0];
   if (!file) return;
 
-  const isGif = isGifFile(file);
-  const isImage = ["image/png", "image/jpeg", "image/webp"].includes(file.type);
-
-  if (!isGif && !isImage) {
+  if (!["image/png", "image/jpeg", "image/webp", "image/gif"].includes(file.type) && !/\.(png|jpe?g|webp|gif)$/i.test(file.name)) {
     setStatus("Choose a PNG, JPG, WebP or GIF file.");
     return;
   }
 
-  extractedGifFrames = [];
-  framesGrid.innerHTML = "";
-  downloadBtn.classList.add("hidden");
-  gifPreview.removeAttribute("src");
-
   try {
-    if (isGif) {
-      sourceMode = "gif";
-      await loadGifFrames(file);
-      setStatus("GIF loaded. Preview the extracted frames or create a new GIF.");
-    } else {
-      sourceMode = "image";
-      spriteImage = await loadImageFromFile(file);
-      sheetCanvas.width = spriteImage.naturalWidth;
-      sheetCanvas.height = spriteImage.naturalHeight;
-      sheetCtx.clearRect(0, 0, sheetCanvas.width, sheetCanvas.height);
-      sheetCtx.drawImage(spriteImage, 0, 0);
-      setStatus("Sprite sheet image loaded. Enter rows/columns and preview frames.");
-    }
+    if (spriteObjectUrl) URL.revokeObjectURL(spriteObjectUrl);
+    clearGifOutput();
+    framesGrid.innerHTML = "";
+    cachedFrames = [];
+
+    const loaded = await loadImageFromFile(file);
+    spriteImage = loaded.img;
+    spriteObjectUrl = loaded.url;
+    drawSheetPreview();
+    applyGrid(true);
+
+    setStatus("Sprite sheet loaded: " + spriteImage.naturalWidth + " × " + spriteImage.naturalHeight + " px. Drag grid borders if needed.");
   } catch (error) {
     console.error(error);
-    setStatus("Could not load this file. Try a smaller PNG, JPG, WebP or GIF.");
+    setStatus("Could not load this image. Try a smaller PNG, JPG, WebP or GIF.");
   }
 });
 
-async function loadGifFrames(file) {
-  const buffer = await file.arrayBuffer();
-  const gif = parseGIF(buffer);
-  const frames = decompressFrames(gif, true);
-  const maxFrames = Math.min(frames.length, Math.max(1, Number(frameCountInput.value || frames.length)));
-  const w = gif.lsd.width;
-  const h = gif.lsd.height;
-
-  const canvas = document.createElement("canvas");
-  canvas.width = w;
-  canvas.height = h;
-  const ctx = canvas.getContext("2d", { willReadFrequently: true });
-  ctx.clearRect(0, 0, w, h);
-
-  extractedGifFrames = [];
-
-  for (let i = 0; i < maxFrames; i++) {
-    const frame = frames[i];
-    const imageData = ctx.createImageData(frame.dims.width, frame.dims.height);
-    imageData.data.set(frame.patch);
-    ctx.putImageData(imageData, frame.dims.left, frame.dims.top);
-
-    const frameCanvas = document.createElement("canvas");
-    frameCanvas.width = w;
-    frameCanvas.height = h;
-    frameCanvas.getContext("2d").drawImage(canvas, 0, 0);
-    extractedGifFrames.push(frameCanvas);
-  }
-
-  sheetCanvas.width = w;
-  sheetCanvas.height = h;
-  sheetCtx.clearRect(0, 0, w, h);
-  if (extractedGifFrames[0]) {
-    sheetCtx.drawImage(extractedGifFrames[0], 0, 0);
-  }
-}
-
-function getSettings() {
-  if (sourceMode === "gif") {
-    return {
-      cols: 1,
-      rows: extractedGifFrames.length,
-      frameCount: extractedGifFrames.length,
-      delay: Math.max(50, Number(delayInput.value || 120)),
-      frameW: extractedGifFrames[0] ? extractedGifFrames[0].width : 0,
-      frameH: extractedGifFrames[0] ? extractedGifFrames[0].height : 0
-    };
-  }
-
-  const cols = Math.max(1, Number(colsInput.value || 1));
-  const rows = Math.max(1, Number(rowsInput.value || 1));
-  const maxFrames = cols * rows;
-  const frameCount = Math.min(maxFrames, Math.max(1, Number(frameCountInput.value || maxFrames)));
-  const delay = Math.max(50, Number(delayInput.value || 120));
-  const frameW = Math.floor(spriteImage.naturalWidth / cols);
-  const frameH = Math.floor(spriteImage.naturalHeight / rows);
-
-  return { cols, rows, frameCount, delay, frameW, frameH };
-}
-
-function makeFrameCanvas(index) {
-  if (sourceMode === "gif") {
-    return extractedGifFrames[index];
-  }
-
-  const { cols, frameW, frameH } = getSettings();
-  const sx = (index % cols) * frameW;
-  const sy = Math.floor(index / cols) * frameH;
-
-  const canvas = document.createElement("canvas");
-  canvas.width = frameW;
-  canvas.height = frameH;
-
-  const ctx = canvas.getContext("2d");
-  ctx.clearRect(0, 0, frameW, frameH);
-  ctx.drawImage(spriteImage, sx, sy, frameW, frameH, 0, 0, frameW, frameH);
-
-  return canvas;
-}
-
-function previewFrames() {
-  if (sourceMode === "image" && !spriteImage) {
-    setStatus("Upload a sprite sheet image first.");
-    return;
-  }
-
-  if (sourceMode === "gif" && !extractedGifFrames.length) {
-    setStatus("Upload a GIF first.");
-    return;
-  }
-
-  const { frameCount } = getSettings();
-  framesGrid.innerHTML = "";
-
-  for (let i = 0; i < frameCount; i++) {
-    const originalFrame = makeFrameCanvas(i);
-    const canvas = document.createElement("canvas");
-    canvas.width = originalFrame.width;
-    canvas.height = originalFrame.height;
-    canvas.getContext("2d").drawImage(originalFrame, 0, 0);
-
-    const card = document.createElement("div");
-    card.className = "sprite-frame-card";
-    card.append(canvas);
-
-    const label = document.createElement("p");
-    label.innerHTML = "<strong>Frame " + (i + 1) + "</strong>";
-    card.append(label);
-
-    framesGrid.append(card);
-  }
-
-  setStatus("Preview ready. " + frameCount + " frame(s) detected.");
-}
-
+gridOverlay.addEventListener("pointerdown", startOverlayDrag);
+gridOverlay.addEventListener("pointermove", updateOverlayCursor);
+gridOverlay.addEventListener("pointerleave", () => { gridOverlay.style.cursor = "crosshair"; });
+applyGridBtn.addEventListener("click", () => applyGrid(true));
+resetGridBtn.addEventListener("click", () => applyGrid(true));
 previewBtn.addEventListener("click", previewFrames);
+createBtn.addEventListener("click", createGif);
 
-createBtn.addEventListener("click", async () => {
-  if (sourceMode === "image" && !spriteImage) {
-    setStatus("Upload a sprite sheet image first.");
-    return;
-  }
+colsInput.addEventListener("change", () => applyGrid(true));
+rowsInput.addEventListener("change", () => applyGrid(true));
 
-  if (sourceMode === "gif" && !extractedGifFrames.length) {
-    setStatus("Upload a GIF first.");
-    return;
-  }
-
-  if (!window.GIF) {
-    setStatus("GIF maker library did not load. Please refresh the page and try again.");
-    return;
-  }
-
-  const { frameCount, delay } = getSettings();
-  const quality = Number(qualityInput.value || 10);
-  createBtn.disabled = true;
-  setStatus("Creating GIF...");
-
-  try {
-    const gif = new GIF({
-      workers: 2,
-      quality,
-      workerScript: "https://cdn.jsdelivr.net/npm/gif.js.optimized@1.0.1/dist/gif.worker.js"
-    });
-
-    for (let i = 0; i < frameCount; i++) {
-      const canvas = makeFrameCanvas(i);
-      gif.addFrame(canvas, { delay, copy: true });
-      setStatus("Added frame " + (i + 1) + " of " + frameCount + "...");
-    }
-
-    gif.on("progress", p => setStatus("Rendering GIF " + Math.round(p * 100) + "%..."));
-
-    gif.on("finished", blob => {
-      const url = URL.createObjectURL(blob);
-      downloadBtn.href = url;
-      downloadBtn.classList.remove("hidden");
-      gifPreview.src = url;
-      setStatus("GIF created. Download it now.");
-      createBtn.disabled = false;
-    });
-
-    gif.render();
-  } catch (error) {
-    console.error(error);
-    setStatus("Could not create GIF. Try fewer frames or a smaller file.");
-    createBtn.disabled = false;
-  }
+window.addEventListener("resize", () => {
+  if (spriteImage) renderGridOverlay();
 });
 
 clearBtn.addEventListener("click", () => {
   spriteInput.value = "";
   spriteImage = null;
-  extractedGifFrames = [];
-  sourceMode = "image";
+  xLines = [];
+  yLines = [];
+  cachedFrames = [];
   framesGrid.innerHTML = "";
+  gridOverlay.innerHTML = "";
   sheetCtx.clearRect(0, 0, sheetCanvas.width, sheetCanvas.height);
   sheetCanvas.width = 0;
   sheetCanvas.height = 0;
-  downloadBtn.classList.add("hidden");
-  gifPreview.removeAttribute("src");
+  clearGifOutput();
+  measurementSummary.textContent = "Upload a sprite sheet to see grid measurements.";
   setStatus("");
 });
-</script></body></html>
+</script>
+
+</body></html>
