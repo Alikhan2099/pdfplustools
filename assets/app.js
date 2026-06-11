@@ -56,6 +56,14 @@ const tools = [
     "keywords": "pdf to word doc"
   },
   {
+    "title": "PDF to Excel",
+    "description": "Extract selectable PDF text into an Excel spreadsheet.",
+    "category": "PDF Tools",
+    "icon": "📊",
+    "url": "tools/pdf-to-excel.html",
+    "keywords": "pdf to excel xlsx spreadsheet table extract"
+  },
+  {
     "title": "Sign PDF",
     "description": "Add typed or image signatures to PDF files online.",
     "category": "PDF Tools",
