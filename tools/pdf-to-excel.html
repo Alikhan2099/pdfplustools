@@ -5,19 +5,19 @@
 <link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
 <link href="/site.webmanifest" rel="manifest"/>
 <meta content="#2563eb" name="theme-color"/>
-<link href="https://pdfplustools.com/tools/pdf-to-excel.html" rel="canonical"/>
+<link rel="canonical" href="https://pdfplustools.com/tools/pdf-to-excel">
 </head><body>
-<header class="site-header"><nav class="nav"><a class="logo" href="../index.html"><span class="logo-mark">P+</span> PDFplusTools</a><div class="nav-links">
-<a class="nav-tool-btn" href="../index.html#pdf-tools">📄 PDF Tools</a>
+<header class="site-header"><nav class="nav"><a class="logo" href="../"><span class="logo-mark">P+</span> PDFplusTools</a><div class="nav-links">
+<a class="nav-tool-btn" href="../#pdf-tools">📄 PDF Tools</a>
 <div class="nav-dropdown">
 <span class="nav-dropdown-btn" tabindex="0">🧰 Other Tools ▾</span>
 <div class="nav-dropdown-menu">
-<a class="dropdown-item" href="../index.html#business-tools"><span class="dropdown-icon">🧾</span><span class="dropdown-text"><span class="dropdown-title">Business Tools</span><span class="dropdown-desc">Invoices, extraction, CSV exports</span></span></a>
-<a class="dropdown-item" href="../index.html#image-tools"><span class="dropdown-icon">🖼️</span><span class="dropdown-text"><span class="dropdown-title">Image Tools</span><span class="dropdown-desc">Compress, resize, and edit images</span></span></a>
-<a class="dropdown-item" href="../index.html#gif-tools"><span class="dropdown-icon">🎞️</span><span class="dropdown-text"><span class="dropdown-title">GIF Tools</span><span class="dropdown-desc">Create GIFs, sprites and extract frames</span></span></a>
-<a class="dropdown-item" href="../index.html#text-content-tools"><span class="dropdown-icon">🔤</span><span class="dropdown-text"><span class="dropdown-title">Text &amp; Content Tools</span><span class="dropdown-desc">Word count, case, YouTube, SEO</span></span></a>
-<a class="dropdown-item" href="../index.html#calculators"><span class="dropdown-icon">🧮</span><span class="dropdown-text"><span class="dropdown-title">Calculators</span><span class="dropdown-desc">Age, loan, unit conversions</span></span></a>
-<a class="dropdown-item" href="../index.html#utility-tools"><span class="dropdown-icon">⚙️</span><span class="dropdown-text"><span class="dropdown-title">Utility Tools</span><span class="dropdown-desc">QR codes, passwords, quick helpers</span></span></a>
+<a class="dropdown-item" href="../#business-tools"><span class="dropdown-icon">🧾</span><span class="dropdown-text"><span class="dropdown-title">Business Tools</span><span class="dropdown-desc">Invoices, extraction, CSV exports</span></span></a>
+<a class="dropdown-item" href="../#image-tools"><span class="dropdown-icon">🖼️</span><span class="dropdown-text"><span class="dropdown-title">Image Tools</span><span class="dropdown-desc">Compress, resize, and edit images</span></span></a>
+<a class="dropdown-item" href="../#gif-tools"><span class="dropdown-icon">🎞️</span><span class="dropdown-text"><span class="dropdown-title">GIF Tools</span><span class="dropdown-desc">Create GIFs, sprites and extract frames</span></span></a>
+<a class="dropdown-item" href="../#text-content-tools"><span class="dropdown-icon">🔤</span><span class="dropdown-text"><span class="dropdown-title">Text &amp; Content Tools</span><span class="dropdown-desc">Word count, case, YouTube, SEO</span></span></a>
+<a class="dropdown-item" href="../#calculators"><span class="dropdown-icon">🧮</span><span class="dropdown-text"><span class="dropdown-title">Calculators</span><span class="dropdown-desc">Age, loan, unit conversions</span></span></a>
+<a class="dropdown-item" href="../#utility-tools"><span class="dropdown-icon">⚙️</span><span class="dropdown-text"><span class="dropdown-title">Utility Tools</span><span class="dropdown-desc">QR codes, passwords, quick helpers</span></span></a>
 </div>
 </div>
 </div>
@@ -27,9 +27,9 @@
   <div class="section-title">
     <div>
       <h2>PDF to Excel</h2>
-      <p>Extract selectable PDF text into an Excel spreadsheet. This tool works best with digital PDFs that contain selectable text, not scanned image-only PDFs.</p>
+      <p>Extract selectable PDF text into an Excel spreadsheet with smart table-sheet detection. This tool works best with digital PDFs that contain selectable text, not scanned image-only PDFs.</p>
     </div>
-    <a class="btn btn-secondary" href="../index.html#tools">All tools</a>
+    <a class="btn btn-secondary" href="../#tools">All tools</a>
   </div>
 
   <div class="notice">
@@ -47,6 +47,33 @@
     <label>Output file name
       <input id="outputName" placeholder="converted-pdf.xlsx" type="text"/>
     </label>
+  </div>
+
+  <div class="grid-2">
+    <label>Export target
+      <select id="exportTarget">
+        <option value="all">All detected tables</option>
+        <option value="selected">Selected table numbers only</option>
+        <option value="raw">Raw extract only</option>
+      </select>
+    </label>
+    <label>Table numbers
+      <input id="targetTables" placeholder="Optional: 3 or 3,5-8" type="text"/>
+    </label>
+  </div>
+
+  <div class="grid-2">
+    <label>Page range
+      <input id="targetPages" placeholder="Optional: 1 or 1-3" type="text"/>
+    </label>
+    <label class="checkbox-label">
+      <input id="includeRawExtract" type="checkbox" checked/>
+      Include Raw Extract backup sheet
+    </label>
+  </div>
+
+  <div class="notice">
+    Targeting tip: choose “Selected table numbers only” and enter values like <strong>5</strong> or <strong>3,5-8</strong>. Use page range when you only want to process part of a PDF.
   </div>
 
   <div class="actions">
@@ -82,25 +109,27 @@
   <ol>
     <li>Upload a PDF that contains selectable text.</li>
     <li>Adjust the row grouping tolerance if rows are splitting incorrectly.</li>
+    <li>Optionally choose a target: all tables, selected table numbers, raw extract only, or a page range.</li>
     <li>Click Convert PDF to Excel.</li>
     <li>Review the preview table.</li>
     <li>Download the Excel file and clean up the layout if needed.</li>
   </ol>
   <h3>Important note</h3>
-  <p>This tool does not perform OCR. If your PDF is a scanned image, the text may not extract. For best results, use clear digital PDFs with selectable text. Very complex tables, multi-column layouts and statements may require manual review after export.</p>
+  <p>This tool does not perform OCR. If your PDF is a scanned image, the text may not extract. For best results, use clear digital PDFs with selectable text. Very complex tables, multi-column layouts and statements may require manual review after export. The target table option works best when the PDF contains visible table titles such as Table 1, Table 2 or Table 5.</p>
   <h3>Related tools</h3>
   <div class="related-tools-box">
-    <a href="pdf-to-word.html">PDF to Word</a>
-    <a href="pdf-to-jpg.html">PDF to JPG</a>
-    <a href="image-to-pdf.html">Image to PDF</a>
-    <a href="merge-pdf.html">Merge PDF</a>
-    <a href="compress-pdf.html">Compress PDF</a>
+    <a href="pdf-to-word">PDF to Word</a>
+    <a href="pdf-to-jpg">PDF to JPG</a>
+    <a href="image-to-pdf">Image to PDF</a>
+    <a href="merge-pdf">Merge PDF</a>
+    <a href="compress-pdf">Compress PDF</a>
   </div>
 </section>
 </main>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 <script>
+
 pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 let workbookBlob=null;
 let lastRows=[];
@@ -109,10 +138,87 @@ function cleanCell(value){
   return String(value || '').replace(/\s+/g,' ').trim();
 }
 
-function groupTextItems(items,tolerance){
-  const positioned=items
-    .map(item=>({text:cleanCell(item.str),x:item.transform[4]||0,y:item.transform[5]||0}))
-    .filter(item=>item.text);
+function safeSheetName(name, fallback){
+  const cleaned=cleanCell(name || fallback || 'Table')
+    .replace(/[:\\/?*\[\]]/g,' ')
+    .replace(/\s+/g,' ')
+    .trim()
+    .slice(0,31);
+  return cleaned || fallback || 'Table';
+}
+
+function uniqueSheetName(wb, wanted){
+  let base=safeSheetName(wanted,'Table').slice(0,31);
+  let name=base;
+  let i=2;
+  while(wb.SheetNames.includes(name)){
+    const suffix=' '+i++;
+    name=base.slice(0,31-suffix.length)+suffix;
+  }
+  return name;
+}
+
+function median(values){
+  const nums=values.filter(v=>Number.isFinite(v)).sort((a,b)=>a-b);
+  if(!nums.length)return 0;
+  const mid=Math.floor(nums.length/2);
+  return nums.length%2?nums[mid]:(nums[mid-1]+nums[mid])/2;
+}
+
+function parseNumberRanges(value,maxValue){
+  const text=cleanCell(value);
+  if(!text)return null;
+
+  const selected=new Set();
+  const parts=text.split(',').map(part=>part.trim()).filter(Boolean);
+
+  for(const part of parts){
+    const rangeMatch=part.match(/^(\d+)\s*-\s*(\d+)$/);
+    if(rangeMatch){
+      let start=Number(rangeMatch[1]);
+      let end=Number(rangeMatch[2]);
+      if(start>end)[start,end]=[end,start];
+      for(let n=start;n<=end;n++){
+        if(!maxValue || n<=maxValue)selected.add(n);
+      }
+      continue;
+    }
+
+    const singleMatch=part.match(/\d+/);
+    if(singleMatch){
+      const n=Number(singleMatch[0]);
+      if(!maxValue || n<=maxValue)selected.add(n);
+    }
+  }
+
+  return selected.size ? selected : null;
+}
+
+function setTargetControlsState(){
+  if(typeof exportTarget==='undefined')return;
+  const selectedMode=exportTarget.value==='selected';
+  targetTables.disabled=!selectedMode;
+  targetTables.placeholder=selectedMode?'Example: 3 or 3,5-8':'Optional unless selected mode is used';
+  includeRawExtract.disabled=exportTarget.value==='raw';
+  if(exportTarget.value==='raw'){
+    includeRawExtract.checked=true;
+  }
+}
+
+function extractPositionedItems(items){
+  return items.map(item=>{
+    const text=cleanCell(item.str);
+    const x=Number(item.transform?.[4]||0);
+    const y=Number(item.transform?.[5]||0);
+    const width=Math.max(Number(item.width||0), text.length*3);
+    const height=Math.max(Number(item.height||0), Math.abs(Number(item.transform?.[3]||0)) || 8);
+    const charWidth=text ? width / Math.max(text.length,1) : 3;
+    return {text,x,y,width,height,endX:x+width,charWidth};
+  }).filter(item=>item.text);
+}
+
+function groupIntoLines(items,tolerance){
+  const positioned=extractPositionedItems(items);
   positioned.sort((a,b)=>Math.abs(b.y-a.y)>tolerance?b.y-a.y:a.x-b.x);
 
   const lines=[];
@@ -125,10 +231,198 @@ function groupTextItems(items,tolerance){
     line.items.push(item);
   }
 
-  return lines
-    .sort((a,b)=>b.y-a.y)
-    .map(line=>line.items.sort((a,b)=>a.x-b.x).map(item=>item.text))
-    .filter(cols=>cols.length);
+  return lines.sort((a,b)=>b.y-a.y).map(line=>{
+    line.items.sort((a,b)=>a.x-b.x);
+    line.text=cleanCell(line.items.map(i=>i.text).join(' '));
+    line.minX=Math.min(...line.items.map(i=>i.x));
+    line.maxX=Math.max(...line.items.map(i=>i.endX));
+    return line;
+  }).filter(line=>line.items.length);
+}
+
+function shouldJoin(prev,current,gap,joinGap){
+  if(gap <= joinGap) return true;
+  if(/^[A-Za-z]{1,4}$/.test(prev.text) && /^[A-Za-z]+$/.test(current.text) && gap <= joinGap*3) return true;
+  if(/^[A-Za-z]+$/.test(prev.text) && /^[A-Za-z]{1,4}$/.test(current.text) && gap <= joinGap*3) return true;
+  if(/^\(.+\)$/.test(current.text) && gap <= joinGap*4) return true;
+  if(/^\d+$/.test(current.text) && /[/A-Za-z0-9)]$/.test(prev.text) && gap <= joinGap*2.5) return true;
+  return false;
+}
+
+function mergeLineItems(line){
+  const items=line.items;
+  if(!items.length)return [];
+  const charWidths=items.map(i=>i.charWidth).filter(v=>v>0 && v<40);
+  const medChar=median(charWidths) || 4;
+  const joinGap=Math.max(4, Math.min(16, medChar*1.6));
+  const cells=[];
+
+  for(const item of items){
+    const last=cells[cells.length-1];
+    if(!last){
+      cells.push({...item});
+      continue;
+    }
+
+    const gap=item.x-last.endX;
+    if(shouldJoin(last,item,gap,joinGap)){
+      last.text=cleanCell(last.text+' '+item.text).replace(/\b([A-Za-z])\s+([A-Za-z]{2,})\b/g,'$1$2');
+      last.text=last.text.replace(/\b(\d)\s+(\d)\b/g,'$1$2');
+      last.endX=Math.max(last.endX,item.endX);
+      last.width=last.endX-last.x;
+    }else{
+      cells.push({...item});
+    }
+  }
+
+  return cells.map(c=>({...c,text:cleanCell(c.text)})).filter(c=>c.text);
+}
+
+function splitNumericSingles(row, expectedCols){
+  if(!expectedCols || row.length<=expectedCols)return row;
+  const first=row[0];
+  const tail=row.slice(1);
+  if(!tail.length || !tail.every(v=>/^\d$/.test(String(v))))return row;
+  const targetNumericCols=expectedCols-1;
+  if(targetNumericCols<=0 || tail.length%targetNumericCols!==0)return row;
+  const groupSize=tail.length/targetNumericCols;
+  if(groupSize<2 || groupSize>4)return row;
+  const combined=[first];
+  for(let i=0;i<tail.length;i+=groupSize){
+    combined.push(tail.slice(i,i+groupSize).join(''));
+  }
+  return combined;
+}
+
+function detectColumnAnchors(lines){
+  const xs=[];
+  lines.forEach(line=>{
+    mergeLineItems(line).forEach(cell=>{
+      if(cell.text)xs.push(cell.x);
+    });
+  });
+  xs.sort((a,b)=>a-b);
+
+  const anchors=[];
+  xs.forEach(x=>{
+    const last=anchors[anchors.length-1];
+    if(last && Math.abs(last.x-x)<=18){
+      last.values.push(x);
+      last.x=median(last.values);
+    }else{
+      anchors.push({x,values:[x]});
+    }
+  });
+  return anchors.map(a=>a.x).sort((a,b)=>a-b);
+}
+
+function rowFromCells(cells,anchors,expectedCols){
+  if(!cells.length)return [];
+  if(!anchors || anchors.length<2){
+    let row=cells.map(c=>c.text);
+    return splitNumericSingles(row, expectedCols);
+  }
+
+  const row=new Array(anchors.length).fill('');
+  cells.forEach(cell=>{
+    let bestIndex=0;
+    let bestDistance=Infinity;
+    anchors.forEach((x,index)=>{
+      const distance=Math.abs(cell.x-x);
+      if(distance<bestDistance){
+        bestDistance=distance;
+        bestIndex=index;
+      }
+    });
+    row[bestIndex]=cleanCell(row[bestIndex] ? row[bestIndex]+' '+cell.text : cell.text);
+  });
+
+  while(row.length && !row[row.length-1])row.pop();
+  let cleaned=row.map(v=>cleanCell(v));
+  cleaned=splitNumericSingles(cleaned, expectedCols || anchors.length);
+  return cleaned;
+}
+
+function findExpectedColumnCount(lines){
+  let best=0;
+  lines.forEach(line=>{
+    const cells=mergeLineItems(line);
+    if(cells.length>best)best=cells.length;
+  });
+  return best || null;
+}
+
+function splitTablesFromPages(pageLines){
+  const tables=[];
+  let current=null;
+  let introRows=[];
+
+  pageLines.forEach(pageBlock=>{
+    pageBlock.lines.forEach(line=>{
+      const titleMatch=line.text.match(/^Table\s+(\d+)\b[:.\-\s]*(.*)$/i);
+
+      if(titleMatch){
+        if(current)tables.push(current);
+        current={
+          number:Number(titleMatch[1]),
+          title:cleanCell(line.text),
+          page:pageBlock.page,
+          lines:[]
+        };
+        return;
+      }
+
+      if(current){
+        current.lines.push(line);
+      }else{
+        const cells=mergeLineItems(line).map(c=>c.text);
+        if(cells.length)introRows.push([pageBlock.page,...cells]);
+      }
+    });
+  });
+
+  if(current)tables.push(current);
+  return {tables,introRows};
+}
+
+function buildTableRows(table){
+  const usefulLines=table.lines.filter(line=>mergeLineItems(line).length);
+  if(!usefulLines.length)return [];
+
+  const anchors=detectColumnAnchors(usefulLines);
+  const expectedCols=findExpectedColumnCount(usefulLines);
+  const rows=[];
+
+  usefulLines.forEach(line=>{
+    const cells=mergeLineItems(line);
+    const row=rowFromCells(cells,anchors,expectedCols);
+    if(row.some(Boolean))rows.push(row);
+  });
+
+  while(rows.length && /^(\(?\d+\)?|[A-Za-z]?\d+)[.)]\s+/.test(cleanCell(rows[rows.length-1][0]))){
+    rows.pop();
+  }
+
+  return rows;
+}
+
+function buildRawRows(pageLines){
+  const rows=[['Page','Row','Column 1','Column 2','Column 3','Column 4','Column 5','Column 6','Column 7','Column 8','Column 9','Column 10']];
+  pageLines.forEach(pageBlock=>{
+    pageBlock.lines.forEach((line,index)=>{
+      const cols=mergeLineItems(line).map(c=>c.text);
+      rows.push([pageBlock.page,index+1,...cols]);
+    });
+  });
+  return rows;
+}
+
+function fitColumns(ws,rows){
+  const maxCols=rows.reduce((m,row)=>Math.max(m,row.length),0);
+  ws['!cols']=Array.from({length:maxCols},(_,col)=>{
+    const maxLen=Math.max(8,...rows.map(row=>String(row[col]??'').length));
+    return {wch:Math.min(42,Math.max(10,maxLen+2))};
+  });
 }
 
 function buildPreview(rows){
@@ -143,6 +437,23 @@ function buildPreview(rows){
     }
     tbody.appendChild(tr);
   });
+}
+
+function appendSheet(wb,rows,name){
+  if(!rows.length)return false;
+  const ws=XLSX.utils.aoa_to_sheet(rows);
+  fitColumns(ws,rows);
+  XLSX.utils.book_append_sheet(wb,ws,uniqueSheetName(wb,name));
+  return true;
+}
+
+function filterDetectedTables(tables,exportMode,selectedTableSet){
+  if(exportMode==='raw')return [];
+  if(exportMode==='selected'){
+    if(!selectedTableSet || !selectedTableSet.size)return [];
+    return tables.filter(table=>selectedTableSet.has(table.number));
+  }
+  return tables;
 }
 
 convertBtn.onclick=async()=>{
@@ -160,36 +471,95 @@ convertBtn.onclick=async()=>{
 
   try{
     const tolerance=Math.max(2,Math.min(12,Number(rowTolerance.value)||5));
+    const exportMode=exportTarget.value;
+    const selectedTableSet=parseNumberRanges(targetTables.value);
     const pdf=await pdfjsLib.getDocument({data:await file.arrayBuffer()}).promise;
-    const sheetRows=[['Page','Row','Column 1','Column 2','Column 3','Column 4','Column 5','Column 6','Column 7','Column 8','Column 9','Column 10']];
+    const selectedPageSet=parseNumberRanges(targetPages.value,pdf.numPages);
 
+    if(exportMode==='selected' && (!selectedTableSet || !selectedTableSet.size)){
+      status.textContent='Enter table numbers to target, for example 3 or 3,5-8.';
+      return;
+    }
+
+    const pageLines=[];
+    const pagesToRead=[];
     for(let pageNo=1;pageNo<=pdf.numPages;pageNo++){
+      if(!selectedPageSet || selectedPageSet.has(pageNo)){
+        pagesToRead.push(pageNo);
+      }
+    }
+
+    if(!pagesToRead.length){
+      status.textContent='No valid pages matched your page range.';
+      return;
+    }
+
+    for(const pageNo of pagesToRead){
       status.textContent=`Extracting page ${pageNo} of ${pdf.numPages}...`;
       const page=await pdf.getPage(pageNo);
       const content=await page.getTextContent();
-      const lines=groupTextItems(content.items,tolerance);
-      lines.forEach((cols,index)=>{
-        sheetRows.push([pageNo,index+1,...cols]);
-      });
+      const lines=groupIntoLines(content.items,tolerance);
+      pageLines.push({page:pageNo,lines});
     }
 
-    if(sheetRows.length===1){
+    const rawRows=buildRawRows(pageLines);
+    if(rawRows.length===1){
       status.textContent='No selectable text was found. This may be a scanned PDF.';
       return;
     }
 
-    lastRows=sheetRows.slice(1);
-    buildPreview(lastRows);
-
+    const detected=splitTablesFromPages(pageLines);
+    const targetTablesList=filterDetectedTables(detected.tables,exportMode,selectedTableSet);
     const wb=XLSX.utils.book_new();
-    const ws=XLSX.utils.aoa_to_sheet(sheetRows);
-    ws['!cols']=[{wch:8},{wch:8},{wch:28},{wch:28},{wch:28},{wch:28},{wch:28},{wch:28},{wch:28},{wch:28},{wch:28},{wch:28}];
-    XLSX.utils.book_append_sheet(wb,ws,'PDF Extract');
+    let createdSheets=0;
+    const previewRows=[];
+
+    targetTablesList.forEach((table,index)=>{
+      const rows=buildTableRows(table);
+      if(rows.length){
+        const label=`Table ${table.number}`;
+        appendSheet(wb,rows,label);
+        createdSheets++;
+        if(previewRows.length<80){
+          previewRows.push([label + (table.title ? ' - ' + table.title.replace(/^Table\s+\d+\s*[:.\-\s]*/i,'') : '')]);
+          rows.slice(0,8).forEach(r=>previewRows.push(r));
+          previewRows.push([]);
+        }
+      }
+    });
+
+    const shouldIncludeRaw=exportMode==='raw' || includeRawExtract.checked;
+    if(shouldIncludeRaw){
+      appendSheet(wb,rawRows,'Raw Extract');
+    }
+
+    if(!wb.SheetNames.length){
+      const requested=selectedTableSet ? Array.from(selectedTableSet).sort((a,b)=>a-b).join(', ') : '';
+      status.textContent=requested
+        ? `No detected tables matched: ${requested}. Try all tables, raw extract only, or adjust the page range.`
+        : 'No sheets were created. Try all tables or raw extract only.';
+      return;
+    }
+
+    if(exportMode==='raw'){
+      lastRows=rawRows.slice(1);
+      buildPreview(lastRows);
+      status.textContent=`Done. Created Raw Extract from ${pagesToRead.length} selected page(s).`;
+    }else if(!createdSheets){
+      lastRows=rawRows.slice(1);
+      buildPreview(lastRows);
+      status.textContent=`Done. No target tables were exported, but Raw Extract was created from ${pagesToRead.length} selected page(s).`;
+    }else{
+      lastRows=previewRows;
+      buildPreview(lastRows);
+      const rawNote=shouldIncludeRaw?' plus Raw Extract':'';
+      const filterNote=exportMode==='selected'?' selected':'';
+      status.textContent=`Done. Created ${createdSheets}${filterNote} table sheet(s)${rawNote} from ${pagesToRead.length} selected page(s).`;
+    }
 
     const array=XLSX.write(wb,{bookType:'xlsx',type:'array'});
     workbookBlob=new Blob([array],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
     downloadBtn.disabled=false;
-    status.textContent=`Done. Extracted ${lastRows.length} rows from ${pdf.numPages} page(s). Review the preview and download Excel.`;
   }catch(e){
     console.error(e);
     status.textContent='Could not convert this PDF. Try a smaller digital PDF with selectable text.';
@@ -198,7 +568,8 @@ convertBtn.onclick=async()=>{
 
 downloadBtn.onclick=()=>{
   if(!workbookBlob)return;
-  const name=(outputName.value||pdfFile.files[0]?.name?.replace(/\.pdf$/i,'')+'-converted.xlsx'||'converted-pdf.xlsx').replace(/[^a-z0-9_ .-]/gi,'').trim();
+  const defaultName=pdfFile.files[0]?.name?.replace(/\.pdf$/i,'')+'-converted.xlsx';
+  const name=(outputName.value||defaultName||'converted-pdf.xlsx').replace(/[^a-z0-9_ .-]/gi,'').trim();
   const finalName=name.toLowerCase().endsWith('.xlsx')?name:name+'.xlsx';
   const a=document.createElement('a');
   a.href=URL.createObjectURL(workbookBlob);
@@ -210,11 +581,20 @@ downloadBtn.onclick=()=>{
 clearBtn.onclick=()=>{
   pdfFile.value='';
   outputName.value='';
+  targetTables.value='';
+  targetPages.value='';
+  exportTarget.value='all';
+  includeRawExtract.checked=true;
+  setTargetControlsState();
   workbookBlob=null;
   lastRows=[];
   downloadBtn.disabled=true;
   document.querySelector('#previewTable tbody').innerHTML='';
   status.textContent='';
 };
+
+exportTarget.addEventListener('change',setTargetControlsState);
+setTargetControlsState();
+
 </script>
-<footer class="footer"><div class="footer-links"><a href="../index.html">Home</a><a href="../privacy-policy.html">Privacy Policy</a><a href="../terms.html">Terms of Use</a><a href="../cookie-policy.html">Cookie Policy</a><a href="../file-handling.html">File Handling</a><a href="../disclaimer.html">Disclaimer</a><a href="../refund-policy.html">Refund Policy</a><a href="../legal.html">Legal</a><a href="../contact.html">Contact</a></div><div>© PDFplusTools. Free online PDF, image, GIF, invoice and utility tools.</div></footer></body></html>
+<footer class="footer"><div class="footer-links"><a href="../">Home</a><a href="../privacy-policy">Privacy Policy</a><a href="../terms">Terms of Use</a><a href="../cookie-policy">Cookie Policy</a><a href="../file-handling">File Handling</a><a href="../disclaimer">Disclaimer</a><a href="../refund-policy">Refund Policy</a><a href="../legal">Legal</a><a href="../contact">Contact</a></div><div>© PDFplusTools. Free online PDF, image, GIF, invoice and utility tools.</div></footer></body></html>
