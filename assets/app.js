@@ -4,7 +4,7 @@ const tools = [
     "description": "Convert JPG, PNG and WebP images into one PDF with custom page order.",
     "category": "PDF Tools",
     "icon": "🖼️",
-    "url": "tools/image-to-pdf.html",
+    "url": "tools/image-to-pdf",
     "keywords": "image pdf jpg png webp converter"
   },
   {
@@ -12,7 +12,7 @@ const tools = [
     "description": "Combine multiple PDF files into one document and control file order.",
     "category": "PDF Tools",
     "icon": "📎",
-    "url": "tools/merge-pdf.html",
+    "url": "tools/merge-pdf",
     "keywords": "pdf merge combine documents"
   },
   {
@@ -20,7 +20,7 @@ const tools = [
     "description": "Extract selected pages from a PDF document.",
     "category": "PDF Tools",
     "icon": "✂️",
-    "url": "tools/split-pdf.html",
+    "url": "tools/split-pdf",
     "keywords": "pdf split extract pages"
   },
   {
@@ -28,7 +28,7 @@ const tools = [
     "description": "View PDF page count and basic file details.",
     "category": "PDF Tools",
     "icon": "📄",
-    "url": "tools/pdf-info.html",
+    "url": "tools/pdf-info",
     "keywords": "pdf info page count"
   },
   {
@@ -36,7 +36,7 @@ const tools = [
     "description": "Compress and optimize PDF files.",
     "category": "PDF Tools",
     "icon": "🗜️",
-    "url": "tools/compress-pdf.html",
+    "url": "tools/compress-pdf",
     "keywords": "compress pdf reduce size"
   },
   {
@@ -44,7 +44,7 @@ const tools = [
     "description": "Convert PDF pages into JPG images.",
     "category": "PDF Tools",
     "icon": "🖼️",
-    "url": "tools/pdf-to-jpg.html",
+    "url": "tools/pdf-to-jpg",
     "keywords": "pdf to jpg image"
   },
   {
@@ -52,7 +52,7 @@ const tools = [
     "description": "Extract PDF text into a Word-compatible document.",
     "category": "PDF Tools",
     "icon": "📝",
-    "url": "tools/pdf-to-word.html",
+    "url": "tools/pdf-to-word",
     "keywords": "pdf to word doc"
   },
   {
@@ -60,7 +60,7 @@ const tools = [
     "description": "Extract selectable PDF text into an Excel spreadsheet.",
     "category": "PDF Tools",
     "icon": "📊",
-    "url": "tools/pdf-to-excel.html",
+    "url": "tools/pdf-to-excel",
     "keywords": "pdf to excel xlsx spreadsheet table extract"
   },
   {
@@ -68,7 +68,7 @@ const tools = [
     "description": "Add typed or image signatures to PDF files online.",
     "category": "PDF Tools",
     "icon": "✍️",
-    "url": "tools/sign-pdf.html",
+    "url": "tools/sign-pdf",
     "keywords": "sign pdf online add signature to pdf"
   },
   {
@@ -76,7 +76,7 @@ const tools = [
     "description": "Try to rebuild accessible PDFs into an editable copy.",
     "category": "PDF Tools",
     "icon": "🔓",
-    "url": "tools/unlock-pdf.html",
+    "url": "tools/unlock-pdf",
     "keywords": "unlock pdf online remove pdf restrictions"
   },
   {
@@ -84,7 +84,7 @@ const tools = [
     "description": "Cover visible watermark areas on PDFs you own or can edit.",
     "category": "PDF Tools",
     "icon": "🧽",
-    "url": "tools/remove-watermark-pdf.html",
+    "url": "tools/remove-watermark-pdf",
     "keywords": "remove watermark from pdf"
   },
   {
@@ -92,7 +92,7 @@ const tools = [
     "description": "Create a simple invoice and download it as PDF.",
     "category": "Business Tools",
     "icon": "🧾",
-    "url": "tools/invoice-generator.html",
+    "url": "tools/invoice-generator",
     "keywords": "invoice generator pdf"
   },
   {
@@ -100,7 +100,7 @@ const tools = [
     "description": "Extract invoice information from PDFs and export to Excel CSV.",
     "category": "Business Tools",
     "icon": "📊",
-    "url": "tools/bulk-invoice-extractor.html",
+    "url": "tools/bulk-invoice-extractor",
     "keywords": "bulk invoice extractor excel csv"
   },
   {
@@ -108,7 +108,7 @@ const tools = [
     "description": "Bulk extract invoice fields from images and export to Excel CSV.",
     "category": "Business Tools",
     "icon": "📷",
-    "url": "tools/image-invoice-extractor.html",
+    "url": "tools/image-invoice-extractor",
     "keywords": "image invoice extractor ocr excel"
   },
   {
@@ -116,7 +116,7 @@ const tools = [
     "description": "Enhanced OCR invoice extraction from images with editable CSV export.",
     "category": "Business Tools",
     "icon": "📷",
-    "url": "tools/image-invoice-extractor-improved.html",
+    "url": "tools/image-invoice-extractor-improved",
     "keywords": "improved invoice extractor ocr csv"
   },
   {
@@ -124,7 +124,7 @@ const tools = [
     "description": "Review invoice image and OCR text, confirm fields, then export to Excel CSV.",
     "category": "Business Tools",
     "icon": "🧾",
-    "url": "tools/semi-manual-invoice-extractor.html",
+    "url": "tools/semi-manual-invoice-extractor",
     "keywords": "semi manual invoice extractor"
   },
   {
@@ -132,7 +132,7 @@ const tools = [
     "description": "View invoice images, manually capture invoice fields and export to Excel CSV.",
     "category": "Business Tools",
     "icon": "✍️",
-    "url": "tools/manual-image-invoice-entry.html",
+    "url": "tools/manual-image-invoice-entry",
     "keywords": "manual invoice entry excel"
   },
   {
@@ -140,7 +140,7 @@ const tools = [
     "description": "Remove image backgrounds with click-to-preview and transparent PNG download.",
     "category": "Image Tools",
     "icon": "🪄",
-    "url": "tools/image-background-remover.html",
+    "url": "tools/image-background-remover",
     "keywords": "background remover transparent png"
   },
   {
@@ -148,7 +148,7 @@ const tools = [
     "description": "Reduce image file size directly in your browser.",
     "category": "Image Tools",
     "icon": "📉",
-    "url": "tools/image-compressor.html",
+    "url": "tools/image-compressor",
     "keywords": "image compressor jpg png webp"
   },
   {
@@ -156,7 +156,7 @@ const tools = [
     "description": "Resize images by width and height.",
     "category": "Image Tools",
     "icon": "↔️",
-    "url": "tools/resize-image.html",
+    "url": "tools/resize-image",
     "keywords": "resize image width height"
   },
   {
@@ -164,7 +164,7 @@ const tools = [
     "description": "Create animated GIFs from JPG, PNG and WebP images.",
     "category": "GIF Tools",
     "icon": "🎞️",
-    "url": "tools/images-to-gif.html",
+    "url": "tools/images-to-gif",
     "keywords": "images to gif animated gif creator"
   },
   {
@@ -172,7 +172,7 @@ const tools = [
     "description": "Extract frames from animated GIFs and download PNG images.",
     "category": "GIF Tools",
     "icon": "🧩",
-    "url": "tools/gif-frame-extractor.html",
+    "url": "tools/gif-frame-extractor",
     "keywords": "gif frame extractor extract gif frames png"
   },
   {
@@ -180,7 +180,7 @@ const tools = [
     "description": "Convert a sprite sheet image or GIF into an animated GIF.",
     "category": "GIF Tools",
     "icon": "🎮",
-    "url": "tools/sprite-sheet-to-gif.html",
+    "url": "tools/sprite-sheet-to-gif",
     "keywords": "sprite sheet to gif animated gif maker"
   },
   {
@@ -188,7 +188,7 @@ const tools = [
     "description": "Convert an animated GIF into a PNG sprite sheet.",
     "category": "GIF Tools",
     "icon": "🧱",
-    "url": "tools/gif-to-sprite-sheet.html",
+    "url": "tools/gif-to-sprite-sheet",
     "keywords": "gif to sprite sheet png frames"
   },
   {
@@ -196,7 +196,7 @@ const tools = [
     "description": "Count words, characters, sentences, paragraphs and reading time.",
     "category": "Text & Content Tools",
     "icon": "🔤",
-    "url": "tools/word-counter.html",
+    "url": "tools/word-counter",
     "keywords": "word counter characters"
   },
   {
@@ -204,7 +204,7 @@ const tools = [
     "description": "Convert text to uppercase, lowercase, title case and sentence case.",
     "category": "Text & Content Tools",
     "icon": "Aa",
-    "url": "tools/case-converter.html",
+    "url": "tools/case-converter",
     "keywords": "case converter uppercase lowercase"
   },
   {
@@ -212,7 +212,7 @@ const tools = [
     "description": "Generate title ideas, hooks, hashtags and descriptions.",
     "category": "Text & Content Tools",
     "icon": "▶️",
-    "url": "tools/youtube-title-generator.html",
+    "url": "tools/youtube-title-generator",
     "keywords": "youtube title hashtag generator"
   },
   {
@@ -220,7 +220,7 @@ const tools = [
     "description": "Create SEO title, description and keyword meta tags.",
     "category": "Text & Content Tools",
     "icon": "🏷️",
-    "url": "tools/meta-tag-generator.html",
+    "url": "tools/meta-tag-generator",
     "keywords": "meta tag generator seo"
   },
   {
@@ -228,7 +228,7 @@ const tools = [
     "description": "Calculate exact age from date of birth.",
     "category": "Calculators",
     "icon": "🎂",
-    "url": "tools/age-calculator.html",
+    "url": "tools/age-calculator",
     "keywords": "age calculator"
   },
   {
@@ -236,7 +236,7 @@ const tools = [
     "description": "Calculate monthly loan payment, interest and total cost.",
     "category": "Calculators",
     "icon": "💳",
-    "url": "tools/loan-calculator.html",
+    "url": "tools/loan-calculator",
     "keywords": "loan emi calculator"
   },
   {
@@ -244,7 +244,7 @@ const tools = [
     "description": "Convert length, weight, temperature and volume units.",
     "category": "Calculators",
     "icon": "📏",
-    "url": "tools/unit-converter.html",
+    "url": "tools/unit-converter",
     "keywords": "unit converter"
   },
   {
@@ -252,7 +252,7 @@ const tools = [
     "description": "Create downloadable QR codes for links, text and more.",
     "category": "Utility Tools",
     "icon": "▦",
-    "url": "tools/qr-code-generator.html",
+    "url": "tools/qr-code-generator",
     "keywords": "qr code generator"
   },
   {
@@ -260,7 +260,7 @@ const tools = [
     "description": "Generate strong passwords with custom settings.",
     "category": "Utility Tools",
     "icon": "🔐",
-    "url": "tools/password-generator.html",
+    "url": "tools/password-generator",
     "keywords": "password generator secure"
   }
 ];
@@ -285,3 +285,61 @@ function setupSearch() {
 }
 
 document.addEventListener("DOMContentLoaded", setupSearch);
+
+
+
+/* Local file testing helper.
+   On the live Cloudflare site, clean URLs like /tools/pdf-to-excel work.
+   When opened locally from file://, Windows/Chrome needs the physical .html file.
+   This helper only runs locally and converts clean internal clicks to .html. */
+(function () {
+  if (window.location.protocol !== "file:") return;
+
+  function shouldConvertLocalHref(href) {
+    if (!href) return false;
+    if (href.startsWith("#")) return false;
+    if (/^(https?:|mailto:|tel:|data:|javascript:|\/\/)/i.test(href)) return false;
+
+    var parts = href.split("#");
+    var beforeHash = parts[0];
+    var queryParts = beforeHash.split("?");
+    var path = queryParts[0];
+
+    if (!path) return false;
+    if (path === "." || path === "./" || path === ".." || path === "../") return false;
+    if (path.endsWith("/")) return false;
+    if (/\.[a-z0-9]+$/i.test(path)) return false;
+
+    return true;
+  }
+
+  function convertLocalHref(href) {
+    var hash = "";
+    var hashIndex = href.indexOf("#");
+    if (hashIndex !== -1) {
+      hash = href.slice(hashIndex);
+      href = href.slice(0, hashIndex);
+    }
+
+    var query = "";
+    var queryIndex = href.indexOf("?");
+    if (queryIndex !== -1) {
+      query = href.slice(queryIndex);
+      href = href.slice(0, queryIndex);
+    }
+
+    return href + ".html" + query + hash;
+  }
+
+  document.addEventListener("click", function (event) {
+    var anchor = event.target.closest && event.target.closest("a[href]");
+    if (!anchor) return;
+
+    var href = anchor.getAttribute("href");
+    if (!shouldConvertLocalHref(href)) return;
+
+    event.preventDefault();
+    window.location.href = convertLocalHref(href);
+  });
+})();
+
